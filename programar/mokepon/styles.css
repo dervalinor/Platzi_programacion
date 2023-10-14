@@ -1,3 +1,15 @@
+/*
+ 
+Explication GPT-4: CSS Grid es un sistema de diseño basado en cuadrículas que ha revolucionado 
+el diseño web al permitir a los desarrolladores crear diseños complejos sin tener que usar flotantes y posicionamiento. A diferencia de las tablas tradicionales, CSS Grid ofrece muchas más posibilidades de diseño y permite a los elementos hijos del contenedor de la cuadrícula posicionarse de manera que puedan superponerse y formar capas3. Para utilizar eficazmente CSS Grid, es importante entender sus terminologías básicas, como columnas, filas, celdas, líneas de cuadrícula y canalizaciones1. Un ejemplo práctico para visualizar cómo se utiliza CSS Grid en el mundo real sería pensar en ello como un tablero de ajedrez. Las celdas del tablero son como las celdas de la cuadrícula, las filas y columnas del tablero son como las filas y columnas de la cuadrícula. Al igual que en el ajedrez puedes mover tus piezas (elementos) a diferentes celdas del tablero (cuadrícula), en CSS Grid puedes mover tus elementos a diferentes celdas de la cuadrícula.
+
+Css grid podemos organizar nuestros elementos en filas y columnas a la vez, es decir en forma de
+celdas.
+
+para este caso queremos utilizar css grid para organizar en dos columnas la seccion de ataques del 
+jugador y el enemigo y asi tener mas orden en nuestro videojuego.
+ */
+
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@300&display=swap');
 
 body {
@@ -94,11 +106,16 @@ input {
   font-family: 'Poppins', sans-serif;
 }
 
+/*Uso de csss grid apartir de la propiedad display para el elemento padre 
+css grid permite mover elementos en celdad o mallas*/
 .ataques {
   display: grid;
-  grid-template-columns: 100px 100px;
+  grid-template-columns: 100px 100px; /*crear columnas en css grid */
   color: white;
 }
+
+/*Hacer que los texto de la dos columnas en grid esten horizontalmente
+centrados */
 
 #vidas-jugador, #vidas-enemigo {
   font-size: 32px;
