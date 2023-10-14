@@ -112,10 +112,17 @@ css grid permite mover elementos en celdad o mallas*/
   display: grid;
   grid-template-columns: 100px 100px; /*crear columnas en css grid */
   color: white;
+  /*Hacer que los texto de la dos columnas en grid esten horizontalmente
+  centrados */
+  text-align: center;
+  /*cómo centrar horizontalmente el texto en las columnas de una cuadrícula en CSS:
+
+Utiliza text-align: center; para centrar el texto dentro de un elemento a lo largo del eje horizontal.
+Ten en cuenta que text-align: center; sólo funcionará si el contenido del elemento es más pequeño que el ancho del elemento.
+Si necesitas centrar un bloque de elementos o un elemento que ocupa todo el ancho del contenedor, puedes usar margin: auto;.
+Verifica tu trabajo con las herramientas de desarrollo del navegador para asegurarte de que tus estilos CSS se aplican como esperas. */
 }
 
-/*Hacer que los texto de la dos columnas en grid esten horizontalmente
-centrados */
 
 #vidas-jugador, #vidas-enemigo {
   font-size: 32px;
