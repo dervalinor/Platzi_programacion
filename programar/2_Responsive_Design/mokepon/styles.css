@@ -1,0 +1,126 @@
+/*
+El diseño responsivo permite que un sitio web se adapte segun el dispositivo que se utilize para acceder a ello.
+
+GPT4: El diseño responsivo de un sitio web es una técnica de diseño web que busca la correcta visualización de una misma página en distintos dispositivos. Desde ordenadores de escritorio a tablets y móviles.
+
+Para entenderlo mejor, podemos usar una analogía de la vida real. Imagina que el sitio web es agua y los diferentes dispositivos (ordenador, tablet, móvil) son recipientes de diferentes formas y tamaños (una copa, una taza, un vaso). El agua (el sitio web) se adaptará a la forma del recipiente (el dispositivo) sin importar su tamaño. Eso es exactamente lo que hace el diseño responsivo.
+
+Clase: Vamos a adaptar nuestro juego a un movil donde debemos cambiar su estilo de pasar los elementos de fila a estar en columna, esto ocurrira si hay un cambio en 
+la resolucion para esto se usa @media
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@300&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #041562;
+}
+
+#seleccionar-mascota {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.titulo {
+  color: white;
+  font-size: 32px;
+  font-family: 'Fredoka One', cursive;
+}
+
+.subtitulo {
+  color: white;
+  font-size: 20px;
+}
+
+.tarjetas { /*2. En esta caso debemos modificar esto para el diseño resposivo */
+  display: flex;/*3. Agregar flex direction para cambiar la direccion de horizontal a vertical */
+  gap: 10px;
+}
+
+.tarjeta-de-mokepon {
+  width: 180px;
+  height: 100px;
+  background: #11468F;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.tarjeta-de-mokepon img {
+  width: 80px;
+}
+
+#boton-mascota {
+  width: 180px;
+  height: 40px;
+  border-radius: 20px;
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 30px;
+}
+
+input {
+  display: none;
+}
+
+#seleccionar-ataque {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.boton-de-ataque {
+  background-color: #11468F;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  border-color: transparent;
+  width: 180px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+#mensajes {
+  width: 280px;
+  background: #EEEEEE;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#boton-reiniciar {
+  border: none;
+  color: #11468F;
+  font-family: 'Poppins', sans-serif;
+}
+
+.ataques {
+  display: grid;
+  grid-template-columns: 100px 100px; /*crear columnas en css grid */
+  color: white;
+  text-align: center;
+
+#vidas-jugador, #vidas-enemigo {
+  font-size: 32px;
+  margin-bottom: 0;
+}
+
+/*1. La pagina se modificara cuando llegue a un cierta resolucion 
+Para esta caso se vera un modificacion de sitio web hasta dispositivos con resoluciones de 360px, se 
+modificaran los elementos del html con la clase "tarjetas" ya que queremos que esto queden en vertical, uno arriba del otro*/
+@media (max-width: 360px){
+ .tarjetas {
+	flex-direction: column; /*3. Cambiar direccion de horizontal a vertical */
+ }
+}
