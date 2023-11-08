@@ -86,6 +86,17 @@ input {
   display: none;
 }
 
+
+/*Uso de la pseudo clases en el elemento input para poder cambiar alguna
+ * propiedad si el usuario interactua con este elemento */
+
+/*indicar que el usuario a seleccionado el elemento input */
+input:checked + label { /*El simbolo mas indica que podemos seleccionar un elemento hermano
+                   es decir quienes tienen el mismo padre para esta caso en el div con la clase tarjetas */
+ background-color: #2997e3; 
+  
+}
+
 /* Styling the attack selection section */
 #seleccionar-ataque {
   display: flex;
