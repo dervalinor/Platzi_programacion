@@ -1,0 +1,163 @@
+/*Las pseudo clases en CSS son palabras clave que se añaden a los selectores y especifican un estado especial del elemento seleccionado. Por ejemplo, `:hover` se aplica cuando el usuario pasa el ratón sobre un elemento, y `:active` se aplica cuando un elemento está siendo activado por el usuario.
+
+Aquí te dejo algunos tipos de pseudo clases:
+
+1. **Pseudo clases de enlace**: Estas pseudo clases permiten cambiar el estilo de los enlaces en función de su estado. Incluyen `:link`, `:visited`, `:hover`, `:active`, y `:focus`.
+
+2. **Pseudo clases de tiempo**: Estas pseudo clases, como `:checked` y `:disabled`, se utilizan para aplicar estilos a elementos de formulario en función de su estado.
+
+3. **Pseudo clases de estructura**: Estas pseudo clases, como `:first-child`, `:last-child`, `:nth-child()`, y `:nth-last-child()`, permiten seleccionar elementos en función de su posición en el árbol de documentos.
+
+4. **Pseudo clases de negación**: La pseudo clase `:not()` permite seleccionar todos los elementos que no coinciden con la selección.
+
+5. **Pseudo clases de input**: Estas pseudo clases, como `:required`, `:optional`, `:valid`, y `:invalid`, permiten seleccionar elementos de entrada en función de su estado de validación.
+ */
+
+
+/* Importing required fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@300&display=swap');
+
+/* Styling the body */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #041562;
+}
+
+/* Styling the pet selection section */
+#seleccionar-mascota {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styling the title */
+.titulo {
+  color: white;
+  font-size: 32px;
+  font-family: 'Fredoka One', cursive;
+}
+
+/* Styling the subtitle */
+.subtitulo {
+  color: white;
+  font-size: 20px;
+}
+
+/* Styling the cards container */
+.tarjetas {
+  display: flex;
+  gap: 10px;
+}
+
+/* Styling each card */
+.tarjeta-de-mokepon {
+  width: 180px;
+  height: 100px;
+  background: #11468F;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+/* Styling the image in each card */
+.tarjeta-de-mokepon img {
+  width: 80px;
+}
+
+/* Styling the pet selection button */
+#boton-mascota {
+  width: 180px;
+  height: 40px;
+  border-radius: 20px;
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 30px;
+}
+
+/* Hiding the radio buttons */
+input {
+  display: none;
+}
+
+
+/*Uso de la pseudo clases en el elemento input para poder cambiar alguna
+ * propiedad si el usuario interactua con este elemento */
+
+/*indicar que el usuario a seleccionado el elemento input */
+input:checked + label { /*El simbolo mas indica que podemos seleccionar un elemento hermano
+                   es decir quienes tienen el mismo padre para esta caso en el div con la clase tarjetas */
+ background-color: #2997e3; 
+  
+}
+
+/* Styling the attack selection section */
+#seleccionar-ataque {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Styling the attack buttons */
+.boton-de-ataque {
+  background-color: #11468F;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  border-color: transparent;
+  width: 180px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Styling the messages container */
+#mensajes {
+  width: 280px;
+  background: #EEEEEE;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Styling the restart button */
+#boton-reiniciar {
+  border: none;
+  color: #11468F;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Styling the attacks container */
+.ataques {
+  display: grid;
+  grid-template-columns: 100px 100px;
+  color: white;
+  text-align: center;
+}
+
+/* Styling the player and enemy lives */
+#vidas-jugador, #vidas-enemigo {
+  font-size: 32px;
+  margin-bottom: 0;
+}
+
+/* Media query for screens smaller than 600px */
+@media (max-width: 600px) {
+  /* Stacking the cards vertically */
+  .tarjetas {
+    flex-direction: column;
+  }
+
+  /* Making the cards and buttons take up the full width of the screen */
+  .tarjeta-de-mokepon, .boton-de-ataque {
+    width: 100%;
+  }
+}
