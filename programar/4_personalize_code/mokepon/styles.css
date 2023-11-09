@@ -1,26 +1,13 @@
-/*Las pseudo clases en CSS son palabras clave que se añaden a los selectores y especifican un estado especial del elemento seleccionado. Por ejemplo, `:hover` se aplica cuando el usuario pasa el ratón sobre un elemento, y `:active` se aplica cuando un elemento está siendo activado por el usuario.
-
-Aquí te dejo algunos tipos de pseudo clases:
-
-1. **Pseudo clases de enlace**: Estas pseudo clases permiten cambiar el estilo de los enlaces en función de su estado. Incluyen `:link`, `:visited`, `:hover`, `:active`, y `:focus`.
-
-2. **Pseudo clases de tiempo**: Estas pseudo clases, como `:checked` y `:disabled`, se utilizan para aplicar estilos a elementos de formulario en función de su estado.
-
-3. **Pseudo clases de estructura**: Estas pseudo clases, como `:first-child`, `:last-child`, `:nth-child()`, y `:nth-last-child()`, permiten seleccionar elementos en función de su posición en el árbol de documentos.
-
-4. **Pseudo clases de negación**: La pseudo clase `:not()` permite seleccionar todos los elementos que no coinciden con la selección.
-
-5. **Pseudo clases de input**: Estas pseudo clases, como `:required`, `:optional`, `:valid`, y `:invalid`, permiten seleccionar elementos de entrada en función de su estado de validación.
- */
-
+/*Personalizacion de mi codigo*/
 
 /* Importing required fonts */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@300&display=swap');
 
 /* Styling the body */
+/*change background to an image */
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #041562;
+  background-image: url(https://i.imgur.com/mPIqqC9.png);
 }
 
 /* Styling the pet selection section */
@@ -52,8 +39,9 @@ body {
 
 /* Styling each card */
 .tarjeta-de-mokepon {
-  width: 180px;
-  height: 100px;
+  /*cambio de tamaño de cada label de cada personaje */
+  width: 360px;
+  height: 200px;
   background: #11468F;
   padding: 10px;
   box-sizing: border-box;
@@ -62,6 +50,9 @@ body {
   justify-content: center;
   align-items: center;
   color: white;
+  /*colocar opacidad a la seccion de donde aparecen los personajes 
+  Como hacer que esto no afecte a las imagenes de los personajes*/
+  opacity: 0.7;
 }
 
 /* Styling the image in each card */
