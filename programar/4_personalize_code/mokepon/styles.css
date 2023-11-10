@@ -62,14 +62,19 @@ body {
 
 /* Styling the pet selection button */
 #boton-mascota {
-  width: 180px;
+  width: 320px;
   height: 40px;
   border-radius: 20px;
-  background: transparent;
+  background: #00C9A7;
+  opacity:0.7;
   border: 2px solid white;
   color: white;
   font-family: 'Poppins', sans-serif;
   margin-top: 30px;
+}
+
+#boton-mascota:hover { /*Cambiar cuando el usurio coloca el mause sobre este */
+  background-color: #27f6fa;
 }
 
 /* Hiding the radio buttons */
@@ -84,8 +89,14 @@ input {
 /*indicar que el usuario a seleccionado el elemento input */
 input:checked + label { /*El simbolo mas indica que podemos seleccionar un elemento hermano
                    es decir quienes tienen el mismo padre para esta caso en el div con la clase tarjetas */
- background-color: #2997e3; 
+ background-color: #8e13bc; 
   
+}
+
+/*Cuando el usuario pase su mouse por seleccion de mascotas este cambia de
+ * color  */
+input:hover + label {
+  background-color: #c247f1;
 }
 
 /* Styling the attack selection section */
