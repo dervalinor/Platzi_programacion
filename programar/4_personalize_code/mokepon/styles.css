@@ -1,12 +1,13 @@
 /*Personalizacion de mi codigo*/
 
 /* Importing required fonts */
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@300&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@300&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Linear+B&family=Pixelify+Sans&display=swap');
 
 /* Styling the body */
 /*change background to an image */
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Pixelify Sans', sans-serif;
   background-image: url(https://i.imgur.com/mPIqqC9.png);
 }
 
@@ -21,8 +22,8 @@ body {
 /* Styling the title */
 .titulo {
   color: white;
-  font-size: 32px;
-  font-family: 'Fredoka One', cursive;
+  font-size: 52px;
+  font-family: 'Pixelify Sans', cursive;
 }
 
 /* Styling the subtitle */
@@ -63,17 +64,18 @@ body {
 /* Styling the pet selection button */
 #boton-mascota {
   width: 320px;
-  height: 40px;
+  height: 50px;
   border-radius: 20px;
   background: #00C9A7;
   opacity:0.7;
   border: 2px solid white;
   color: white;
-  font-family: 'Poppins', sans-serif;
+  /*cambio de estilo de las letras */
+  font-family: 'Pixelify Sans', sans-serif;
   margin-top: 30px;
 }
 
-#boton-mascota:hover { /*Cambiar cuando el usurio coloca el mause sobre este */
+#boton-mascota:hover { /*Cambiar cuando el usurio coloca el mouse sobre este */
   background-color: #27f6fa;
 }
 
