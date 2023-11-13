@@ -22,14 +22,14 @@ body {
 /* Styling the title */
 .titulo {
   color: white;
-  font-size: 52px;
+  font-size: 70px;
   font-family: 'Pixelify Sans', cursive;
 }
 
 /* Styling the subtitle */
 .subtitulo {
   color: white;
-  font-size: 20px;
+  font-size: 35px;
 }
 
 /* Styling the cards container */
@@ -51,9 +51,19 @@ body {
   justify-content: center;
   align-items: center;
   color: white;
+  margin: 20px;
+  font-size: 30px;
   /*colocar opacidad a la seccion de donde aparecen los personajes 
   Como hacer que esto no afecte a las imagenes de los personajes*/
   opacity: 0.7;
+  position: relative; /* Esta línea permite que z-index funcione */
+  /* Aquí van el resto de tus estilos... */
+}
+
+/* Estilo de la tarjeta de mascota cuando el mouse pasa sobre ella */
+.tarjeta-de-mokepon:hover {
+  transform: scale(1.2); /* Esta línea aumenta el tamaño de la tarjeta en un 20% */
+  z-index: 100; /* Esta línea hace que la tarjeta sobresalga de las demás */
 }
 
 /* Styling the image in each card */
@@ -73,6 +83,7 @@ body {
   /*cambio de estilo de las letras */
   font-family: 'Pixelify Sans', sans-serif;
   margin-top: 30px;
+  font-size: 18px;
 }
 
 #boton-mascota:hover { /*Cambiar cuando el usurio coloca el mouse sobre este */
