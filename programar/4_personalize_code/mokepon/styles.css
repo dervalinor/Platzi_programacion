@@ -67,9 +67,13 @@ body {
 }
 
 /* Styling the image in each card */
+/*edicion de la imagenes en margin de 20px  y forma de los bordes redondeados 30%- como cambiar la posicion
+ * de la imagenes haciendo que estas esten enzima y abajo este la nombre de cada personaje */
 .tarjeta-de-mokepon img {
   width: 80px;
-}
+  margin: 20px;
+  border-radius: 30%;
+} 
 
 /* Styling the pet selection button */
 #boton-mascota {
@@ -137,7 +141,10 @@ input:hover + label {
 
 .boton-de-ataque:hover {
   background-color: #1eef95;
+  width: 300px;
+  height: 150px;
 }
+
 
 /* Styling the messages container */
 #mensajes {
