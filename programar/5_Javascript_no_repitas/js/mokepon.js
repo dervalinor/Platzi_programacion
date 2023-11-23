@@ -1,7 +1,7 @@
 /* 
 Tarea 1: colocar todas las variables Let arriba en el codigo sin romper el programa y eliminar aquellas que se repiten
 Tarea 2: creacion de clases - un clase tiene atributos y metodos para construir objetos
-
+Tarea 3: crear un arreglo para guardar las objetos creados en un arreglo
 */
 
 
@@ -30,7 +30,8 @@ const sectionMensajes = document.getElementById('resultado')
 const ataquesDelJugador = document.getElementById('ataques-del-jugador')
 const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 
-
+//tarea 3: creacion de arreglo donde se guardaran todos mis objetos 
+let mokepones = []
 let ataqueJugador
 let ataqueEnemigo
 let vidasJugador = 3
@@ -55,6 +56,13 @@ let hipodoge = new Mokepon('Hipodoge', 'https://i.imgur.com/nIzuRQo.jpg', 5)
 let capipepo = new Mokepon('Capipepo', 'https://i.imgur.com/64QiC85.jpg', 5)
 
 let ratigueya = new Mokepon('Ratigueya', 'https://i.imgur.com/PR3MAOb.jpg', 5)
+
+//tarea 3: utilizacion del arreglo para ver mis objetos
+//push significa empujar valores de mis objetos
+mokepones.push(hipodoge, capipepo, ratigueya)
+
+//imprimir arreglo
+console.log(mokepones)
 
 function iniciarJuego() {
     
