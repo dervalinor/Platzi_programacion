@@ -36,7 +36,7 @@ class Mokepon { //utilizar class para crear la clase
         this.nombre = nombre
         this.foto = foto
         this.vida = vida
-        //crear areglo para guardar ataques
+        //crear areglo para guardar ataques en un arreglo
         this.ataques = []
     }
 }
@@ -51,9 +51,13 @@ mokepones.push(hipodoge, capipepo, ratigueya)
 
 
 //agregar poderes a cada personaje con un metodo, para este caso hipodoge
+//con punto trae de un objeto
 hipodoge.ataque.push (
   {nombre: 'Agua', id: 'boton-agua'},
-  {}
+  {nombre : 'Agua', id: 'boton-agua'},
+  {nombre : 'Agua', id: 'boton-agua'},
+  {nombre : 'Fuego', id: 'boton-fuego'},
+  {nombre : 'Tierra', id: 'boton-tierra'},
 )
 
 function iniciarJuego() {
