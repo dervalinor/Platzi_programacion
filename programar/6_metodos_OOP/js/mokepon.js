@@ -43,11 +43,11 @@ class Mokepon { //utilizar class para crear la clase
 
 
 //creacion de objetos
-let hipodoge = new Mokepon('Hipodoge', 'https://i.imgur.com/nIzuRQo.jpg', 5)
+//let hipodoge = new Mokepon('Hipodoge', 'https://i.imgur.com/nIzuRQo.jpg', 5)
 
-let capipepo = new Mokepon('Capipepo', 'https://i.imgur.com/64QiC85.jpg', 5)
+//let capipepo = new Mokepon('Capipepo', 'https://i.imgur.com/64QiC85.jpg', 5)
 
-let ratigueya = new Mokepon('Ratigueya', 'https://i.imgur.com/PR3MAOb.jpg', 5)
+//let ratigueya = new Mokepon('Ratigueya', 'https://i.imgur.com/PR3MAOb.jpg', 5)
 
 mokepones.push(hipodoge, capipepo, ratigueya)
 
