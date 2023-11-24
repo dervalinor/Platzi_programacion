@@ -41,6 +41,8 @@ class Mokepon { //utilizar class para crear la clase
     }
 }
 
+
+//creacion de objetos
 let hipodoge = new Mokepon('Hipodoge', 'https://i.imgur.com/nIzuRQo.jpg', 5)
 
 let capipepo = new Mokepon('Capipepo', 'https://i.imgur.com/64QiC85.jpg', 5)
@@ -52,13 +54,31 @@ mokepones.push(hipodoge, capipepo, ratigueya)
 
 //agregar poderes a cada personaje con un metodo, para este caso hipodoge
 //con punto trae de un objeto
-hipodoge.ataque.push (
-  {nombre: 'Agua', id: 'boton-agua'},
-  {nombre : 'Agua', id: 'boton-agua'},
-  {nombre : 'Agua', id: 'boton-agua'},
-  {nombre : 'Fuego', id: 'boton-fuego'},
-  {nombre : 'Tierra', id: 'boton-tierra'},
+hipodoge.ataques.push(
+    { nombre: '💧', id: 'boton-agua' },
+    { nombre: '💧', id: 'boton-agua' },
+    { nombre: '💧', id: 'boton-agua' },
+    { nombre: '🔥', id: 'boton-fuego' },
+    { nombre: '🌱', id: 'boton-tierra' },
 )
+
+capipepo.ataques.push(
+    { nombre: '🌱', id: 'boton-tierra' },
+    { nombre: '🌱', id: 'boton-tierra' },
+    { nombre: '🌱', id: 'boton-tierra' },
+    { nombre: '💧', id: 'boton-agua' },
+    { nombre: '🔥', id: 'boton-fuego' },
+    
+)
+
+ratigueya.ataques.push(
+    { nombre: '🔥', id: 'boton-fuego' },
+    { nombre: '🔥', id: 'boton-fuego' },
+    { nombre: '🔥', id: 'boton-fuego' },
+    { nombre: '💧', id: 'boton-agua' },
+    { nombre: '🌱', id: 'boton-tierra' },
+)
+
 
 function iniciarJuego() {
     
