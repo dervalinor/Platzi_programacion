@@ -30,17 +30,34 @@ body {
 }
 
 .tarjeta-de-mokepon {
-  width: 180px;
-  height: 100px;
+  /*modificaciones de tamaño y opacidad de la casillas de cada personaje */
+  width: 360px;
+  height: 200px;
   background: #11468F;
   padding: 10px;
+  /*boder-box usado para que el padding no modifique el tamaño de la caja */
   box-sizing: border-box;
   border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
+  margin: 20px;
+  /*Modificacion del tamaño de la letra */
+  font-size: 30px;
+  /*Modificar la opacidad  */
+  opacity: 0.7;
+  /*Mostrar que el sobre salga por z-index cuando usemos la psedoclass */
+  position:relative;
+
 }
+
+/*Estilo de la tarjeta de mascota cuando se pasa un mouse sobre esta */
+.tarjeta-de-mokepon:hover {
+ transform: scale(1.2);/*aumentar el tamaño del caja en un tamaño del 20% */
+ z-index: 100; /*Hacer sobresalir la caja */
+}
+
 
 .tarjeta-de-mokepon img {
   width: 80px;
