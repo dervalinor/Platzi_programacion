@@ -66,6 +66,12 @@ body {
   z-index: 100; /* Esta línea hace que la tarjeta sobresalga de las demás */
 }
 
+/*Anadir psuedo clase para cambiar de color al seleccionar el personaje */
+
+input:checked + label {
+ background: #5D8BF4;
+}
+
 /* Styling the image in each card */
 /*edicion de la imagenes en margin de 20px  y forma de los bordes redondeados 30%- como cambiar la posicion
  * de la imagenes haciendo que estas esten enzima y abajo este la nombre de cada personaje */
