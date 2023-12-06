@@ -56,16 +56,19 @@ body {
 .tarjeta-de-mokepon:hover {
  transform: scale(1.2);/*aumentar el tamaño del caja en un tamaño del 20% */
  z-index: 100; /*Hacer sobresalir la caja */
+ background-color: #38C6EC;
 }
 
 
 .tarjeta-de-mokepon img {
   width: 80px;
+  padding: 15px;
+  border-radius: 20%;
 }
 
 #boton-mascota {
-  width: 180px;
-  height: 40px;
+  width: 260px;
+  height: 60px;
   border-radius: 20px;
   background: transparent;
   border: 2px solid white;
@@ -74,12 +77,19 @@ body {
   margin-top: 30px;
 }
 
+/*cambiar color del boton colocar el mouser */
+#boton-mascota:hover {
+  background-color: #1BE9BA;
+  opacity:0.6;
+}
+
 input {
   display: none;
 }
 
+/*cambiar el color de caja del personaje al seleccionar */
 input:checked + label {
-  background-color: #5D8BF4;
+  background-color: #CB2DE5;
 }
 
 #seleccionar-ataque {
@@ -114,6 +124,14 @@ input:checked + label {
   border: none;
   color: #11468F;
   font-family: 'Poppins', sans-serif;
+}
+
+/*centar imagen del juego */
+
+/* Ajusta el estilo de la imagen para centrarla */
+.centrar-imagen {
+  display: block;
+  margin: 0 auto;
 }
 
 .ataques {
