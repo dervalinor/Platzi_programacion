@@ -31,7 +31,7 @@ body {
 
 .tarjeta-de-mokepon {
   /*modificaciones de tamaño y opacidad de la casillas de cada personaje */
-  width: 250px;
+  width: 150px;
   height: 200px;
   background: #11468F;
   padding: 10px;
@@ -49,6 +49,7 @@ body {
   opacity: 0.7;
   /*Mostrar que el sobre salga por z-index cuando usemos la psedoclass */
   position:relative;
+  border: 2px solid #DD09F4;
 
 }
 
@@ -61,20 +62,27 @@ body {
 
 
 .tarjeta-de-mokepon img {
-  width: 80px;
-  padding: 15px;
+  width: 60%;
+  padding: 10px;
   border-radius: 20%;
 }
 
 #boton-mascota {
-  width: 260px;
-  height: 60px;
+  width: 200px;
+  height: 40px;
   border-radius: 20px;
   background: transparent;
   border: 2px solid white;
   color: white;
   font-family: 'Poppins', sans-serif;
   margin-top: 30px;
+}
+
+/*personalizacion de los titulos de los personajes */
+.titulo-personaje {
+  border:  2px solid #18DFF0;
+  border-radius: 10px;
+
 }
 
 /*cambiar color del boton colocar el mouser */
@@ -156,3 +164,17 @@ input:checked + label {
     flex-direction: column;
   }
 }
+
+/* Estilo para el contenedor de personaje */
+.personaje-container {
+    text-align: center; /* Centra el contenido dentro del contenedor */
+}
+
+/* Estilo para la imagen dentro del contenedor */
+.personaje-container img {
+    max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+
+
+
