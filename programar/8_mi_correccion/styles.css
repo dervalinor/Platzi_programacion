@@ -31,8 +31,8 @@ body {
 
 .tarjeta-de-mokepon {
   /*modificaciones de tamaño y opacidad de la casillas de cada personaje */
-  width: 150px;
-  height: 200px;
+  width: 200px;
+  height: 250px;
   background: #11468F;
   padding: 10px;
   /*boder-box usado para que el padding no modifique el tamaño de la caja */
@@ -42,7 +42,7 @@ body {
   justify-content: center;
   align-items: center;
   color: white;
-  margin: 20px;
+  margin: 4px;
   /*Modificacion del tamaño de la letra */
   font-size: 30px;
   /*Modificar la opacidad  */
