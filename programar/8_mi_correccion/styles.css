@@ -72,7 +72,74 @@ body {
   height: 40px;
   border-radius: 20px;
   background: transparent;
-  border: 2px solid white;
+  border: 2px solid #2AEBF2;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 30px;
+}
+
+/*personalizacion de los titulos de los personajes */
+.titulo-personaje {
+  border:  2px solid #18DFF0;
+  border-radius: 10px;
+
+}
+
+/*cambiar color del boton colocar el mouser */
+#boton-mascota:hover {
+  background-color: #1BE9BA;
+  opacity:0.6;
+}
+
+input {
+  display: none;
+}
+
+/*cambiar el color de caja del personaje al seleccionar */
+input:checked + label {
+  background-color: #CB2DE5;
+}
+
+#seleccionar-ataque {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*Edicion de la botones de ataque */
+.boton-de-ataque {
+  background-color: #11468F;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  width: 180px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  position:relative;
+  border: 2px solid #DD09F4;
+  opacity: 0.7;
+}
+
+/*Estilo de la tarjeta de mascota cuando se pasa un mouse sobre esta */
+.tarjeta-de-mokepon:hover {
+ transform: scale(1.2);/*aumentar el tamaño del caja en un tamaño del 20% */
+ z-index: 100; /*Hacer sobresalir la caja */
+ background-color: #38C6EC;
+}
+
+
+.tarjeta-de-mokepon img {
+  width: 60%;
+  padding: 10px;
+  border-radius: 20%;
+}
+
+#boton-mascota {
+  width: 200px;
+  height: 40px;
+  border-radius: 20px;
+  background: transparent;
+  border: 2px solid #2AEBF2;
   color: white;
   font-family: 'Poppins', sans-serif;
   margin-top: 30px;
@@ -111,10 +178,75 @@ input:checked + label {
   padding: 10px;
   box-sizing: border-box;
   border-radius: 20px;
-  border-color: transparent;
   width: 180px;
   color: white;
   font-family: 'Poppins', sans-serif;
+}
+
+#mensajes {
+  width: 280px;
+  background: #2AEBF2;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#boton-reiniciar {
+  border: none;
+  color: #11468F;
+  font-family: 'Poppins', sans-serif;
+}
+
+/*centar imagen del juego */
+
+/* Ajusta el estilo de la imagen para centrarla */
+.centrar-imagen {
+  display: block;
+  margin: 0 auto;
+}
+
+.ataques {
+  display: grid;
+  grid-template-columns: 100px 100px;
+  color: white;
+  border:  2px solid #2AEBF2;
+  margin: 15px;
+  
+}
+
+#vidas-jugador, #vidas-enemigo {
+  font-size: 32px;
+  margin-bottom: 0;
+}
+
+.ataques-jugador, .ataques-enemigo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 360px) {
+  .tarjetas, .tarjetas-ataques {
+    flex-direction: column;
+  }
+}
+
+/* Estilo para el contenedor de personaje */
+.personaje-container {
+    text-align: center; /* Centra el contenido dentro del contenedor */
+}
+
+/* Estilo para la imagen dentro del contenedor */
+.personaje-container img {
+    max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+
+
+
 }
 
 #mensajes {
