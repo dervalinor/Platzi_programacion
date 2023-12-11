@@ -29,6 +29,11 @@ let ataqueEnemigo
 let vidasJugador = 3
 let vidasEnemigo = 3
 
+/*Definicion de la clase mokepon, una clase esta compuesta por atributos, son 
+variables que guardan informacion de objeto para esta caso es nombre, foto, vida y ataques
+Metodos, son funciones asociadas al clase la cual actua sobre lo atributos del objeto.
+*/
+
 class Mokepon {
     constructor(nombre, foto, vida) {
         this.nombre = nombre
@@ -37,6 +42,10 @@ class Mokepon {
         this.ataques = []
     }
 }
+
+
+/*Instancias: son objetos creados con la clase, para este caso son: hipodoge,
+capipepo y ratigueya */
 
 let hipodoge = new Mokepon('Hipodoge', './assets/mokepons_mokepon_hipodoge_attack.png', 5)
 
