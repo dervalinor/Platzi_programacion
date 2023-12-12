@@ -73,13 +73,20 @@ ratigueya.ataques.push(
     { nombre: '🌱', id: 'boton-tierra' },
 )
 
-/*vamos a agregar nuestro nuevos personajes a nuestro arreglo esto se hace escribiendo su nombres y usando el push */
+/*vamos a agregar nuestro nuevos personajes a nuestro arreglo esto se hace escribiendo su nombres y usando el metodo push */
 
 mokepones.push(hipodoge, capipepo, ratigueya)
 
 function iniciarJuego() {
     
     sectionSeleccionarAtaque.style.display = 'none'
+
+    /*necesitamos cargar la informacion de los personajes al cargar el juego, usamos metodo forEach para recorrer el arreglo */
+
+    mokepones.forEach((mokepon) => {
+        /*imprimir cada elemento */
+        console.log(mokepon)
+    })
     
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
 
