@@ -22,7 +22,7 @@ const sectionMensajes = document.getElementById('resultado')
 const ataquesDelJugador = document.getElementById('ataques-del-jugador')
 const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 
-
+/*arreglo para nuestros personajes donde cada uno tiene sus propias poderes (atributos) */
 let mokepones = []
 let ataqueJugador
 let ataqueEnemigo
@@ -39,7 +39,8 @@ class Mokepon {
     }
 }
 
-
+/*Ahora vamos a llevar nuestro arreglo de las atributos de personajes para que ahora interactua con 
+nuestros html  */
 
 let hipodoge = new Mokepon('Hipodoge', './assets/mokepons_mokepon_hipodoge_attack.png', 5)
 
@@ -71,6 +72,10 @@ ratigueya.ataques.push(
     { nombre: '💧', id: 'boton-agua' },
     { nombre: '🌱', id: 'boton-tierra' },
 )
+
+/*vamos a agregar nuestro nuevos personajes a nuestro arreglo esto se hace escribiendo su nombres y usando el push */
+
+mokepones.push(hipodoge, capipepo, ratigueya)
 
 function iniciarJuego() {
     
