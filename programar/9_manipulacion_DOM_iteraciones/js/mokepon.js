@@ -86,6 +86,8 @@ function iniciarJuego() {
     mokepones.forEach((mokepon) => {
         /*imprimir cada elemento */
         console.log(mokepon)
+        /*tambien podemos traer lo nombres de cada personajes*/
+        //console.log(`${mokepon.nombre} tiene ${mokepon.vidaActual}/${mokepon.
     })
     
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
