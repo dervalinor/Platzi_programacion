@@ -26,6 +26,8 @@ const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 let mokepones = []
 let ataqueJugador
 let ataqueEnemigo
+//nueva variable para agregar nuestros objetos a html
+let opcionDeMokepones
 let vidasJugador = 3
 let vidasEnemigo = 3
 
@@ -85,10 +87,17 @@ function iniciarJuego() {
 
     mokepones.forEach((mokepon) => {
         /*imprimir cada elemento */
-        console.log(mokepon)
+        //console.log(mokepon)
         /*tambien podemos traer lo nombres de cada personajes*/
         //console.log(`${mokepon.nombre} tiene ${mokepon.vidaActual}/${mokepon.
+	//console.log(mokepon.nombre)
+	//ahora agregamos los objetos al html
+	opcionDeMokepones = ` 
+	
+	`
     })
+
+    //ahora pasaremos esto a html para esto debemos crear un variable para este caso la llamaremos opcion_de_mokepones
     
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
 
