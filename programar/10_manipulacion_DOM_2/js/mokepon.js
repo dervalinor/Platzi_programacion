@@ -22,11 +22,9 @@ const sectionMensajes = document.getElementById('resultado')
 const ataquesDelJugador = document.getElementById('ataques-del-jugador')
 const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 
-/*arreglo para nuestros personajes donde cada uno tiene sus propias poderes (atributos) */
 let mokepones = []
 let ataqueJugador
 let ataqueEnemigo
-//nueva variable para agregar nuestros objetos a html
 let opcionDeMokepones
 let vidasJugador = 3
 let vidasEnemigo = 3
@@ -41,14 +39,11 @@ class Mokepon {
     }
 }
 
-/*Ahora vamos a llevar nuestro arreglo de las atributos de personajes para que ahora interactua con 
-nuestros html  */
+let hipodoge = new Mokepon('Hipodoge', 'https://i.imgur.com/F6IZstF.jpg', 5)
 
-let hipodoge = new Mokepon('Hipodoge', './assets/mokepons_mokepon_hipodoge_attack.png', 5)
+let capipepo = new Mokepon('Capipepo', 'https://i.imgur.com/6rdQP6l.jpg', 5)
 
-let capipepo = new Mokepon('Capipepo', './assets/mokepons_mokepon_capipepo_attack.png', 5)
-
-let ratigueya = new Mokepon('Ratigueya', './assets/mokepons_mokepon_ratigueya_attack.png', 5)
+let ratigueya = new Mokepon('Ratigueya', 'https://i.imgur.com/oioTlmZ.jpg', 5)
 
 hipodoge.ataques.push(
     { nombre: '💧', id: 'boton-agua' },
@@ -75,7 +70,6 @@ ratigueya.ataques.push(
     { nombre: '🌱', id: 'boton-tierra' },
 )
 
-/*vamos a agregar nuestro nuevos personajes a nuestro arreglo esto se hace escribiendo su nombres y usando el metodo push */
 
 mokepones.push(hipodoge, capipepo, ratigueya)
 
@@ -83,14 +77,21 @@ function iniciarJuego() {
     
     sectionSeleccionarAtaque.style.display = 'none'
 
-    /*necesitamos cargar la informacion de los personajes al cargar el juego, usamos metodo forEach para recorrer el arreglo */
 
     mokepones.forEach((mokepon) => {
-        /*imprimir cada elemento */
-        //console.log(mokepon)
-        /*tambien podemos traer lo nombres de cada personajes*/
-        //console.log(`${mokepon.nombre} tiene ${mokepon.vidaActual}/${mokepon.
-	      console.log(mokepon.nombre)
+      /*Colocar el codigo html y remplazar por lo valores de los objetos 
+      como es el caso de nombre */
+	    opcionDeMokepones = ` 
+	              <input type="radio" name="mascota" id=${mokepon.nombre} />
+                <label class="tarjeta-de-mokepon" for=${mokepon.nombre}>
+
+                  <div class="personaje-container">
+                      <p class="titulo-personaje">${mokepon.nombre}</p>
+                      <!--Agregar imagenes de los personajes -->
+                      <img src=${mokepon.foto} alt=${mokepon.nombre}>
+                  </div>  
+
+	    `
     })
 
     //ahora pasaremos esto a html para esto debemos crear un variable para este caso la llamaremos opcion_de_mokepones

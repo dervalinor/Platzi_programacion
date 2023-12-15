@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>ISTARI!</title>
+        <link rel="stylesheet" href="./styles.css"> 
+	<link rel="icon" href="https://i.imgur.com/uokUyzi.png" type="image/png">
+    </head>
+    <body>
+        <section id="seleccionar-mascota">
+
+           <div class="titulo">
+            <img src="https://i.imgur.com/AJ3a65g.png" alt="ISTARI Logo"
+           class="centrar-imagen" style="max-width: 20%; height: auto;">
+           </div> 
+
+            <h2 class="subtitulo">Elige tu personaje: </h2>
+
+            <!-- el problema es que nosotro agregamos nuestros personajes de forma manual pero esto
+            se puede automatizar el utlizar la creacion de objetos, con lo cual podemos crear de forma rapida mas
+            personajes-->
+
+            <div class="tarjetas">
+                <input type="radio" name="mascota" id="hipodoge" />
+                <label class="tarjeta-de-mokepon" for="hipodoge">
+
+                  <div class="personaje-container">
+                      <p class="titulo-personaje">Nénime</p>
+                      <!--Agregar imagenes de los personajes -->
+                      <img src="https://i.imgur.com/F6IZstF.jpg" alt="Hipodoge">
+                  </div>  
+
+                </label>
+                
+                <input type="radio" name="mascota" id="capipepo" />
+                <label class="tarjeta-de-mokepon" for="capipepo">
+                  
+                  <div class="personaje-container">
+                    <p class="titulo-personaje">Vilyame</p>
+                    <img src="https://i.imgur.com/6rdQP6l.jpg" alt="Capipepo">
+
+                  </div>
+
+                </label>
+
+                <input type="radio" name="mascota" id="ratigueya" />
+                <label class="tarjeta-de-mokepon" for="ratigueya">
+
+                  <div class="personaje-container">
+                    <p class="titulo-personaje">Mánali</p>
+                    <img src="https://i.imgur.com/oioTlmZ.jpg" alt="Ratigueya">
+
+                  </div>
+
+
+                </label>
+            </div>
+
+            <button id="boton-mascota">Seleccionar</button>
+        </section>
+
+        <section id="seleccionar-ataque">
+          <!--Edicion del titulo de poderes por una imagen -->
+          <!--  <h1 class="titulo">Mokepon</h1> -->
+           <div class="titulo">
+            <img src="https://i.imgur.com/RZD4FOz.png" alt="ISTARI Logo"
+           class="centrar-imagen" style="max-width: 20%; height: auto;">
+           </div> 
+
+            <h2 class="subtitulo">Elige tu ataque:</h2>
+            <!-- Debemos por medio de OOP agregar lo demas poderes de nuestros nuevos persanjes creados como objetos-->
+            <div class="tarjetas-ataques">
+                <button id="boton-fuego" class="boton-de-ataque">Fuego 🔥</button>
+                <button id="boton-agua" class="boton-de-ataque">Agua 💧</button>
+                <button id="boton-tierra" class="boton-de-ataque">Tierra 🌱</button>
+            </div>
+
+            <div id="mensajes">
+                <p id="resultado">Mucha suerte</p>
+
+                <section id="reiniciar">
+                    <button id="boton-reiniciar">Reiniciar</button>
+                </section>
+            </div>
+
+            <div class="ataques">
+                <div class="ataques-jugador">
+                    <p id="vidas-jugador">3</p>
+                    <p id="mascota-jugador"></p>
+                    <div id="ataques-del-jugador"></div>
+                </div>
+                <div class="ataques-enemigo">
+                    <p id="vidas-enemigo">3</p>
+                    <p id="mascota-enemigo"></p>
+                    <div id="ataques-del-enemigo"></div>
+                </div>
+            </div>
+        </section>
+        <script src="./js/mokepon.js"></script>
+    </body>
+</html>
