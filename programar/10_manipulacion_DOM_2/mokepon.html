@@ -16,44 +16,10 @@
 
             <h2 class="subtitulo">Elige tu personaje: </h2>
 
-            <!-- el problema es que nosotro agregamos nuestros personajes de forma manual pero esto
-            se puede automatizar el utlizar la creacion de objetos, con lo cual podemos crear de forma rapida mas
-            personajes-->
-
-            <div class="tarjetas">
-                <input type="radio" name="mascota" id="hipodoge" />
-                <label class="tarjeta-de-mokepon" for="hipodoge">
-
-                  <div class="personaje-container">
-                      <p class="titulo-personaje">Nénime</p>
-                      <!--Agregar imagenes de los personajes -->
-                      <img src="https://i.imgur.com/F6IZstF.jpg" alt="Hipodoge">
-                  </div>  
-
-                </label>
-                
-                <input type="radio" name="mascota" id="capipepo" />
-                <label class="tarjeta-de-mokepon" for="capipepo">
-                  
-                  <div class="personaje-container">
-                    <p class="titulo-personaje">Vilyame</p>
-                    <img src="https://i.imgur.com/6rdQP6l.jpg" alt="Capipepo">
-
-                  </div>
-
-                </label>
-
-                <input type="radio" name="mascota" id="ratigueya" />
-                <label class="tarjeta-de-mokepon" for="ratigueya">
-
-                  <div class="personaje-container">
-                    <p class="titulo-personaje">Mánali</p>
-                    <img src="https://i.imgur.com/oioTlmZ.jpg" alt="Ratigueya">
-
-                  </div>
-
-
-                </label>
+            <div id = 'contenedorTarjetas' class="tarjetas">
+              <!--se borro este codigo ya que se utilizar OOP para
+             crear y monstrar los personajes, se coloc un id para
+             poder manipular este div por javascript por medio de una variable --> 
             </div>
 
             <button id="boton-mascota">Seleccionar</button>

@@ -21,6 +21,7 @@ const spanVidasEnemigo = document.getElementById('vidas-enemigo')
 const sectionMensajes = document.getElementById('resultado')
 const ataquesDelJugador = document.getElementById('ataques-del-jugador')
 const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
+const contenedorTarjetas = document.getElementById('contenedorTarjetas') //variable constante ya que este div siempre permanera alli, las constantes deben ser siempre igual a un valor
 
 let mokepones = []
 let ataqueJugador
@@ -92,6 +93,7 @@ function iniciarJuego() {
                   </div>  
 
 	    `
+      contenedorTarjetas.innerHTML += opcionDeMokepones //agregar esta informacion a html por medio del metodo innerHTML, + indica imprimir todos lo objetos en html
     })
 
     //ahora pasaremos esto a html para esto debemos crear un variable para este caso la llamaremos opcion_de_mokepones
