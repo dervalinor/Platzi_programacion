@@ -97,7 +97,7 @@ function iniciarJuego() {
     })
 
     //ahora pasaremos esto a html para esto debemos crear un variable para este caso la llamaremos opcion_de_mokepones
-    
+
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
 
     

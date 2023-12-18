@@ -117,6 +117,10 @@ seleccionarMascotaJugador @ mokepon.js:123, por lo cual al seleccionar el los po
        inputRatigueya = document.getElementById('Ratigueya')
 
     })
+  //importante!!!: vamos a manejar la informacion dada por nuestros objetos
+  //estos sera nuestra unica fuente y asi ahorrarnos codigo en html por medio
+  //de esto    
+
 
     
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
@@ -139,14 +143,18 @@ function seleccionarMascotaJugador() {
     
     sectionSeleccionarAtaque.style.display = 'flex'
     
-    
-    
+   //hacer la informacion dinamica 
+   //aqui hay informacion escrita a mano sobre los nombres de los personajes
+  //esto puede ser remplazado por los metodos de los obejetos para mostrar los
+  //atributos
+  //Nota: typeof(elemento) nos dice que tipo de elemento es. 
+  //si ponemos inputCapipepo.id obtenemos el id de ese elemento si es un objeto
     if (inputHipodoge.checked) {
-        spanMascotaJugador.innerHTML = 'Hipodoge'
+        spanMascotaJugador.innerHTML = inputHipodoge.id
     } else if (inputCapipepo.checked) {
-        spanMascotaJugador.innerHTML = 'Capipepo'
+        spanMascotaJugador.innerHTML = inputCapipepo.id
     } else if (inputRatigueya.checked) {
-        spanMascotaJugador.innerHTML = 'Ratigueya'
+        spanMascotaJugador.innerHTML = inputRatigueya.id
     } else {
         alert('Selecciona una mascota')
     }
