@@ -162,17 +162,16 @@ function seleccionarMascotaJugador() {
     seleccionarMascotaEnemigo()
 }
 
+//en esta funcion podemos utilizar OOP parea evitar escribir elementos a mano
+//y solo use la informacion automatica de nuestros objetos
 function seleccionarMascotaEnemigo() {
-    let mascotaAleatoria = aleatorio(1,3)
+  //como el numero de mascotas en variable usamos la propiedad de longitud del
+  //objeto para la seleccion aleatoria
+    let mascotaAleatoria = aleatorio(0, mokepones.length - 1) //ya que comienza desde el indice cero
+    spanMascotaEnemigo = mokepones[mascotaAleatoria].name //nombre del mokepon en un determinado indice
+  //esto reduce mucho el codigo 
 
-    if (mascotaAleatoria == 1) {
-        spanMascotaEnemigo.innerHTML = 'Hipodoge'
-    } else if (mascotaAleatoria == 2) {
-        spanMascotaEnemigo.innerHTML = 'Capipepo'
-    } else {
-        spanMascotaEnemigo.innerHTML = 'Ratigueya'
-    }
-}
+ }
 
 function ataqueFuego() {
     ataqueJugador = 'FUEGO'
