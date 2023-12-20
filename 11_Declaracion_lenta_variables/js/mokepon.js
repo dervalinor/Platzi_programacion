@@ -168,8 +168,9 @@ function seleccionarMascotaEnemigo() {
   //como el numero de mascotas en variable usamos la propiedad de longitud del
   //objeto para la seleccion aleatoria
     let mascotaAleatoria = aleatorio(0, mokepones.length - 1) //ya que comienza desde el indice cero
-    spanMascotaEnemigo = mokepones[mascotaAleatoria].name //nombre del mokepon en un determinado indice
-  //esto reduce mucho el codigo 
+    spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatoria].nombre //nombre del mokepon en un determinado indice
+  //esto reduce mucho el codigo
+  //innerHTML inyectar codigo html
 
  }
 
