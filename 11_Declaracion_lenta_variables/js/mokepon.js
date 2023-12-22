@@ -174,7 +174,16 @@ function seleccionarMascotaEnemigo() {
 
  }
 
+//Tarea
+//hay un problema en el codigo html es que tenemos solo tres botones pero los
+//personajes pueden tienen mas esto se soluciona usando propiedades de los
+//objetos
+
 function ataqueFuego() {
+  //esta linea consiste en ataques escritos, debe ser
+  //replazodo por el metodo de ataques de los objetos
+  //Recorda que los ataques esta en lista, hay que recorrerla y colocar
+  //cada ataque, creo que se debe colocar un ciclo
     ataqueJugador = 'FUEGO'
     ataqueAleatorioEnemigo()
 }
