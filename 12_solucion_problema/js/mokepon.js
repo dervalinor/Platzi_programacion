@@ -203,7 +203,7 @@ function ataqueAleatorioEnemigo() {
    //con el indice del poder de mokepon
     
    for (var i = 0; i < mokepones.length; i++){
-    if(ataqueEnemigo == mokepones[i].nombre){
+    if(ataqueAleatorio == mokepones[i].nombre){
       ataqueEnemigo = mokepones[i].nombre
     }
    }
@@ -222,7 +222,7 @@ function ataqueAleatorioEnemigo() {
 function combate() {
     
    //Agregar OOP a este codigo 
-    if(ataqueEnemigo == ataqueJugador) {
+   /* if(ataqueEnemigo == ataqueJugador) {
         crearMensaje("EMPATE")
     } else if(ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA') {
         crearMensaje("GANASTE")
@@ -240,6 +240,14 @@ function combate() {
         crearMensaje("PERDISTE")
         vidasJugador--
         spanVidasJugador.innerHTML = vidasJugador
+    }*/
+    
+    //usar OOP llamando lo atributos de poderes pero recordando un condicion
+  //cual poder vence a otro
+    if(ataqueEnemigo == ataqueJugador){
+      crearMensaje("EMPATE")
+    } else if(){
+
     }
 
     revisarVidas()
