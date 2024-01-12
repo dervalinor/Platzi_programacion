@@ -221,7 +221,8 @@ function ataqueAleatorioEnemigo() {
 
 function combate() {
     
-   //Agregar OOP a este codigo 
+   //Agregar OOP a este codigo
+   //Quitar lo botones de HTML
    /* if(ataqueEnemigo == ataqueJugador) {
         crearMensaje("EMPATE")
     } else if(ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA') {
@@ -241,15 +242,7 @@ function combate() {
         vidasJugador--
         spanVidasJugador.innerHTML = vidasJugador
     }*/
-    
-    //usar OOP llamando lo atributos de poderes pero recordando un condicion
-  //cual poder vence a otro
-    if(ataqueEnemigo == ataqueJugador){
-      crearMensaje("EMPATE")
-    } else if(){
-
-    }
-
+ 
     revisarVidas()
 }
 
