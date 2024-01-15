@@ -8,18 +8,7 @@ const botonAgua = document.getElementById('boton-agua')
 const botonReiniciar = document.getElementById('boton-reiniciar')
 
 const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
-/*Recordar que esto id de personajes ya no existen ya que se remplazo por medio
-  * OOP por lo cual da este error en el codigo ya que se dirige a elementos que
-  * ya no existen, entonce para evitar este error las cambiamos de posicion
-  * y les quitamos const por let ya que cambian de valor por los personajes
-  * creados*/
-/*
 
-const inputHipodoge = document.getElementById('hipodoge')
-const inputCapipepo = document.getElementById('capipepo')
-const inputRatigueya = document.getElementById('ratigueya')
-
-*/
 const spanMascotaJugador = document.getElementById('mascota-jugador')
 
 const spanMascotaEnemigo = document.getElementById('mascota-enemigo')
@@ -38,8 +27,11 @@ let ataqueEnemigo
 let opcionDeMokepones
 let vidasJugador = 3
 let vidasEnemigo = 3
-/*les quitamos el valor inicial y la dejamos como variables sin valor */
 let inputHipodoge
+//creamos un variable para guardar la mascota seleccionada por el jugador para luego seleccionar ataques
+let mascotaJugador
+//lo que hay que hacer es aparezca todos lo ataque de personaje seleccionado
+
 let inputCapipepo
 let inputRatigueya
 
@@ -91,9 +83,6 @@ function iniciarJuego() {
     
     sectionSeleccionarAtaque.style.display = 'none'
 
-    /*ocurre que este codigo da el error de mokepon.js:123 Uncaught TypeError: Cannot read properties of null (reading 'checked')
-    at HTMLButtonElement.seleccionarMascotaJugador (mokepon.js:123:23)
-seleccionarMascotaJugador @ mokepon.js:123, por lo cual al seleccionar el los poderes no aparece el nombre del personaje */
     mokepones.forEach((mokepon) => {
 	    opcionDeMokepones = ` 
 	              <input type="radio" name="mascota" id=${mokepon.nombre} />
@@ -107,20 +96,12 @@ seleccionarMascotaJugador @ mokepon.js:123, por lo cual al seleccionar el los po
                   </div>  
 
 	    `
-      contenedorTarjetas.innerHTML += opcionDeMokepones 
-      /*ahora le damos valor a la variables de los personajes un vez injectadas
-        * los objetos y metodos en html, ES IMPORTANTE: Que el id debe
-        * coindicir con la propiedad id que se inyecta como es en el casdo
-        * mokepon.name */
+       contenedorTarjetas.innerHTML += opcionDeMokepones 
        inputHipodoge = document.getElementById('Hipodoge')
        inputCapipepo = document.getElementById('Capipepo')
        inputRatigueya = document.getElementById('Ratigueya')
 
     })
-  //importante!!!: vamos a manejar la informacion dada por nuestros objetos
-  //estos sera nuestra unica fuente y asi ahorrarnos codigo en html por medio
-  //de esto    
-
 
     
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
@@ -142,15 +123,16 @@ function seleccionarMascotaJugador() {
     
     
     sectionSeleccionarAtaque.style.display = 'flex'
-    
-   //hacer la informacion dinamica 
-   //aqui hay informacion escrita a mano sobre los nombres de los personajes
-  //esto puede ser remplazado por los metodos de los obejetos para mostrar los
-  //atributos
-  //Nota: typeof(elemento) nos dice que tipo de elemento es. 
-  //si ponemos inputCapipepo.id obtenemos el id de ese elemento si es un objeto
+   //esta linea consiste en ataques escritos, debe ser
+  //replazodo por el metodo de ataques de los objetos
+  //Recorda que los ataques esta en lista, hay que recorrerla y colocar
+  //cada ataque, creo que se debe colocar un ciclo
+  
+    //aqui en este codigo nosotros seleccionamos segun el checked el personje debemos guardar en un variable el 
+    //el personaje seleccionado y con esto poder recorrer su metodo de ataques
     if (inputHipodoge.checked) {
         spanMascotaJugador.innerHTML = inputHipodoge.id
+	mascotaJugador = inputHipodoge.id
     } else if (inputCapipepo.checked) {
         spanMascotaJugador.innerHTML = inputCapipepo.id
     } else if (inputRatigueya.checked) {
@@ -162,28 +144,13 @@ function seleccionarMascotaJugador() {
     seleccionarMascotaEnemigo()
 }
 
-//en esta funcion podemos utilizar OOP parea evitar escribir elementos a mano
-//y solo use la informacion automatica de nuestros objetos
 function seleccionarMascotaEnemigo() {
-  //como el numero de mascotas en variable usamos la propiedad de longitud del
-  //objeto para la seleccion aleatoria
-    let mascotaAleatoria = aleatorio(0, mokepones.length - 1) //ya que comienza desde el indice cero
-    spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatoria].nombre //nombre del mokepon en un determinado indice
-  //esto reduce mucho el codigo
-  //innerHTML inyectar codigo html
-
+    let mascotaAleatoria = aleatorio(0, mokepones.length - 1) 
+    spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatoria].nombre 
  }
 
-//Tarea
-//hay un problema en el codigo html es que tenemos solo tres botones pero los
-//personajes pueden tienen mas esto se soluciona usando propiedades de los
-//objetos
 
 function ataqueFuego() {
-  //esta linea consiste en ataques escritos, debe ser
-  //replazodo por el metodo de ataques de los objetos
-  //Recorda que los ataques esta en lista, hay que recorrerla y colocar
-  //cada ataque, creo que se debe colocar un ciclo
     ataqueJugador = 'FUEGO'
     ataqueAleatorioEnemigo()
 }
@@ -197,36 +164,24 @@ function ataqueTierra() {
 }
 
 function ataqueAleatorioEnemigo() {
-    let ataqueAleatorio = aleatorio(0, mokepones.length - 1)
-    
-    //crear un ciclo donde se compare el valor de la variable
-   //con el indice del poder de mokepon
-    
-   for (var i = 0; i < mokepones.length; i++){
-    if(ataqueAleatorio == mokepones[i].nombre){
-      ataqueEnemigo = mokepones[i].nombre
-    }
-   }
-
-  //este codigo no funciona da un undefined
-
-    /*if (ataqueAleatorio == 1) {
+    let ataqueAleatorio = aleatorio(1,3)
+	
+    //iterar sobre el arreglo ataques
+    if (ataqueAleatorio == 1) {
         ataqueEnemigo = 'FUEGO'
     } else if (ataqueAleatorio == 2) {
         ataqueEnemigo = 'AGUA'
     } else {
         ataqueEnemigo = 'TIERRA'
-    }*/
+    }
 
     combate()
 }
 
 function combate() {
     
-   //Agregar OOP a este codigo
-   //Quitar lo botones de HTML
-   //iterar en agrego para mostrar los botones
-   if(ataqueEnemigo == ataqueJugador) {
+    
+    if(ataqueEnemigo == ataqueJugador) {
         crearMensaje("EMPATE")
     } else if(ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA') {
         crearMensaje("GANASTE")
@@ -245,7 +200,7 @@ function combate() {
         vidasJugador--
         spanVidasJugador.innerHTML = vidasJugador
     }
- 
+
     revisarVidas()
 }
 
