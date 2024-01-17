@@ -35,7 +35,6 @@ let mascotaJugador
 let inputCapipepo
 let inputRatigueya
 
-
 class Mokepon {
     constructor(nombre, foto, vida) {
         this.nombre = nombre
@@ -131,15 +130,21 @@ function seleccionarMascotaJugador() {
     //aqui en este codigo nosotros seleccionamos segun el checked el personje debemos guardar en un variable el 
     //el personaje seleccionado y con esto poder recorrer su metodo de ataques
     if (inputHipodoge.checked) {
-        spanMascotaJugador.innerHTML = inputHipodoge.id
+        spanMascotaJugador.innerHTML = inputHipodoge.id //aqui solo imprimimos el id
+        mascotaJugador = inputHipodoge.id //aqui ya podemos utilizar como un variable
 	mascotaJugador = inputHipodoge.id
     } else if (inputCapipepo.checked) {
         spanMascotaJugador.innerHTML = inputCapipepo.id
+        mascotaJugador = inputCapipepo.id
+        
     } else if (inputRatigueya.checked) {
         spanMascotaJugador.innerHTML = inputRatigueya.id
+        mascotaJugador = inputRatigueya.id
     } else {
         alert('Selecciona una mascota')
     }
+
+    //ahora debemos crear un funcion que no permita ver los ataque de nuestro personaje
 
     seleccionarMascotaEnemigo()
 }
