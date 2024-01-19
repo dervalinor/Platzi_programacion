@@ -145,9 +145,33 @@ function seleccionarMascotaJugador() {
     }
 
     //ahora debemos crear un funcion que no permita ver los ataque de nuestro personaje
+    //crear un funcion que tenga como paramento el variable que almacena el personaje y nos permite
+    //este funcion no permitira ver lo ataque del personaje
+    extraerAtaques(mascotaJugador)    
 
     seleccionarMascotaEnemigo()
 }
+
+//crear la funcion de extraer ataques para poder ver los poderes de nuestro personaje
+function extraerAtaques(mascotaJugador){
+    //creamos un variable para guardar lo ataques
+    let ataques
+    //ahora recorremos todos lo ataques tambien se puede usar un For Loop
+    mokepones.forEach((mokepon) => {
+        if (mascotaJugador === mokepon.nombre) {
+            ataques = mokepon.ataques
+        }
+
+        //imprimos en consola para saber si imprime los ataques
+        console.log(ataques)
+        //ahora debemos crear un funcion que muestre los ataques de personaje
+        mostrarAtaques(ataques)
+    })
+}
+
+//funcion de mostrarAtaques 
+
+
 
 function seleccionarMascotaEnemigo() {
     let mascotaAleatoria = aleatorio(0, mokepones.length - 1) 
