@@ -157,6 +157,19 @@ function extraerAtaques(mascotaJugador){
     //creamos un variable para guardar lo ataques
     let ataques
     //ahora recorremos todos lo ataques tambien se puede usar un For Loop
+
+    /*
+    codigo en forma de un for loop para iterar los ataque del personaje selecionado
+    recorrer el arreglo de mokepones
+
+    for (let i = 0; i < mokepones.length; i++) {
+        const element = array[index];
+        
+    }
+    
+    */
+
+
     mokepones.forEach((mokepon) => {
         if (mascotaJugador === mokepon.nombre) {
             ataques = mokepon.ataques
