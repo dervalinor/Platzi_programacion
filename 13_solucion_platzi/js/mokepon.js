@@ -163,12 +163,13 @@ function extraerAtaques(mascotaJugador){
     recorrer el arreglo de mokepones
 
     for (let i = 0; i < mokepones.length; i++) {
-        const element = array[index];
+        //validar nombre del personaje para luego poder
+        //extraer sus poderes  
+        if(mascotaJugador === mokepones[i].nombre){
+            ataques = mokepones[i].ataques
+        }
         
-    }
-    
-    */
-
+    } */
 
     mokepones.forEach((mokepon) => {
         if (mascotaJugador === mokepon.nombre) {
@@ -177,9 +178,10 @@ function extraerAtaques(mascotaJugador){
 
         //imprimos en consola para saber si imprime los ataques
         console.log(ataques)
-        //ahora debemos crear un funcion que muestre los ataques de personaje
-        mostrarAtaques(ataques)
+        //Tarea: ahora debemos crear un funcion que muestre los ataques de personaje
+        //mostrarAtaques(ataques)
     })
+
 }
 
 //funcion de mostrarAtaques 
