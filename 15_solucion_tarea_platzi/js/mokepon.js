@@ -21,6 +21,9 @@ const ataquesDelJugador = document.getElementById('ataques-del-jugador')
 const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 const contenedorTarjetas = document.getElementById('contenedorTarjetas') 
 
+//crear variable para selecionar el contenedor donde estaran los botones de los poderes del jugador
+const contenedorAtaques = document.getElementById("contenedorAtaques")
+
 let mokepones = []
 let ataqueJugador
 let ataqueEnemigo
@@ -28,9 +31,8 @@ let opcionDeMokepones
 let vidasJugador = 3
 let vidasEnemigo = 3
 let inputHipodoge
-//creamos un variable para guardar la mascota seleccionada por el jugador para luego seleccionar ataques
+
 let mascotaJugador
-//lo que hay que hacer es aparezca todos lo ataque de personaje seleccionado
 
 let inputCapipepo
 let inputRatigueya
