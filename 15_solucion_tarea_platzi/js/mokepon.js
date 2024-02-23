@@ -1,11 +1,9 @@
 const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
 const sectionReiniciar = document.getElementById('reiniciar')
 const botonMascotaJugador = document.getElementById('boton-mascota')
-const botonTierra = document.getElementById('boton-tierra')
 sectionReiniciar.style.display = 'none'
-const botonFuego = document.getElementById('boton-fuego')
-const botonAgua = document.getElementById('boton-agua')
 const botonReiniciar = document.getElementById('boton-reiniciar')
+
 
 const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
 
@@ -21,8 +19,19 @@ const ataquesDelJugador = document.getElementById('ataques-del-jugador')
 const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 const contenedorTarjetas = document.getElementById('contenedorTarjetas') 
 
+//crear un funcion que inyecte los botones de los personajes en el HTML
 //crear variable para selecionar el contenedor donde estaran los botones de los poderes del jugador
 const contenedorAtaques = document.getElementById("contenedorAtaques")
+
+//luego creamos un variable para guardar y luego mostrar lo ataques de los personajes
+let ataquesMokepon
+
+
+//los botones son ahora variables ya que se crean de forma dinamica
+let botonTierra 
+let botonFuego 
+let botonAgua 
+let botonReiniciar 
 
 let mokepones = []
 let ataqueJugador
@@ -146,20 +155,49 @@ function seleccionarMascotaJugador() {
     seleccionarMascotaEnemigo()
 }
 
-function extraerAtaques(mascotaJugador){
-   
-    let ataques
-
-    mokepones.forEach((mokepon) => {
-        if (mascotaJugador === mokepon.nombre) {
-            ataques = mokepon.ataques
+function extraerAtaques(mascotaJugador) {
+    let ataques;
+    for (let i = 0; i < mokepones.length; i++) {
+        if (mascotaJugador === mokepones[i].nombre) {
+            ataques = mokepones[i].ataques;
         }
-        console.log(ataques)
+    }
+    //IMPORTANTE: llamar la funcion
+    mostrarAtaques(ataques);
+}
+//funcion de mostrarAtaques 
+function  mostrarAtaques(ataques){
+    //ahora recorremos los ataques con la funcion de forEach
+    ataques.forEach((ataque) => {
+        //aqui creamos el boton de que tendra el id del ataque y el nombre del ataque
+        ataquesMokepon = ` 
+        <button id=${ataque.id} class="boton-de-ataque">${ataque.nombre}</button>
+      | `
+      //Agregar el código HTML generado al contenido HTML del elemento contenedorAtaques
+      //se encarga de añadir el código HTML generado al contenido HTML del elemento con el identificador contenedorAtaques. 
+      //El operador += se utiliza para agregar el nuevo código HTML al contenido existente del elemento sin sobrescribirlo. 
+      //Esto asegura que los botones de ataques se agreguen al final de los ya existentes, si los hay.
+      //contenedorAtaques.innerHTML = contenedorAtaques.innerHTML + ataquesPersonaje
+      contenedorAtaques.innerHTML += ataquesMokepon
     })
 
-}
+    //ahora podemos borrar los botones en HTML
 
-//funcion de mostrarAtaques 
+
+    //ahora debemos crear un eventos para selecion de los botones creados aqui}
+    //para esto debemos cambiar las const de los botones a let
+     // Seleccionar botones luego de crearlos
+     botonFuego = document.getElementById('boton-fuego');
+     botonAgua = document.getElementById('boton-agua');
+     botonTierra = document.getElementById('boton-tierra');
+     
+ 
+     // Agregar evento a los botones
+     botonFuego.addEventListener('click', ataqueFuego);
+     botonAgua.addEventListener('click', ataqueAgua);
+     botonTierra.addEventListener('click', ataqueTierra);
+
+}
 
 
 
