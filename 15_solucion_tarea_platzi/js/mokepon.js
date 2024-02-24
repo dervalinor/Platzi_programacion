@@ -2,7 +2,6 @@ const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
 const sectionReiniciar = document.getElementById('reiniciar')
 const botonMascotaJugador = document.getElementById('boton-mascota')
 sectionReiniciar.style.display = 'none'
-const botonReiniciar = document.getElementById('boton-reiniciar')
 
 
 const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
@@ -18,6 +17,7 @@ const sectionMensajes = document.getElementById('resultado')
 const ataquesDelJugador = document.getElementById('ataques-del-jugador')
 const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 const contenedorTarjetas = document.getElementById('contenedorTarjetas') 
+const botonReiniciar = document.getElementById('boton-reiniciar')
 
 //crear un funcion que inyecte los botones de los personajes en el HTML
 //crear variable para selecionar el contenedor donde estaran los botones de los poderes del jugador
@@ -31,7 +31,6 @@ let ataquesMokepon
 let botonTierra 
 let botonFuego 
 let botonAgua 
-let botonReiniciar 
 
 let mokepones = []
 let ataqueJugador
@@ -115,16 +114,8 @@ function iniciarJuego() {
 
     
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
-
-    
-    botonFuego.addEventListener('click', ataqueFuego)
-    
-    botonAgua.addEventListener('click', ataqueAgua)
-    
-    botonTierra.addEventListener('click', ataqueTierra)
-
-    
     botonReiniciar.addEventListener('click', reiniciarJuego)
+
 }
 
 function seleccionarMascotaJugador() {
@@ -188,14 +179,19 @@ function  mostrarAtaques(ataques){
     //para esto debemos cambiar las const de los botones a let
      // Seleccionar botones luego de crearlos
      botonFuego = document.getElementById('boton-fuego');
+
+     //aqui hay un problema con el boton de agua solo funciona el primer boton y no el segundo ni el tercero
+     //debemos creo crear poderes diferentes y no repetidos
      botonAgua = document.getElementById('boton-agua');
      botonTierra = document.getElementById('boton-tierra');
+ 
      
  
      // Agregar evento a los botones
      botonFuego.addEventListener('click', ataqueFuego);
      botonAgua.addEventListener('click', ataqueAgua);
      botonTierra.addEventListener('click', ataqueTierra);
+   
 
 }
 

@@ -49,7 +49,8 @@ body {
   opacity: 0.7;
   /*Mostrar que el sobre salga por z-index cuando usemos la psedoclass */
   position:relative;
-  border: 2px solid #DD09F4;
+
+  border: 2px solid #27A0BB;
 
 }
 
@@ -76,13 +77,6 @@ body {
   color: white;
   font-family: 'Poppins', sans-serif;
   margin-top: 30px;
-}
-
-/*personalizacion de los titulos de los personajes */
-.titulo-personaje {
-  border:  2px solid #18DFF0;
-  border-radius: 10px;
-
 }
 
 /*cambiar color del boton colocar el mouser */
@@ -145,13 +139,6 @@ input:checked + label {
   margin-top: 30px;
 }
 
-/*personalizacion de los titulos de los personajes */
-.titulo-personaje {
-  border:  2px solid #18DFF0;
-  border-radius: 10px;
-
-}
-
 /*cambiar color del boton colocar el mouser */
 #boton-mascota:hover {
   background-color: #1BE9BA;
@@ -164,7 +151,7 @@ input {
 
 /*cambiar el color de caja del personaje al seleccionar */
 input:checked + label {
-  background-color: #CB2DE5;
+  background-color: #33CEF1;
 }
 
 #seleccionar-ataque {
@@ -245,9 +232,6 @@ input:checked + label {
     height: auto; /* Mantiene la proporción de la imagen */
 }
 
-
-
-}
 
 #mensajes {
   width: 280px;
