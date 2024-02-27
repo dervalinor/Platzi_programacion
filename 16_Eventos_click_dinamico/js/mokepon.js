@@ -33,6 +33,8 @@ let botonFuego
 let botonAgua 
 //los botones de los poderes los guardamos en un arreglo
 let botones = []
+//variables para guardar la secuencia de ataques
+let jugadorAtaque = []
 
 let mokepones = []
 let ataqueJugador
@@ -181,7 +183,7 @@ function  mostrarAtaques(ataques){
      //para esta caso selecionar los botones con la clase BAtaque
      botones = document.querySelectorAll('.BAtaque')
  
-     // Agregar evento a los botones
+     // Esto tampoco es util - explicar
      botonFuego.addEventListener('click', ataqueFuego);
      botonAgua.addEventListener('click', ataqueAgua);
      botonTierra.addEventListener('click', ataqueTierra);
@@ -197,7 +199,20 @@ function secuenciaAtaque(){
     botones.forEach((boton) => {
         //agregar el evento de click y que valor se esta seleccionando
         boton.addEventListener('click', (e) =>{
-            //validacion de los ataques apartir del evento llamado e
+            //validacion de los ataques apartir del evento llamado e si es igual al nombre de los poderes
+            if (e.target.textContent === '🔥') {
+                //generar una secuencia de ataques para esto debemos crear un variable llamada ataque jugador
+                //agregar los poderes al arreglo
+                jugadorAtaque.push('FUEGO')
+                //mostrar el consola la secuencia de ataques
+                console.log(jugadorAtaque)
+                //tambien podemos modificar el color del boton despues de ser seleccionado
+                boton.style.background = '#31DCD0'
+                //este codigo dice que recorra el evento 'e' y si su contenido interno es 🔥 agregar al arreglo
+                //de secuencia de ataques el ataque 'FUEGO', luego muestralo en consola y cambia su color de fondo
+                //despues de seleccionarlo esto es similar para los demas poderes
+            } 
+            //Tarea completar codigo
         })
     })
 
@@ -211,6 +226,7 @@ function seleccionarMascotaEnemigo() {
  }
 
 
+ //esta funciones no son necesarias
 function ataqueFuego() {
     ataqueJugador = 'FUEGO'
     ataqueAleatorioEnemigo()
