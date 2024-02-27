@@ -1,3 +1,5 @@
+//solucion del problema que los botones repetidos de poderes no funcionan al dar click
+
 const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
 const sectionReiniciar = document.getElementById('reiniciar')
 const botonMascotaJugador = document.getElementById('boton-mascota')
@@ -19,18 +21,18 @@ const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 const contenedorTarjetas = document.getElementById('contenedorTarjetas') 
 const botonReiniciar = document.getElementById('boton-reiniciar')
 
-//crear un funcion que inyecte los botones de los personajes en el HTML
-//crear variable para selecionar el contenedor donde estaran los botones de los poderes del jugador
+
 const contenedorAtaques = document.getElementById("contenedorAtaques")
 
-//luego creamos un variable para guardar y luego mostrar lo ataques de los personajes
+
 let ataquesMokepon
 
 
-//los botones son ahora variables ya que se crean de forma dinamica
 let botonTierra 
 let botonFuego 
 let botonAgua 
+//los botones de los poderes los guardamos en un arreglo
+let botones = []
 
 let mokepones = []
 let ataqueJugador
@@ -153,44 +155,51 @@ function extraerAtaques(mascotaJugador) {
             ataques = mokepones[i].ataques;
         }
     }
-    //IMPORTANTE: llamar la funcion
+
     mostrarAtaques(ataques);
 }
-//funcion de mostrarAtaques 
+
+
 function  mostrarAtaques(ataques){
-    //ahora recorremos los ataques con la funcion de forEach
+
     ataques.forEach((ataque) => {
-        //aqui creamos el boton de que tendra el id del ataque y el nombre del ataque
+        //para obtener que cada boton creado por OOP puede funcionar al dar click 
+        //debemos crear un clase para esta caso se llamara BAtaque, luego debemos selecionar
+        //este boton por esta clase
         ataquesMokepon = ` 
-        <button id=${ataque.id} class="boton-de-ataque">${ataque.nombre}</button>
+        <button id=${ataque.id} class="boton-de-ataque BAtaque">${ataque.nombre}</button>
       | `
-      //Agregar el código HTML generado al contenido HTML del elemento contenedorAtaques
-      //se encarga de añadir el código HTML generado al contenido HTML del elemento con el identificador contenedorAtaques. 
-      //El operador += se utiliza para agregar el nuevo código HTML al contenido existente del elemento sin sobrescribirlo. 
-      //Esto asegura que los botones de ataques se agreguen al final de los ya existentes, si los hay.
-      //contenedorAtaques.innerHTML = contenedorAtaques.innerHTML + ataquesPersonaje
       contenedorAtaques.innerHTML += ataquesMokepon
     })
 
-    //ahora podemos borrar los botones en HTML
-
-
-    //ahora debemos crear un eventos para selecion de los botones creados aqui}
-    //para esto debemos cambiar las const de los botones a let
-     // Seleccionar botones luego de crearlos
+  
      botonFuego = document.getElementById('boton-fuego');
-
-     //aqui hay un problema con el boton de agua solo funciona el primer boton y no el segundo ni el tercero
      botonAgua = document.getElementById('boton-agua');
      botonTierra = document.getElementById('boton-tierra');
- 
-     
+     //seleccion de los botones que tiene la clase BAtaque para luego agregar el evento de click
+     //document.querySelectorAll: Esta función es especialmente útil cuando necesitas seleccionar múltiples elementos que coinciden con un criterio específico en lugar de solo uno.
+     //para esta caso selecionar los botones con la clase BAtaque
+     botones = document.querySelectorAll('.BAtaque')
  
      // Agregar evento a los botones
      botonFuego.addEventListener('click', ataqueFuego);
      botonAgua.addEventListener('click', ataqueAgua);
      botonTierra.addEventListener('click', ataqueTierra);
-   
+
+}
+
+//creamos un funcion para la secuencia de ataques segun el numero de ataques son las rondas para jugar
+//ademas hacer de si un boton se ha selecionado ya no se pueda volver a selecionar
+function secuenciaAtaque(){
+    //guardar la secuencia de ataques con la cual se quiera jugar
+    //primero recorremos nuestro arreglo de botones
+    
+    botones.forEach((boton) => {
+        //agregar el evento de click y que valor se esta seleccionando
+        boton.addEventListener('click', (e) =>{
+            //validacion de los ataques apartir del evento llamado e
+        })
+    })
 
 }
 
