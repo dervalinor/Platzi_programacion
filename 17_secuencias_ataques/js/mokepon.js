@@ -1,13 +1,14 @@
-//solucion del problema que los botones repetidos de poderes no funcionan al dar click
+//aqui vamos a encontrar la forma dinamica de enumerar vidas en sus ataques, el numero de opciones es igual al numero de 
+//poderes
+//programar la secuencia de ataques del enemigo
 
 const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
 const sectionReiniciar = document.getElementById('reiniciar')
 const botonMascotaJugador = document.getElementById('boton-mascota')
+const botonReiniciar = document.getElementById('boton-reiniciar')
 sectionReiniciar.style.display = 'none'
 
-
 const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
-
 const spanMascotaJugador = document.getElementById('mascota-jugador')
 
 const spanMascotaEnemigo = document.getElementById('mascota-enemigo')
@@ -18,36 +19,24 @@ const spanVidasEnemigo = document.getElementById('vidas-enemigo')
 const sectionMensajes = document.getElementById('resultado')
 const ataquesDelJugador = document.getElementById('ataques-del-jugador')
 const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
-const contenedorTarjetas = document.getElementById('contenedorTarjetas') 
-const botonReiniciar = document.getElementById('boton-reiniciar')
-
-
-const contenedorAtaques = document.getElementById("contenedorAtaques")
-
-
-let ataquesMokepon
-
-
-let botonTierra 
-let botonFuego 
-let botonAgua 
-//los botones de los poderes los guardamos en un arreglo
-let botones = []
-//variables para guardar la secuencia de ataques
-let jugadorAtaque = []
+const contenedorTarjetas = document.getElementById('contenedorTarjetas')
+const contenedorAtaques = document.getElementById('contenedorAtaques')
 
 let mokepones = []
-let ataqueJugador
+let ataqueJugador =[]
 let ataqueEnemigo
 let opcionDeMokepones
-let vidasJugador = 3
-let vidasEnemigo = 3
 let inputHipodoge
-
-let mascotaJugador
-
 let inputCapipepo
 let inputRatigueya
+let mascotaJugador
+let ataquesMokepon
+let botonFuego
+let botonAgua
+let botonTierra
+let botones = []
+let vidasJugador = 3
+let vidasEnemigo = 3
 
 class Mokepon {
     constructor(nombre, foto, vida) {
@@ -61,6 +50,7 @@ class Mokepon {
 let hipodoge = new Mokepon('Hipodoge', 'https://i.imgur.com/F6IZstF.jpg', 5)
 let capipepo = new Mokepon('Capipepo', 'https://i.imgur.com/6rdQP6l.jpg', 5)
 let ratigueya = new Mokepon('Ratigueya', 'https://i.imgur.com/oioTlmZ.jpg', 5)
+
 
 hipodoge.ataques.push(
     { nombre: '💧', id: 'boton-agua' },
@@ -87,37 +77,35 @@ ratigueya.ataques.push(
     { nombre: '🌱', id: 'boton-tierra' },
 )
 
-
-mokepones.push(hipodoge, capipepo, ratigueya)
+mokepones.push(hipodoge,capipepo,ratigueya)
 
 function iniciarJuego() {
     
     sectionSeleccionarAtaque.style.display = 'none'
 
     mokepones.forEach((mokepon) => {
-	    opcionDeMokepones = ` 
-	              <input type="radio" name="mascota" id=${mokepon.nombre} />
-                <label class="tarjeta-de-mokepon" for=${mokepon.nombre} >
+        opcionDeMokepones = `
+        <input type="radio" name="mascota" id=${mokepon.nombre} />
+        <label class="tarjeta-de-mokepon" for=${mokepon.nombre}>
+            <p>${mokepon.nombre}</p>
+            <img src=${mokepon.foto} alt=${mokepon.nombre}>
+        </label>
+        `
+    contenedorTarjetas.innerHTML += opcionDeMokepones
 
-                  <div class="personaje-container">
-                      <p class="titulo-personaje">${mokepon.nombre} </p>
-                      <!--Agregar imagenes de los personajes -->
-                      <img src=${mokepon.foto} alt=${mokepon.nombre} >
-
-                  </div>  
-
-	    `
-       contenedorTarjetas.innerHTML += opcionDeMokepones 
-       inputHipodoge = document.getElementById('Hipodoge')
-       inputCapipepo = document.getElementById('Capipepo')
-       inputRatigueya = document.getElementById('Ratigueya')
+     inputHipodoge = document.getElementById('Hipodoge')
+     inputCapipepo = document.getElementById('Capipepo')
+     inputRatigueya = document.getElementById('Ratigueya')
 
     })
-
     
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
-    botonReiniciar.addEventListener('click', reiniciarJuego)
 
+    
+    
+
+    
+    botonReiniciar.addEventListener('click', reiniciarJuego)
 }
 
 function seleccionarMascotaJugador() {
@@ -126,15 +114,15 @@ function seleccionarMascotaJugador() {
     
     
     sectionSeleccionarAtaque.style.display = 'flex'
-  
+    
+    
+    
     if (inputHipodoge.checked) {
-        spanMascotaJugador.innerHTML = inputHipodoge.id 
-        mascotaJugador = inputHipodoge.id 
-	mascotaJugador = inputHipodoge.id
+        spanMascotaJugador.innerHTML = inputHipodoge.id
+        mascotaJugador = inputHipodoge.id
     } else if (inputCapipepo.checked) {
         spanMascotaJugador.innerHTML = inputCapipepo.id
         mascotaJugador = inputCapipepo.id
-        
     } else if (inputRatigueya.checked) {
         spanMascotaJugador.innerHTML = inputRatigueya.id
         mascotaJugador = inputRatigueya.id
@@ -142,113 +130,67 @@ function seleccionarMascotaJugador() {
         alert('Selecciona una mascota')
     }
 
-
-    extraerAtaques(mascotaJugador)    
-
+    extraerAtaques(mascotaJugador)
     seleccionarMascotaEnemigo()
 }
 
 function extraerAtaques(mascotaJugador) {
-    let ataques;
+    let ataques
     for (let i = 0; i < mokepones.length; i++) {
         if (mascotaJugador === mokepones[i].nombre) {
-            ataques = mokepones[i].ataques;
+            ataques = mokepones[i].ataques
         }
+        
     }
-
-    mostrarAtaques(ataques);
+    mostrarAtaques(ataques)
 }
 
-
-function  mostrarAtaques(ataques){
-
+function mostrarAtaques(ataques) {
     ataques.forEach((ataque) => {
-        //para obtener que cada boton creado por OOP puede funcionar al dar click 
-        //debemos crear un clase para esta caso se llamara BAtaque, luego debemos selecionar
-        //este boton por esta clase
-        ataquesMokepon = ` 
+        ataquesMokepon = `
         <button id=${ataque.id} class="boton-de-ataque BAtaque">${ataque.nombre}</button>
-      | `
-      contenedorAtaques.innerHTML += ataquesMokepon
+        `
+        contenedorAtaques.innerHTML += ataquesMokepon
     })
 
-  
-     botonFuego = document.getElementById('boton-fuego');
-     botonAgua = document.getElementById('boton-agua');
-     botonTierra = document.getElementById('boton-tierra');
-     //seleccion de los botones que tiene la clase BAtaque para luego agregar el evento de click
-     //document.querySelectorAll: Esta función es especialmente útil cuando necesitas seleccionar múltiples elementos que coinciden con un criterio específico en lugar de solo uno.
-     //para esta caso selecionar los botones con la clase BAtaque
+     botonFuego = document.getElementById('boton-fuego')
+     botonAgua = document.getElementById('boton-agua')
+     botonTierra = document.getElementById('boton-tierra')
      botones = document.querySelectorAll('.BAtaque')
- 
-     // Esto tampoco es util - explicar
-     /*botonFuego.addEventListener('click', ataqueFuego);
-     botonAgua.addEventListener('click', ataqueAgua);
-     botonTierra.addEventListener('click', ataqueTierra);*/
-
 }
 
-//creamos un funcion para la secuencia de ataques segun el numero de ataques son las rondas para jugar
-//ademas hacer de si un boton se ha selecionado ya no se pueda volver a selecionar
-function secuenciaAtaque(){
-    //guardar la secuencia de ataques con la cual se quiera jugar
-    //primero recorremos nuestro arreglo de botones
-    
+function secuenciaAtaque() {
     botones.forEach((boton) => {
-        //agregar el evento de click y que valor se esta seleccionando
-        boton.addEventListener('click', (e) =>{
-            //validacion de los ataques apartir del evento llamado e si es igual al nombre de los poderes
+        boton.addEventListener('click', (e) => {
             if (e.target.textContent === '🔥') {
-                //generar una secuencia de ataques para esto debemos crear un variable llamada ataque jugador
-                //agregar los poderes al arreglo
-                jugadorAtaque.push('FUEGO')
-                //mostrar el consola la secuencia de ataques
-                console.log(jugadorAtaque)
-                //tambien podemos modificar el color del boton despues de ser seleccionado
-                boton.style.background = '#31DCD0'
-                //este codigo dice que recorra el evento 'e' y si su contenido interno es 🔥 agregar al arreglo
-                //de secuencia de ataques el ataque 'FUEGO', luego muestralo en consola y cambia su color de fondo
-                //despues de seleccionarlo esto es similar para los demas poderes
-            } else if(e.target.textContent === '💧'){
-                jugadorAtaque.push('AGUA')
-                console.log(jugadorAtaque)
-                boton.style.backgroundColor='#31DCD0'
+                ataqueJugador.push('FUEGO')
+                console.log(ataqueJugador)
+                boton.style.background = '#112f58'   
+            } else if (e.target.textContent === '💧') {
+                ataqueJugador.push('AGUA')
+                console.log(ataqueJugador)
+                boton.style.background = '#112f58'
             } else {
-                jugadorAtaque.push('TIERRA')
-                console.log(jugadorAtaque)
-                boton.style.backgroundColor='#31DCD0'
-            } 
-            
+                ataqueJugador.push('TIERRA')
+                console.log(ataqueJugador)
+                boton.style.background = '#112f58'
+            }
         })
     })
 
 }
 
-
-
 function seleccionarMascotaEnemigo() {
-    let mascotaAleatoria = aleatorio(0, mokepones.length - 1) 
-    spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatoria].nombre 
- }
+    let mascotaAleatoria = aleatorio(0, mokepones.length -1)
 
+    spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatoria].nombre
+    secuenciaAtaque()
+}
 
- //esta funciones no son necesarias
-/*function ataqueFuego() {
-    ataqueJugador = 'FUEGO'
-    ataqueAleatorioEnemigo()
-}
-function ataqueAgua() {
-    ataqueJugador = 'AGUA'
-    ataqueAleatorioEnemigo()
-}
-function ataqueTierra() {
-    ataqueJugador = 'TIERRA'
-    ataqueAleatorioEnemigo()
-}*/
 
 function ataqueAleatorioEnemigo() {
     let ataqueAleatorio = aleatorio(1,3)
-	
+    
     if (ataqueAleatorio == 1) {
         ataqueEnemigo = 'FUEGO'
     } else if (ataqueAleatorio == 2) {
