@@ -184,9 +184,9 @@ function  mostrarAtaques(ataques){
      botones = document.querySelectorAll('.BAtaque')
  
      // Esto tampoco es util - explicar
-     botonFuego.addEventListener('click', ataqueFuego);
+     /*botonFuego.addEventListener('click', ataqueFuego);
      botonAgua.addEventListener('click', ataqueAgua);
-     botonTierra.addEventListener('click', ataqueTierra);
+     botonTierra.addEventListener('click', ataqueTierra);*/
 
 }
 
@@ -211,8 +211,16 @@ function secuenciaAtaque(){
                 //este codigo dice que recorra el evento 'e' y si su contenido interno es 🔥 agregar al arreglo
                 //de secuencia de ataques el ataque 'FUEGO', luego muestralo en consola y cambia su color de fondo
                 //despues de seleccionarlo esto es similar para los demas poderes
+            } else if(e.target.textContent === '💧'){
+                jugadorAtaque.push('AGUA')
+                console.log(jugadorAtaque)
+                boton.style.backgroundColor='#31DCD0'
+            } else {
+                jugadorAtaque.push('TIERRA')
+                console.log(jugadorAtaque)
+                boton.style.backgroundColor='#31DCD0'
             } 
-            //Tarea completar codigo
+            
         })
     })
 
@@ -227,7 +235,7 @@ function seleccionarMascotaEnemigo() {
 
 
  //esta funciones no son necesarias
-function ataqueFuego() {
+/*function ataqueFuego() {
     ataqueJugador = 'FUEGO'
     ataqueAleatorioEnemigo()
 }
@@ -238,7 +246,7 @@ function ataqueAgua() {
 function ataqueTierra() {
     ataqueJugador = 'TIERRA'
     ataqueAleatorioEnemigo()
-}
+}*/
 
 function ataqueAleatorioEnemigo() {
     let ataqueAleatorio = aleatorio(1,3)
