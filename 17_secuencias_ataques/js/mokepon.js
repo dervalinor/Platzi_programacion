@@ -24,7 +24,7 @@ const contenedorAtaques = document.getElementById('contenedorAtaques')
 
 let mokepones = []
 let ataqueJugador =[]
-let ataqueEnemigo
+let ataqueEnemigo = []
 let opcionDeMokepones
 let inputHipodoge
 let inputCapipepo
@@ -37,6 +37,8 @@ let botonTierra
 let botones = []
 let vidasJugador = 3
 let vidasEnemigo = 3
+//variable para guardar ataques del enemigo y crear un secuencia aleatorio
+let ataquesMokeponEnemigo = []
 
 class Mokepon {
     constructor(nombre, foto, vida) {
@@ -175,29 +177,47 @@ function secuenciaAtaque() {
                 console.log(ataqueJugador)
                 boton.style.background = '#112f58'
             }
+            //es necesario llamar aqui la funcion de ataques del jugador
+            //se coloca aqui ya que primero el jugador debe seleccionar un ataque luego 
+            //el enemigo selecciona un ataque
+            ataqueAleatorioEnemigo()    
+
         })
     })
-
+    
 }
 
 function seleccionarMascotaEnemigo() {
     let mascotaAleatoria = aleatorio(0, mokepones.length -1)
 
     spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatoria].nombre
+    //para poder colocar la secuencia de ataques debemos ver el numero de ataques 
+    ataquesMokeponEnemigo = mokepones[mascotaAleatoria].ataques
     secuenciaAtaque()
 }
 
-
 function ataqueAleatorioEnemigo() {
-    let ataqueAleatorio = aleatorio(1,3)
+    //aqui debemos hacer dinamico los ataques y no limitarlo a un numero de tres ataques
+    let ataqueAleatorio = aleatorio(0,ataqueAleatorioEnemigo.length -1 )
     
-    if (ataqueAleatorio == 1) {
+    /*if (ataqueAleatorio == 1) {
         ataqueEnemigo = 'FUEGO'
     } else if (ataqueAleatorio == 2) {
         ataqueEnemigo = 'AGUA'
     } else {
         ataqueEnemigo = 'TIERRA'
+    }*/
+
+    //convertir el anterior codigo en dinamico para la secuencia de ataques
+    if(ataqueAleatorio == 0 || ataqueAleatorio == 1){
+        //insertar esto a arreglo de ataques aleatorios
+        ataqueEnemigo.push('FUEGO')        
+    } else if(ataqueAleatorio == 3 || ataqueAleatorio  == 4){
+        ataqueEnemigo.push('AGUA')
+    } else {
+        ataqueEnemigo.push('TIERRA')
     }
+    console.log("ATAQUE ENEMIGO: " + ataqueEnemigo)
 
     combate()
 }
