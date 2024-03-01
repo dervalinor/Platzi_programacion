@@ -210,14 +210,14 @@ function ataqueAleatorioEnemigo() {
 function iniciarPelea(){
     //El navegador debe esperar la secuencia de ataques para iniciar el juego
     if (ataqueJugador.length === 5) {
-        
+        combate()
     }
 }
 
 
 
 function combate() {
-    
+    //ahora debemos recorrer los dos arreglos de ataques por lo cual usamos un loop
     
     if(ataqueEnemigo == ataqueJugador) {
         crearMensaje("EMPATE")
