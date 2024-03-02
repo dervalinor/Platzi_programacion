@@ -36,6 +36,10 @@ let botones = []
 let vidasJugador = 3
 let vidasEnemigo = 3
 let ataquesMokeponEnemigo = []
+//creacion de variables para guardar los ataques del jugador y el enemigo
+let indexAtaqueJugador
+let indexAtaqueEnemigo
+
 
 class Mokepon {
     constructor(nombre, foto, vida) {
@@ -214,12 +218,26 @@ function iniciarPelea(){
     }
 }
 
-
+//debemos crear un variable para guardar cada ataque para que se muestren en orden en la 
+//la pagina web para esto creamos un funcion
+function indexAmbosOponente(jugador, enemigo){
+    //guardar los valores en variables para luego imprimirlas en el html
+    indexAtaqueJugador = ataqueJugador[jugador]
+    indexAtaqueEnemigo = ataqueEnemigo[enemigo]
+}
 
 function combate() {
     //ahora debemos recorrer los dos arreglos de ataques por lo cual usamos un loop
+    for (let i=0;i<ataqueJugador.length && ataqueEnemigo.length; i++) {
+        //console.log(ataqueJugador[i])
+        // debemos validar lo ataque del jugador y del enemigo
+        if (ataqueJugador[i] === ataqueEnemigo[i]) {
+            indexAmbosOponente(i,i)
+            crearMensaje("EMPATE")    
+        }
+    }
     
-    if(ataqueEnemigo == ataqueJugador) {
+    /*if(ataqueEnemigo == ataqueJugador) {
         crearMensaje("EMPATE")
     } else if(ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA') {
         crearMensaje("GANASTE")
@@ -237,7 +255,8 @@ function combate() {
         crearMensaje("PERDISTE")
         vidasJugador--
         spanVidasJugador.innerHTML = vidasJugador
-    }
+    }*/
+    //Tarea: convertir esto a OOP. 
 
     revisarVidas()
 }
@@ -257,8 +276,9 @@ function crearMensaje(resultado) {
     let nuevoAtaqueDelEnemigo = document.createElement('p')
 
     sectionMensajes.innerHTML = resultado
-    nuevoAtaqueDelJugador.innerHTML = ataqueJugador
-    nuevoAtaqueDelEnemigo.innerHTML = ataqueEnemigo
+    //colocar la variables donde se guardan los ataques
+    nuevoAtaqueDelJugador.innerHTML = indexAtaqueJugador
+    nuevoAtaqueDelEnemigo.innerHTML = indexAtaqueEnemigo
 
     ataquesDelJugador.appendChild(nuevoAtaqueDelJugador)
     ataquesDelEnemigo.appendChild(nuevoAtaqueDelEnemigo)
