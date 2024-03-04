@@ -39,7 +39,9 @@ let ataquesMokeponEnemigo = []
 //creacion de variables para guardar los ataques del jugador y el enemigo
 let indexAtaqueJugador
 let indexAtaqueEnemigo
-
+//creacion de un variable para guardar victorias en el juego
+let victoriasJugador = 0
+let victoriasEnemigo = 0
 
 class Mokepon {
     constructor(nombre, foto, vida) {
@@ -259,23 +261,25 @@ function combate() {
         } else if(ataqueJugador[i] === 'FUEGO' && ataqueEnemigo[i] === 'TIERRA') {
             indexAmbosOponente(i,i)
             crearMensaje("GANASTE")
-            vidasEnemigo--
-            spanVidasEnemigo.innerHTML = vidasEnemigo
+            victoriasJugador ++
+            /* Purpose of innerHTML: The innerHTML property in JavaScript serves the purpose of 
+            accessing and manipulating the HTML content within an element.*/
+            spanVidasJugador.innerHTML = victoriasJugador
         } else if(ataqueJugador[i] === 'AGUA' && ataqueEnemigo[i] === 'FUEGO') {
             indexAmbosOponente(i,i)
             crearMensaje("GANASTE")
-            vidasEnemigo--
-            spanVidasEnemigo.innerHTML = vidasEnemigo
+            victoriasJugador ++
+            spanVidasJugador.innerHTML = victoriasJugador
         } else if(ataqueJugador[i] === 'TIERRA' && ataqueEnemigo[i] === 'AGUA') {
             indexAmbosOponente(i,i)
             crearMensaje("GANASTE")
-            vidasEnemigo--
-            spanVidasEnemigo.innerHTML = vidasEnemigo
+            victoriasJugador
+            spanVidasJugador.innerHTML = victoriasJugador
         } else {
             indexAmbosOponente(i,i)
             crearMensaje("PERDISTE")
-            vidasJugador--
-            spanVidasJugador.innerHTML = vidasJugador
+            victoriasEnemigo ++
+            spanVidasEnemigo.innerHTML = victoriasEnemigo
         }
     }
     
@@ -302,14 +306,17 @@ function combate() {
     //PROBLEMA: al cargar primero la secuencia de ataques y luego iniciar el juego causa que primero parezca que no esta 
     //funcionando y al finalizar tus ataques todo aparece de repente
 
-    revisarVidas()
+    revisarVictorias()
 }
 
-function revisarVidas() {
-    if (vidasEnemigo == 0) {
-        crearMensajeFinal("FELICITACIONES! Ganaste :)")
-    } else if (vidasJugador == 0) {
-        crearMensajeFinal('Lo siento, perdiste :(')
+//cambiar logica de este funcion ya que vamos a tener en cuenta el numero de victorias
+function revisarVictorias() {
+    if (victoriasJugador === victoriasEnemigo) {
+        crearMensajeFinal("EMPATE")
+    } else if (victoriasJugador  > victoriasEnemigo) {
+        crearMensajeFinal('GANASTE !!!')
+    }  else { 
+        crearMensajeFinal('PERDISTE !!!')
     }
 }
 
