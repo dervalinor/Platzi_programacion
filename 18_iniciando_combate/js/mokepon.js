@@ -248,21 +248,34 @@ function combate() {
     for (let i=0;i<ataqueJugador.length && ataqueEnemigo.length; i++) {
         //console.log(ataqueJugador[i])
         // debemos validar lo ataque del jugador y del enemigo
+
+        //ahora debemos jugar por victorias no por vidas 
         if (ataqueJugador[i] === ataqueEnemigo[i]) {
             indexAmbosOponente(i,i)
             crearMensaje("EMPATE")    
+            //no debe sumar ni restar vidas
+            //vidasEnemigo--
+            //spanVidasEnemigo.innerHTML = vidasEnemigo
         } else if(ataqueJugador[i] === 'FUEGO' && ataqueEnemigo[i] === 'TIERRA') {
             indexAmbosOponente(i,i)
             crearMensaje("GANASTE")
+            vidasEnemigo--
+            spanVidasEnemigo.innerHTML = vidasEnemigo
         } else if(ataqueJugador[i] === 'AGUA' && ataqueEnemigo[i] === 'FUEGO') {
             indexAmbosOponente(i,i)
             crearMensaje("GANASTE")
+            vidasEnemigo--
+            spanVidasEnemigo.innerHTML = vidasEnemigo
         } else if(ataqueJugador[i] === 'TIERRA' && ataqueEnemigo[i] === 'AGUA') {
             indexAmbosOponente(i,i)
             crearMensaje("GANASTE")
+            vidasEnemigo--
+            spanVidasEnemigo.innerHTML = vidasEnemigo
         } else {
             indexAmbosOponente(i,i)
             crearMensaje("PERDISTE")
+            vidasJugador--
+            spanVidasJugador.innerHTML = vidasJugador
         }
     }
     
@@ -285,7 +298,9 @@ function combate() {
         vidasJugador--
         spanVidasJugador.innerHTML = vidasJugador
     }*/
-    //Tarea: convertir esto a OOP. 
+    
+    //PROBLEMA: al cargar primero la secuencia de ataques y luego iniciar el juego causa que primero parezca que no esta 
+    //funcionando y al finalizar tus ataques todo aparece de repente
 
     revisarVidas()
 }
