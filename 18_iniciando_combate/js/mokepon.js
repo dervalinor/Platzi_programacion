@@ -211,9 +211,26 @@ function ataqueAleatorioEnemigo() {
     iniciarPelea()
 }
 
+/*
+
+Nota: 
+Operador de igualdad doble (==):
+Este operador comprueba la igualdad entre dos valores después de realizar cualquier conversión de tipo necesaria. Es decir, si los dos valores que está comparando no son del mismo tipo, JavaScript intentará convertir uno o ambos valores para hacerlos del mismo tipo y luego realizar la comparación. Por ejemplo:
+
+javascript
+Copy code
+5 == '5' // true, porque '5' es convertido a 5 antes de la comparación
+Operador de igualdad estricta triple (===):
+Este operador comprueba la igualdad entre dos valores sin realizar ninguna conversión de tipo. Ambos valores deben ser del mismo tipo y tener el mismo valor para que la comparación sea verdadera. Por ejemplo:
+
+javascript
+Copy code
+5 === '5' // false, porque los tipos son diferentes (number vs string)
+
+*/
 function iniciarPelea(){
     //El navegador debe esperar la secuencia de ataques para iniciar el juego
-    if (ataqueJugador.length === 5) {
+    if (ataqueJugador.length === 5) { //para esta comparacion las dos valores deben ser numericos para usar el operador ===
         combate()
     }
 }
@@ -234,6 +251,18 @@ function combate() {
         if (ataqueJugador[i] === ataqueEnemigo[i]) {
             indexAmbosOponente(i,i)
             crearMensaje("EMPATE")    
+        } else if(ataqueJugador[i] === 'FUEGO' && ataqueEnemigo[i] === 'TIERRA') {
+            indexAmbosOponente(i,i)
+            crearMensaje("GANASTE")
+        } else if(ataqueJugador[i] === 'AGUA' && ataqueEnemigo[i] === 'FUEGO') {
+            indexAmbosOponente(i,i)
+            crearMensaje("GANASTE")
+        } else if(ataqueJugador[i] === 'TIERRA' && ataqueEnemigo[i] === 'AGUA') {
+            indexAmbosOponente(i,i)
+            crearMensaje("GANASTE")
+        } else {
+            indexAmbosOponente(i,i)
+            crearMensaje("PERDISTE")
         }
     }
     
