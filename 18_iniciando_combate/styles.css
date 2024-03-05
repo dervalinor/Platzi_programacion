@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Linear+B&family=Pixelify+Sans&display=swap');
 
+/*SOLUCIONAR PROBLEMA DEL CODIGO RESPONSIVO !!!!!*/
+
 /*Cambiar el color de background por un imagen */
 body {
   font-family: 'Pixelify Sans', sans-serif;
@@ -32,7 +34,7 @@ body {
 .tarjeta-de-mokepon {
   /*modificaciones de tamaño y opacidad de la casillas de cada personaje */
   width: 200px;
-  height: 250px;
+  height: 150px;
   background: #11468F;
   padding: 10px;
   /*boder-box usado para que el padding no modifique el tamaño de la caja */
@@ -44,7 +46,7 @@ body {
   color: white;
   margin: 4px;
   /*Modificacion del tamaño de la letra */
-  font-size: 30px;
+  font-size: 10px;
   /*Modificar la opacidad  */
   opacity: 0.7;
   /*Mostrar que el sobre salga por z-index cuando usemos la psedoclass */
@@ -63,8 +65,8 @@ body {
 
 
 .tarjeta-de-mokepon img {
-  width: 60%;
-  padding: 10px;
+  width: 10%;
+  padding: 20px;
   border-radius: 20%;
 }
 
@@ -100,13 +102,14 @@ input:checked + label {
   align-items: center;
 }
 
-/*Edicion de la botones de ataque */
+/*Edicion de la botones de ataque 
+Problema no responde a las modificaciones: Cuidado con el codigo repedido!!!!*/
 .boton-de-ataque {
   background-color: #11468F;
   padding: 10px;
   box-sizing: border-box;
   border-radius: 20px;
-  width: 180px;
+  width: 80px;
   color: white;
   font-family: 'Poppins', sans-serif;
   position:relative;
@@ -158,16 +161,6 @@ input:checked + label {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.boton-de-ataque {
-  background-color: #11468F;
-  padding: 10px;
-  box-sizing: border-box;
-  border-radius: 20px;
-  width: 180px;
-  color: white;
-  font-family: 'Poppins', sans-serif;
 }
 
 #mensajes {

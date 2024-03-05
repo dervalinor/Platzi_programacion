@@ -1,5 +1,7 @@
 //Debemos hacer que el juego arranque despues de seleccionar la secuencia de ataques tanto
 //del personaje como del enemigo
+//Tarea agregar mas personajes con su respectiva imagen
+//agregar la propiedad de tipo de si es agua, fuego y tierra y el que es mas fuerte tiene un ataque mas
 const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
 const sectionReiniciar = document.getElementById('reiniciar')
 const botonMascotaJugador = document.getElementById('boton-mascota')
@@ -89,6 +91,8 @@ function iniciarJuego() {
     sectionSeleccionarAtaque.style.display = 'none'
 
     mokepones.forEach((mokepon) => {
+        //modificar esta html para poder personalizar tarjetas mokepon
+        //desde css
         opcionDeMokepones = `
         <input type="radio" name="mascota" id=${mokepon.nombre} />
         <label class="tarjeta-de-mokepon" for=${mokepon.nombre}>
@@ -150,6 +154,8 @@ function extraerAtaques(mascotaJugador) {
     mostrarAtaques(ataques)
 }
 
+//Debemos hacer que un boton se pueda seleccionar una sola vez asi que despues de 
+//click debe bloquearse
 function mostrarAtaques(ataques) {
     ataques.forEach((ataque) => {
         ataquesMokepon = `
@@ -170,15 +176,19 @@ function secuenciaAtaque() {
             if (e.target.textContent === '🔥') {
                 ataqueJugador.push('FUEGO')
                 console.log(ataqueJugador)
-                boton.style.background = '#112f58'   
+                boton.style.background = '#112f58'  
+                //deshabilitar boton para ser utilizado una sola vez
+                boton.disabled = true 
             } else if (e.target.textContent === '💧') {
                 ataqueJugador.push('AGUA')
                 console.log(ataqueJugador)
                 boton.style.background = '#112f58'
+                boton.disabled = true 
             } else {
                 ataqueJugador.push('TIERRA')
                 console.log(ataqueJugador)
                 boton.style.background = '#112f58'
+                boton.disabled = true 
             }
             ataqueAleatorioEnemigo()    
 
@@ -197,7 +207,9 @@ function seleccionarMascotaEnemigo() {
 
 function ataqueAleatorioEnemigo() {
     let ataqueAleatorio = aleatorio(0,ataqueAleatorioEnemigo.length -1 )
-    
+     //Modificar este codigo para hacer que ataque va escoger el enemigo con
+    //relacion al ataque de escoge el jugador y quitar la condicionales por numeros
+    //similar a ataques del jugador
   
     if(ataqueAleatorio == 0 || ataqueAleatorio == 1){
 
@@ -340,12 +352,12 @@ function crearMensajeFinal(resultadoFinal) {
     
     sectionMensajes.innerHTML = resultadoFinal
 
-    
-    botonFuego.disabled = true
+    //esto ya no sirve ya que los botones se crean OOP
+    /*botonFuego.disabled = true
     
     botonAgua.disabled = true
     
-    botonTierra.disabled = true
+    botonTierra.disabled = true*/
 
     
     sectionReiniciar.style.display = 'block'
