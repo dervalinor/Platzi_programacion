@@ -285,5 +285,10 @@ input:checked + label {
     height: auto; /* Mantiene la proporción de la imagen */
 }
 
+/*Modificar elementos para el mapa en cavas */
 
-
+#ver-mapa {
+  flex-direction: column;
+  justify-content: center;
+  justify-content: center;
+}
