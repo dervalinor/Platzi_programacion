@@ -57,12 +57,26 @@ let indexAtaqueEnemigo
 let victoriasJugador = 0
 let victoriasEnemigo = 0
 
+//ahora creamos un variable para poder trabajar con canvas
+let lienzo = mapa.getContext("2d");//vamos a trabajar en dos dimensiones
+
+/* getContext("2d"): Este es un método de la interfaz HTMLCanvasElement que se utiliza para 
+obtener el contexto de dibujo 2D del canvas. Cuando se llama con el argumento "2d", 
+devuelve un objeto CanvasRenderingContext2D que representa el contexto de renderizado 2D del canvas.
+
+*/
+
 class Mokepon {
     constructor(nombre, foto, vida) {
         this.nombre = nombre
         this.foto = foto
         this.vida = vida
         this.ataques = []
+        //para canvas modificar la clase mokepon en sus propiedades
+        this. x = 20
+        this.y = 30
+        this.ancho = 80
+        this.alto = 80
     }
 }
 
@@ -141,6 +155,39 @@ function seleccionarMascotaJugador() {
     mostrar la seccion de ver el mapa
     */
     sectionVerMapa.style.display = 'flex'
+    
+    /*Podemos colocar imagenes en canvas, por ejemplo la imagen de un personaje */
+    let imagenDeCapipeto = new Image()
+    imagenDeCapipeto.src = capipepo.foto
+    
+    /*ahora mostrar imagen */
+    lienzo.drawImage(
+        //imagen de capipepo
+        imagenDeCapipeto,
+        20,
+        40,
+        100,
+        100
+    )
+
+    //tambien podemos mover a nuestro personaje
+
+    /*Nota: Ahora vamos a dibujar en canvas*/
+    //lienzo.fillRect(5, 15, 20, 40) /*pequeño rectangulo ubicado en x = 5 y y = 15 con ancho del rectangulo 20 y  alto 40*/
+
+    /*función fillRect():
+
+
+    5: Es la coordenada x del punto de inicio del rectángulo. En este caso, el rectángulo comenzará en la posición x = 5.
+
+    15: Es la coordenada y del punto de inicio del rectángulo. En este caso, el rectángulo comenzará en la posición y = 15. 
+
+    20: Es el ancho del rectángulo. En este caso, el rectángulo tendrá un ancho de 20 unidades.
+
+    40: Es la altura del rectángulo. En este caso, el rectángulo tendrá una altura de 40 unidades.
+
+*/
+
     
     
     if (inputHipodoge.checked) {

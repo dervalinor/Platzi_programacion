@@ -32,12 +32,11 @@ body {
 }
 
 .tarjeta-de-mokepon {
-  /*modificaciones de tamaño y opacidad de la casillas de cada personaje */
+
   width: 200px;
   height: 150px;
   background: #11468F;
   padding: 10px;
-  /*boder-box usado para que el padding no modifique el tamaño de la caja */
   box-sizing: border-box;
   border-radius: 20px;
   display: flex;
@@ -45,21 +44,18 @@ body {
   align-items: center;
   color: white;
   margin: 4px;
-  /*Modificacion del tamaño de la letra */
   font-size: 10px;
-  /*Modificar la opacidad  */
   opacity: 0.7;
-  /*Mostrar que el sobre salga por z-index cuando usemos la psedoclass */
   position:relative;
 
   border: 2px solid #27A0BB;
 
 }
 
-/*Estilo de la tarjeta de mascota cuando se pasa un mouse sobre esta */
+
 .tarjeta-de-mokepon:hover {
- transform: scale(1.2);/*aumentar el tamaño del caja en un tamaño del 20% */
- z-index: 100; /*Hacer sobresalir la caja */
+ transform: scale(1.2);
+ z-index: 100; 
  background-color: #38C6EC;
 }
 
@@ -81,7 +77,7 @@ body {
   margin-top: 30px;
 }
 
-/*cambiar color del boton colocar el mouser */
+
 #boton-mascota:hover {
   background-color: #1BE9BA;
   opacity:0.6;
@@ -91,19 +87,6 @@ input {
   display: none;
 }
 
-/*cambiar el color de caja del personaje al seleccionar */
-input:checked + label {
-  background-color: #CB2DE5;
-}
-
-#seleccionar-ataque {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/*Edicion de la botones de ataque 
-Problema no responde a las modificaciones: Cuidado con el codigo repedido!!!!*/
 .boton-de-ataque {
   background-color: #11468F;
   padding: 10px;
@@ -117,10 +100,10 @@ Problema no responde a las modificaciones: Cuidado con el codigo repedido!!!!*/
   opacity: 0.7;
 }
 
-/*Estilo de la tarjeta de mascota cuando se pasa un mouse sobre esta */
+
 .tarjeta-de-mokepon:hover {
- transform: scale(1.2);/*aumentar el tamaño del caja en un tamaño del 20% */
- z-index: 100; /*Hacer sobresalir la caja */
+ transform: scale(1.2);
+ z-index: 100; 
  background-color: #38C6EC;
 }
 
@@ -142,17 +125,11 @@ Problema no responde a las modificaciones: Cuidado con el codigo repedido!!!!*/
   margin-top: 30px;
 }
 
-/*cambiar color del boton colocar el mouser */
-#boton-mascota:hover {
-  background-color: #1BE9BA;
-  opacity:0.6;
-}
-
 input {
   display: none;
 }
 
-/*cambiar el color de caja del personaje al seleccionar */
+
 input:checked + label {
   background-color: #33CEF1;
 }
@@ -180,9 +157,6 @@ input:checked + label {
   font-family: 'Poppins', sans-serif;
 }
 
-/*centar imagen del juego */
-
-/* Ajusta el estilo de la imagen para centrarla */
 .centrar-imagen {
   display: block;
   margin: 0 auto;
@@ -208,47 +182,42 @@ input:checked + label {
   align-items: center;
 }
 
+/*Modificar elementos para el mapa en canvas */
+
+#ver-mapa {
+  /*la propiedad flex hace un sitio web mas dinamico y facil de manipular los elementos hijo */
+  flex-direction: column; /*colocar los elementos en columnas */
+  justify-content: center; /* centrar el contenido verticalmente */
+  align-items: center; /* Alinea los elementos verticalmente en el centro */
+}
+
+/*Modificacion de la etiqueta canvas para el mapa */
+
+#mapa {
+  border: 2px solid white; /* Establece una linea blanca alrededor del canvas*/
+}
+
 @media (max-width: 360px) {
   .tarjetas, .tarjetas-ataques {
     flex-direction: column;
   }
 }
 
-/* Estilo para el contenedor de personaje */
+
 .personaje-container {
-    text-align: center; /* Centra el contenido dentro del contenedor */
+    text-align: center; 
 }
 
-/* Estilo para la imagen dentro del contenedor */
+
 .personaje-container img {
-    max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
-    height: auto; /* Mantiene la proporción de la imagen */
-}
-
-
-#mensajes {
-  width: 280px;
-  background: #EEEEEE;
-  padding: 20px;
-  margin-top: 20px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+    max-width: 100%; 
+    height: auto; 
 }
 
 #boton-reiniciar {
   border: none;
   color: #11468F;
   font-family: 'Poppins', sans-serif;
-}
-
-/*centar imagen del juego */
-
-/* Ajusta el estilo de la imagen para centrarla */
-.centrar-imagen {
-  display: block;
-  margin: 0 auto;
 }
 
 .ataques {
@@ -268,28 +237,7 @@ input:checked + label {
   align-items: center;
 }
 
-@media (max-width: 360px) {
-  .tarjetas, .tarjetas-ataques {
-    flex-direction: column;
-  }
-}
-
-/* Estilo para el contenedor de personaje */
-.personaje-container {
-    text-align: center; /* Centra el contenido dentro del contenedor */
-}
-
-/* Estilo para la imagen dentro del contenedor */
 .personaje-container img {
-    max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
-    height: auto; /* Mantiene la proporción de la imagen */
-}
-
-/*Modificar elementos para el mapa en canvas */
-
-#ver-mapa {
-  /*la propiedad flex hace un sitio web mas dinamico y facil de manipular los elementos hijo */
-  flex-direction: column; /*colocar los elementos en columnas */
-  justify-content: center;
-  justify-content: center;
+    max-width: 100%; 
+    height: auto; 
 }
