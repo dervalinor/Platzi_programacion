@@ -285,10 +285,11 @@ input:checked + label {
     height: auto; /* Mantiene la proporción de la imagen */
 }
 
-/*Modificar elementos para el mapa en cavas */
+/*Modificar elementos para el mapa en canvas */
 
 #ver-mapa {
-  flex-direction: column;
+  /*la propiedad flex hace un sitio web mas dinamico y facil de manipular los elementos hijo */
+  flex-direction: column; /*colocar los elementos en columnas */
   justify-content: center;
   justify-content: center;
 }
