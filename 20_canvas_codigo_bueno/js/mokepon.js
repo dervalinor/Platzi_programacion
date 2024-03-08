@@ -318,8 +318,14 @@ function pintarPersonaje() {
     )
 }
 
-function moverCapipepo() {
+function moverCapipepo_der() {
     capipepo.x = capipepo.x + 5
+    pintarPersonaje()
+}
+
+//Tarea: mover a capipepo verticalmente abajo
+function moverCapipepo_aba(){
+    capipepo.y = capipepo.y + 5
     pintarPersonaje()
 }
 
