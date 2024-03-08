@@ -160,7 +160,6 @@ function seleccionarMascotaJugador() {
     */
     sectionVerMapa.style.display = 'flex'
     
-    let imagenDeCapipeto = new Image()
     /*Podemos colocar imagenes en canvas, por ejemplo la imagen de un personaje */
     //imagenDeCapipeto.src = capipepo.foto
 
