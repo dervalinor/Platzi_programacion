@@ -77,6 +77,10 @@ class Mokepon {
         this.y = 30
         this.ancho = 80
         this.alto = 80
+        //tambie podemos colocar la foto del mapa y del  nuestro personaje con parametro de esta objeto
+        this.mapaFoto = new Imagen()
+        this.mapaFoto.src = foto
+        
     }
 }
 
@@ -156,19 +160,9 @@ function seleccionarMascotaJugador() {
     */
     sectionVerMapa.style.display = 'flex'
     
-    /*Podemos colocar imagenes en canvas, por ejemplo la imagen de un personaje */
     let imagenDeCapipeto = new Image()
-    imagenDeCapipeto.src = capipepo.foto
-    
-    /*ahora mostrar imagen */
-    lienzo.drawImage(
-        //imagen de capipepo
-        imagenDeCapipeto,
-        20,
-        40,
-        100,
-        100
-    )
+    /*Podemos colocar imagenes en canvas, por ejemplo la imagen de un personaje */
+    //imagenDeCapipeto.src = capipepo.foto
 
     //tambien podemos mover a nuestro personaje
 
@@ -378,6 +372,31 @@ function reiniciarJuego() {
 
 function aleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+function pintarPersonaje() {
+
+    lienzo.clearRect(0, 0, mapa.width, mapa.height) //limpiar nuestro canvas desde la posicion (0, 0) hasta el 
+    //final del mapa
+
+    /*ahora mostrar imagen */
+    lienzo.drawImage(
+        //imagen de capipepo
+        capipepo.mapaFoto, //objeto capipepo con sus parametros
+        capipepo.x,
+        capipepo.y,
+        capipepo.ancho,
+        capipepo.alto
+    )
+}
+
+//Tarea: mover el personaje verticalmente
+
+//ahora creamos una funcion para mover personaje
+function moverCapipepo(){
+    //actualizar la posicion de nuestro personaje
+    capipepo.x = capipepo.x + 5 //mover nuestro personaje de la posicion inicial 5 unidades
+    pintarPersonaje()
 }
 
 window.addEventListener('load', iniciarJuego)
