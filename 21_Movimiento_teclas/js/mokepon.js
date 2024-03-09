@@ -137,14 +137,8 @@ function seleccionarMascotaJugador() {
    
     sectionVerMapa.style.display = 'flex'
     
-    intervalo = setInterval(pintarPersonaje, 50) 
-    
-    //Escuchar lo eventos dentro de nuestro juego
-    window.addEventListener('keydown', sePresionoUnaTecla) //Este evento se ejecuta cuando se preciona un tecla y llamar a 
-    // una funcion que indique que se preciono un tecla  
-    
-    window.addEventListener('keyup', deternerMovimiento) //otra lector de eventos para detener el movimiento cuando se deje de 
-    //presionar la tecla
+    //funcion para comenzar mapa y la respectiva lectura de eventos del teclado
+    iniciarMapa()
     
     if (inputHipodoge.checked) {
         spanMascotaJugador.innerHTML = inputHipodoge.id
@@ -373,7 +367,38 @@ function deternerMovimiento(){
 
 function sePresionoUnaTecla(event){ //esto retorna un evento, nos dice que tecla se presiono
     //ver en consola para revisar el evento que se observa
-    console.log(event.key)
+    //console.log(event.key)
+
+    //ahora dependiendo de que tecla de presiono se llama a la funcion determinada
+    switch(event.key){ //wow asi entonces se programa las teclas de un juego
+        case 'ArrowUp':
+            moverCapipepo_ar();
+            break;
+        case 'ArrowDown':
+            moverCapipepo_aba();
+            break;
+        case 'ArrowLeft':
+            moverCapipepo_iz();
+            break;
+        case 'ArrowRight':
+            moverCapipepo_der();
+            break;
+        //caso que se deja precionar la tecla
+        default:
+            deternerMovimiento()
+            break;
+    }
+}
+
+function iniciarMapa(){
+    intervalo = setInterval(pintarPersonaje, 50) 
+    
+    //Escuchar lo eventos dentro de nuestro juego
+    window.addEventListener('keydown', sePresionoUnaTecla) //Este evento se ejecuta cuando se preciona un tecla y llamar a 
+    // una funcion que indique que se preciono un tecla  
+    
+    window.addEventListener('keyup', deternerMovimiento) //otra lector de eventos para detener el movimiento cuando se deje de 
+    //presionar la tecla
 }
 
 window.addEventListener('load', iniciarJuego)
