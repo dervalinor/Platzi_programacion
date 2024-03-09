@@ -1,3 +1,7 @@
+/*Ahora hacer que nuestro personaje se mueva cuando mantenermos persionada la tecla 
+para esto agregamos a nuestra clase de personajes la propiedad de velocidad cuando
+se mantenga presionado nuestro boton*/
+
 const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
 const sectionReiniciar = document.getElementById('reiniciar')
 const botonMascotaJugador = document.getElementById('boton-mascota')
@@ -42,6 +46,8 @@ let victoriasEnemigo = 0
 let vidasJugador = 3
 let vidasEnemigo = 3
 let lienzo = mapa.getContext("2d")
+let intervalo
+//con esto crearemos una funcion para llamar en cierta cantidad de tiempo - funcion setInterval()
 
 class Mokepon {
     constructor(nombre, foto, vida) {
@@ -55,6 +61,11 @@ class Mokepon {
         this.alto = 80
         this.mapaFoto = new Image()
         this.mapaFoto.src = foto
+        //Agregar propiedad de velocidad
+        this.velocidadX= 0
+        this.velocidadY= 0
+        //Ahora en vez de actualizar la posicion cuando hacemos click actualizamos la velocidad
+        //de nuestro personaje
     }
 }
 
@@ -128,6 +139,9 @@ function seleccionarMascotaJugador() {
     
     //sectionSeleccionarAtaque.style.display = 'flex'
     sectionVerMapa.style.display = 'flex'
+    //aqui llamamos la funcion de setInterval
+    intervalo = setInterval(pintarPersonaje, 50) //cada 50 milisegundos ejecutar la funcion pintarPersonaje
+    //Ademas debemos definir un funcion para detener movimiento
     
     
     
@@ -308,6 +322,10 @@ function aleatorio(min, max) {
 }
 
 function pintarPersonaje() {
+    //ahora debemos actualizar su posicion respecto a la velicidad
+    capipepo.x = capipepo.x + capipepo.velocidadX
+    capipepo.y = capipepo.y  + capipepo.velocidadY
+
     lienzo.clearRect(0, 0, mapa.width, mapa.height)
     lienzo.drawImage(
         capipepo.mapaFoto,
@@ -319,24 +337,39 @@ function pintarPersonaje() {
 }
 
 function moverCapipepo_der() {
-    capipepo.x = capipepo.x + 5
+    //capipepo.x = capipepo.x + 5
+    ////ahora en vez de actualizar la posicion 
+    //actualizamos la velocidad para que se mueva de forma sostenida 
+    //al dar un click sostenido
+    capipepo.velocidadX = 5
+
     pintarPersonaje()
 }
 
 //Tarea: mover a capipepo verticalmente abajo
+//mi solucion de codigo
 function moverCapipepo_aba(){
-    capipepo.y = capipepo.y + 5
+    //capipepo.y = capipepo.y + 5
+    capipepo.velocidadY = 5;
+    
     pintarPersonaje()
 }
 
 function moverCapipepo_iz() {
-    capipepo.x = capipepo.x - 5
+    //capipepo.x = capipepo.x - 5
+    capipepo.velocidadX = -5;
     pintarPersonaje()
 }
 
 function moverCapipepo_ar() {
-    capipepo.y = capipepo.y -5
+    //capipepo.y = capipepo.y -5
+    capipepo.velocidadY  = -5;
     pintarPersonaje()
+}
+
+function deternerMovimiento(){
+    capipepo.velocidadX = 0
+    capipepo.velocidadY = 0
 }
 
 window.addEventListener('load', iniciarJuego)

@@ -134,13 +134,22 @@ input:checked + label {
 /*Personalizacion de botones de movimiento segun GPT-4*/
 
 #gamePad {
-  display: grid;
+  display: grid; /*Establece el método de diseño de la cuadrícula para este contenedor, 
+  lo que permite organizar los botones en filas y columnas. */
+
   grid-template-columns: 60px 60px 60px;
   grid-template-rows: 60px 60px;
-  gap: 10px;
+  /*grid-template-columns: 60px 60px 60px; y grid-template-rows: 60px 60px;: Define el tamaño de las 
+  columnas y filas de la cuadrícula. En este caso, hay tres columnas y dos filas, cada una con una anchura y altura de 60 píxeles. */
+
+  gap: 10px; /*Establece un espacio de 10 píxeles entre las celdas de la cuadrícula. */
+
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
+  /*Centra los elementos dentro del contenedor horizontalmente y verticalmente. */
+
+  margin: 0 auto; /*Esto se usa para centrar el contenedor horizontalmente en la página. */
+
   width: 180px;
   height: 120px;
 }
@@ -153,7 +162,15 @@ button {
   color: white;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  display: inline-block; /*Hace que los botones se muestren como elementos en línea con un bloque de texto.
+  estamos modificando este comportamiento para que los botones se comporten como bloques, 
+  pero aún conserven algunas características de los elementos en línea.
+  Esto significa que los botones seguirán siendo elementos de bloque, 
+  lo que permite establecer anchos, alturas, márgenes, rellenos, etc., 
+  pero también se colocarán en línea uno al lado del otro en la misma línea de texto.
+  Esta propiedad es útil cuando queremos que los elementos se comporten como bloques, 
+  pero también queremos que se alineen horizontalmente sin forzar un salto de línea después de cada elemento.
+  */
   font-family: 'Press Start 2P', cursive; 
   cursor: pointer;
   border-radius: 5px;

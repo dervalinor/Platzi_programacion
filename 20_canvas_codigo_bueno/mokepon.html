@@ -22,12 +22,12 @@
             <h1 class="titulo">Recorre el mapa con tu mokepon</h1> 
             <canvas id="mapa"></canvas>
             <div id = "gamePad">
-                <button id="upButton" onclick="moverCapipepo_ar()">Arriba</button>
-                <button id="leftButton" onclick="moverCapipepo_iz()">Izquierda</button>
-                <button id="rightButton" onClick="moverCapipepo_der()">Derecha</button>
-                <button id="downButton" onclick="moverCapipepo_aba()">Abajo</button>
- 
-  
+              <!--Ahora necesitamos tener un funcion para indicar cuando se hacer click y cuando se deja de hacer click
+              asi continuar o detener el movimiento-->
+                <button id="upButton" onmousedown="moverCapipepo_ar()" onmouseup ="deternerMovimiento()">Arriba</button>
+                <button id="leftButton" onmousedown="moverCapipepo_iz()" onmouseup ="deternerMovimiento()">Izquierda</button>
+                <button id="rightButton" onmousedown="moverCapipepo_der()" onmouseup ="deternerMovimiento()">Derecha</button>
+                <button id="downButton" onmousedown="moverCapipepo_aba()" onmouseup ="deternerMovimiento()">Abajo</button>
             </div>
            
         </section>
