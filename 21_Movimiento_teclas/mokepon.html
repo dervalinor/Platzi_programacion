@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>MOKEPON!</title>
+        <link rel="stylesheet" href="./styles.css"> 
+    </head>
+    <body>
+        <section id="seleccionar-mascota">
+            <h1 class="titulo">Mokepono</h1> 
+
+            <h2 class="subtitulo">Elige tu mascota:</h2>
+
+            <div id='contenedorTarjetas' class="tarjetas">
+                
+            </div>
+
+            <button id="boton-mascota">Seleccionar</button>
+        </section>
+
+        <section id="ver-mapa">
+            <h1 class="titulo">Recorre el mapa con tu mokepon</h1> 
+            <canvas id="mapa"></canvas>
+            <div id = "gamePad">
+              <!--Ahora necesitamos tener un funcion para indicar cuando se hacer click y cuando se deja de hacer click
+              asi continuar o detener el movimiento-->
+                <button id="upButton" onmousedown="moverCapipepo_ar()" onmouseup ="deternerMovimiento()">Arriba</button>
+                <button id="leftButton" onmousedown="moverCapipepo_iz()" onmouseup ="deternerMovimiento()">Izquierda</button>
+                <button id="rightButton" onmousedown="moverCapipepo_der()" onmouseup ="deternerMovimiento()">Derecha</button>
+                <button id="downButton" onmousedown="moverCapipepo_aba()" onmouseup ="deternerMovimiento()">Abajo</button>
+            </div>
+           
+        </section>
+
+        <!-- 
+codigo GPT4 para personalizar:
+
+<div id="gamePad">
+  <button id="upButton">Arriba</button>
+  <button id="leftButton">Izquierda</button>
+  <button id="rightButton">Derecha</button>
+  <button id="downButton">Abajo</button>
+</div>
+
+#gamePad {
+  display: grid;
+  grid-template-columns: 60px 60px 60px;
+  grid-template-rows: 60px 60px;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 180px;
+  height: 120px;
+}
+
+button {
+  font-size: 14px;
+  padding: 10px;
+  background-color: #4CAF50; 
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Press Start 2P', cursive; 
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#upButton {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+#leftButton {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+#rightButton {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+#downButton {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+
+
+
+        -->
+
+        <section id="seleccionar-ataque">
+            <h1 class="titulo">Mokepon</h1>
+
+            <h2 class="subtitulo">Elige tu ataque:</h2>
+
+            <div id='contenedorAtaques' class="tarjetas-ataques">
+
+            </div>
+
+            <div id="mensajes">
+                <p id="resultado">Mucha suerte</p>
+
+                <section id="reiniciar">
+                    <button id="boton-reiniciar">Reiniciar</button>
+                </section>
+            </div>
+
+            <div class="ataques">
+                <div class="ataques-jugador">
+                    <p id="vidas-jugador">0</p>
+                    <p id="mascota-jugador"></p>
+                    <div id="ataques-del-jugador"></div>
+                </div>
+                <div class="ataques-enemigo">   
+                    <p id="vidas-enemigo">0</p>
+                    <p id="mascota-enemigo"></p>
+                    <div id="ataques-del-enemigo"></div>
+                </div>
+            </div>
+        </section>
+        <script src="./js/mokepon.js"></script>
+    </body>
+</html>
+
+
