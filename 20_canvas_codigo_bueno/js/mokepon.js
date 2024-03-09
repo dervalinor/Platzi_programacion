@@ -329,4 +329,14 @@ function moverCapipepo_aba(){
     pintarPersonaje()
 }
 
+function moverCapipepo_iz() {
+    capipepo.x = capipepo.x - 5
+    pintarPersonaje()
+}
+
+function moverCapipepo_ar() {
+    capipepo.y = capipepo.y -5
+    pintarPersonaje()
+}
+
 window.addEventListener('load', iniciarJuego)
