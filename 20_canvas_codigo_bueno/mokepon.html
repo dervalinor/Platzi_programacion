@@ -21,16 +21,21 @@
         <section id="ver-mapa">
             <h1 class="titulo">Recorre el mapa con tu mokepon</h1> 
             <canvas id="mapa"></canvas>
-            <button onClick="moverCapipepo_der()">Derecha</button>
-            <button onclick="moverCapipepo_aba()">Abajo</button>
-            <button onclick="moverCapipepo_iz()">Izquierda</button>
-            <button onclick="moverCapipepo_ar()">Arriba</button>
+            <div id = "gamePad">
+                <button id="upButton" onclick="moverCapipepo_ar()">Arriba</button>
+                <button id="leftButton" onclick="moverCapipepo_iz()">Izquierda</button>
+                <button id="rightButton" onClick="moverCapipepo_der()">Derecha</button>
+                <button id="downButton" onclick="moverCapipepo_aba()">Abajo</button>
+ 
+  
+            </div>
+           
         </section>
 
         <!-- 
-            codigo GPT4 para personalizar:
+codigo GPT4 para personalizar:
 
-            <div id="gamePad">
+<div id="gamePad">
   <button id="upButton">Arriba</button>
   <button id="leftButton">Izquierda</button>
   <button id="rightButton">Derecha</button>
