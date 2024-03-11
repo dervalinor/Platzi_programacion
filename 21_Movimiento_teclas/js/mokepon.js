@@ -1,5 +1,6 @@
 /* 
 Ahora vamos crear una forma de mover nuestro personaje con las teclas
+Tambien vamos a colocar un imagen de fondo como mapa
 */
 const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
 const sectionReiniciar = document.getElementById('reiniciar')
@@ -46,6 +47,10 @@ let vidasJugador = 3
 let vidasEnemigo = 3
 let lienzo = mapa.getContext("2d")
 let intervalo
+
+//cargar imagen para el mapa de nuestro personaje
+let imagenMapa = new Image()
+imagenMapa.src = 'https://i.imgur.com/fmrEJsr.jpg'
 
 class Mokepon {
     constructor(nombre, foto, vida) {
@@ -318,10 +323,33 @@ function aleatorio(min, max) {
 
 function pintarPersonaje() {
 
+
+
     capipepo.x = capipepo.x + capipepo.velocidadX
     capipepo.y = capipepo.y  + capipepo.velocidadY
 
     lienzo.clearRect(0, 0, mapa.width, mapa.height)
+    //agregar imagen al fondo 
+    lienzo.drawImage(
+        imagenMapa, // Parámetro 1: imagenMapa es la imagen que se va a dibujar en el lienzo. 
+        //Es la imagen que se quiere mostrar en el canvas.
+
+        0, //Parámetro 2: 0 es la coordenada x del punto de inicio del dibujo en el lienzo. 
+        //Representa la posición horizontal donde comenzará a dibujarse la imagen.
+
+
+        0, //// Parámetro 3: 0 es la coordenada y del punto de inicio del dibujo en el lienzo. 
+        //Representa la posición vertical donde comenzará a dibujarse la imagen.
+
+
+        mapa.width, // Parámetro 4: mapa.width es el ancho de la imagen a dibujar en el lienzo. 
+        //Especifica cuántos píxeles de ancho se utilizarán para mostrar la imagen. para esta caso
+        //es del tamaño del mapa
+
+        mapa.height //Parámetro 5: mapa.height es la altura de la imagen a dibujar en el lienzo. 
+        //Especifica cuántos píxeles de altura se utilizarán para mostrar la imagen. Para este
+        //caso sera el mismo tamaño que del mapa    
+    )
     lienzo.drawImage(
         capipepo.mapaFoto,
         capipepo.x,
@@ -334,27 +362,23 @@ function pintarPersonaje() {
 function moverCapipepo_der() {
  
     capipepo.velocidadX = 5
-
-    pintarPersonaje()
 }
 
 
 function moverCapipepo_aba(){
    
     capipepo.velocidadY = 5;
-    
-    pintarPersonaje()
 }
 
 function moverCapipepo_iz() {
     capipepo.velocidadX = -5;
-    pintarPersonaje()
+   
 }
 
 function moverCapipepo_ar() {
    
     capipepo.velocidadY  = -5;
-    pintarPersonaje()
+    
 }
 
 function deternerMovimiento(){
@@ -391,6 +415,9 @@ function sePresionoUnaTecla(event){ //esto retorna un evento, nos dice que tecla
 }
 
 function iniciarMapa(){
+    //aqui vamos a modificar el tamaño del mapa
+    mapa.width = 600
+    mapa.height = 300
     intervalo = setInterval(pintarPersonaje, 50) 
     
     //Escuchar lo eventos dentro de nuestro juego
