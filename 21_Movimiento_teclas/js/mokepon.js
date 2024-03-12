@@ -33,6 +33,10 @@ let inputHipodoge
 let inputCapipepo
 let inputRatigueya
 let mascotaJugador
+
+//creamos una variable para el objeto de la mascota del jugador 
+let mascotaJugadorObjeto
+
 let ataquesMokepon
 let ataquesMokeponEnemigo
 let botonFuego
@@ -143,7 +147,7 @@ function seleccionarMascotaJugador() {
     sectionVerMapa.style.display = 'flex'
     
     //funcion para comenzar mapa y la respectiva lectura de eventos del teclado
-    iniciarMapa()
+    
     
     if (inputHipodoge.checked) {
         spanMascotaJugador.innerHTML = inputHipodoge.id
@@ -158,7 +162,13 @@ function seleccionarMascotaJugador() {
         alert('Selecciona una mascota')
     }
 
+    
+
     extraerAtaques(mascotaJugador)
+
+    //iniciar mapa despues de seleccionada la mascota para que aparezca la que queremos
+    iniciarMapa()
+
     seleccionarMascotaEnemigo()
 }
 
@@ -325,8 +335,8 @@ function pintarPersonaje() {
 
 
 
-    capipepo.x = capipepo.x + capipepo.velocidadX
-    capipepo.y = capipepo.y  + capipepo.velocidadY
+    mascotaJugadorObjeto.x =mascotaJugadorObjeto.x +mascotaJugadorObjeto.velocidadX
+    mascotaJugadorObjeto.y =mascotaJugadorObjeto.y  +mascotaJugadorObjeto.velocidadY
 
     lienzo.clearRect(0, 0, mapa.width, mapa.height)
     //agregar imagen al fondo 
@@ -351,39 +361,39 @@ function pintarPersonaje() {
         //caso sera el mismo tamaño que del mapa    
     )
     lienzo.drawImage(
-        capipepo.mapaFoto,
-        capipepo.x,
-        capipepo.y,
-        capipepo.ancho,
-        capipepo.alto
+        mascotaJugadorObjeto.mapaFoto,
+        mascotaJugadorObjeto.x,
+        mascotaJugadorObjeto.y,
+        mascotaJugadorObjeto.ancho,
+        mascotaJugadorObjeto.alto
     )
 }
 
 function moverCapipepo_der() {
  
-    capipepo.velocidadX = 5
+    mascotaJugadorObjeto.velocidadX = 5
 }
 
 
 function moverCapipepo_aba(){
    
-    capipepo.velocidadY = 5;
+    mascotaJugadorObjeto.velocidadY = 5;
 }
 
 function moverCapipepo_iz() {
-    capipepo.velocidadX = -5;
+    mascotaJugadorObjeto.velocidadX = -5;
    
 }
 
 function moverCapipepo_ar() {
    
-    capipepo.velocidadY  = -5;
+    mascotaJugadorObjeto.velocidadY  = -5;
     
 }
 
 function deternerMovimiento(){
-    capipepo.velocidadX = 0
-    capipepo.velocidadY = 0
+    mascotaJugadorObjeto.velocidadX = 0
+    mascotaJugadorObjeto.velocidadY = 0
 }
 
 //creamos la funciones para escuchar cuando se presiona un tecla y cuando se deja
@@ -415,9 +425,15 @@ function sePresionoUnaTecla(event){ //esto retorna un evento, nos dice que tecla
 }
 
 function iniciarMapa(){
+    //ahora vamos a hacer que no vamos a utilizar por defecto a capipepo sino el 
+    //objeto de personaje para utilizar la imagen del personaje que se seleccione
     //aqui vamos a modificar el tamaño del mapa
     mapa.width = 600
     mapa.height = 300
+
+    //Aqui haremos que aparezca la imagen que el jugador selecciono no que solo aparezca capipepo
+    mascotaJugadorObjeto = obtenerObjetoJugador(mascotaJugador)
+
     intervalo = setInterval(pintarPersonaje, 50) 
     
     //Escuchar lo eventos dentro de nuestro juego
@@ -426,6 +442,17 @@ function iniciarMapa(){
     
     window.addEventListener('keyup', deternerMovimiento) //otra lector de eventos para detener el movimiento cuando se deje de 
     //presionar la tecla
+}
+
+function obtenerObjetoJugador(){
+    //aqui se recorre el arreglo del objeto de personajes
+    // e imprimos el personaje seleccionado
+    for (let i = 0; i < mokepones.length; i++) {
+        if (mascotaJugador === mokepones[i].nombre) {
+            return mokepones[i] // Retornar el personaje seleccionado
+        }
+        
+    }
 }
 
 window.addEventListener('load', iniciarJuego)
