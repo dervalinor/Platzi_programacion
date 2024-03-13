@@ -1,6 +1,5 @@
 /* 
-Ahora vamos crear una forma de mover nuestro personaje con las teclas
-Tambien vamos a colocar un imagen de fondo como mapa
+
 */
 const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
 const sectionReiniciar = document.getElementById('reiniciar')
@@ -34,7 +33,7 @@ let inputCapipepo
 let inputRatigueya
 let mascotaJugador
 
-//creamos una variable para el objeto de la mascota del jugador 
+
 let mascotaJugadorObjeto
 
 let ataquesMokepon
@@ -52,34 +51,61 @@ let vidasEnemigo = 3
 let lienzo = mapa.getContext("2d")
 let intervalo
 
-//cargar imagen para el mapa de nuestro personaje
+
 let imagenMapa = new Image()
 imagenMapa.src = 'https://i.imgur.com/fmrEJsr.jpg'
 
 class Mokepon {
-    constructor(nombre, foto, vida) {
+    constructor(nombre, foto, vida, FotoMapa, _x = 10, _y = 10) { //hacemos que x y y sean parametros de constructor, podemos darle un valores por defecto
         this.nombre = nombre
         this.foto = foto
         this.vida = vida
         this.ataques = []
-        this.x = 20
-        this.y = 30
-        this.ancho = 80
-        this.alto = 80
+        this.x = _x
+        this.y = _y
+        this.ancho = 40
+        this.alto = 40
         this.mapaFoto = new Image()
-        this.mapaFoto.src = foto
+        this.mapaFoto.src = FotoMapa   
       
         this.velocidadX= 0
         this.velocidadY= 0
         
     }
+
+    //declaracion de un metodo
+    pintarMokepon(){
+        lienzo.drawImage(
+            this.mapaFoto, //es this ya que estamos utilizando las atributos de 
+            this.x,
+            this.y,
+            this.ancho,
+            this.alto
+        )
+    }
 }
 
-let hipodoge = new Mokepon('Hipodoge', './assets/mokepons_mokepon_hipodoge_attack.png', 5)
+//aqui vamos agregar la imagenes de las cabezas de los mokepones para nuestro juego 
+//esto se añade como un nuevo parametro
 
-let capipepo = new Mokepon('Capipepo', './assets/mokepons_mokepon_capipepo_attack.png', 5)
+let hipodoge = new Mokepon('Hipodoge', './assets/mokepons_mokepon_hipodoge_attack.png', 5, './imagenes/capipepo.png')
 
-let ratigueya = new Mokepon('Ratigueya', './assets/mokepons_mokepon_ratigueya_attack.png', 5)
+let capipepo = new Mokepon('Capipepo', './assets/mokepons_mokepon_capipepo_attack.png', 5, './imagenes/hipodoge.png')
+
+let ratigueya = new Mokepon('Ratigueya', './assets/mokepons_mokepon_ratigueya_attack.png', 5, './imagenes/ratigueya.png')
+
+//el mismo codigo anterior pero para lo enemigos
+//creacion de estos objetos
+
+//ahora especificamos las coordenadas x y y para que aparezcan en cualquier luegar del mapa
+//es importante pintar estos personajes del enemigo en el mapa 
+let hipodogeEnemigo = new Mokepon('Hipodoge', './assets/mokepons_mokepon_hipodoge_attack.png', 5, './imagenes/capipepo.png', 90, 10)
+
+let capipepoEnemigo = new Mokepon('Capipepo', './assets/mokepons_mokepon_capipepo_attack.png', 5, './imagenes/hipodoge.png', 20, 20)
+
+let ratigueyaEnemigo = new Mokepon('Ratigueya', './assets/mokepons_mokepon_ratigueya_attack.png', 5, './imagenes/ratigueya.png', 10, 23)
+
+
 
 hipodoge.ataques.push(
     { nombre: '💧', id: 'boton-agua' },
@@ -146,7 +172,6 @@ function seleccionarMascotaJugador() {
    
     sectionVerMapa.style.display = 'flex'
     
-    //funcion para comenzar mapa y la respectiva lectura de eventos del teclado
     
     
     if (inputHipodoge.checked) {
@@ -166,7 +191,7 @@ function seleccionarMascotaJugador() {
 
     extraerAtaques(mascotaJugador)
 
-    //iniciar mapa despues de seleccionada la mascota para que aparezca la que queremos
+ 
     iniciarMapa()
 
     seleccionarMascotaEnemigo()
@@ -333,40 +358,46 @@ function aleatorio(min, max) {
 
 function pintarPersonaje() {
 
-
-
     mascotaJugadorObjeto.x =mascotaJugadorObjeto.x +mascotaJugadorObjeto.velocidadX
     mascotaJugadorObjeto.y =mascotaJugadorObjeto.y  +mascotaJugadorObjeto.velocidadY
 
     lienzo.clearRect(0, 0, mapa.width, mapa.height)
-    //agregar imagen al fondo 
+    
     lienzo.drawImage(
-        imagenMapa, // Parámetro 1: imagenMapa es la imagen que se va a dibujar en el lienzo. 
-        //Es la imagen que se quiere mostrar en el canvas.
+        imagenMapa, 
 
-        0, //Parámetro 2: 0 es la coordenada x del punto de inicio del dibujo en el lienzo. 
-        //Representa la posición horizontal donde comenzará a dibujarse la imagen.
-
-
-        0, //// Parámetro 3: 0 es la coordenada y del punto de inicio del dibujo en el lienzo. 
-        //Representa la posición vertical donde comenzará a dibujarse la imagen.
+        0, //importante colocar esta coordenada o de lo contrario la imagen no aparece en
+        //el mapa
+ 
+        0,
 
 
-        mapa.width, // Parámetro 4: mapa.width es el ancho de la imagen a dibujar en el lienzo. 
-        //Especifica cuántos píxeles de ancho se utilizarán para mostrar la imagen. para esta caso
-        //es del tamaño del mapa
+        mapa.width, 
 
-        mapa.height //Parámetro 5: mapa.height es la altura de la imagen a dibujar en el lienzo. 
-        //Especifica cuántos píxeles de altura se utilizarán para mostrar la imagen. Para este
-        //caso sera el mismo tamaño que del mapa    
+        mapa.height  
     )
-    lienzo.drawImage(
+
+    //aqui se pinta la mascota del jugador
+    /*lienzo.drawImage(
         mascotaJugadorObjeto.mapaFoto,
         mascotaJugadorObjeto.x,
         mascotaJugadorObjeto.y,
         mascotaJugadorObjeto.ancho,
         mascotaJugadorObjeto.alto
-    )
+    )*/
+    //un metodo de un objeto es un funcion que da un cierto comportamiento a un objeto en esta caso 
+    //sera pintar un personaje
+    //para pintar a nuestros enemigos vamos a utilizar los metodos de los 
+    //enemigos
+
+    //llamar un metodo de pintar personaje del jugador y del enemigo
+    mascotaJugadorObjeto.pintarMokepon()    
+
+    //llamar es nuestros enemigos - mi idea: crear un objeto enemigo para esto
+    hipodogeEnemigo.pintarPersonaje()
+    capipepoEnemigo.pintarPersonaje()
+    ratigueyaEnemigo.pintarPersonaje()
+
 }
 
 function moverCapipepo_der() {
@@ -396,15 +427,11 @@ function deternerMovimiento(){
     mascotaJugadorObjeto.velocidadY = 0
 }
 
-//creamos la funciones para escuchar cuando se presiona un tecla y cuando se deja
-//de presionar
 
-function sePresionoUnaTecla(event){ //esto retorna un evento, nos dice que tecla se presiono
-    //ver en consola para revisar el evento que se observa
-    //console.log(event.key)
 
-    //ahora dependiendo de que tecla de presiono se llama a la funcion determinada
-    switch(event.key){ //wow asi entonces se programa las teclas de un juego
+function sePresionoUnaTecla(event){ 
+
+    switch(event.key){ 
         case 'ArrowUp':
             moverCapipepo_ar();
             break;
@@ -417,7 +444,7 @@ function sePresionoUnaTecla(event){ //esto retorna un evento, nos dice que tecla
         case 'ArrowRight':
             moverCapipepo_der();
             break;
-        //caso que se deja precionar la tecla
+        
         default:
             deternerMovimiento()
             break;
@@ -425,31 +452,27 @@ function sePresionoUnaTecla(event){ //esto retorna un evento, nos dice que tecla
 }
 
 function iniciarMapa(){
-    //ahora vamos a hacer que no vamos a utilizar por defecto a capipepo sino el 
-    //objeto de personaje para utilizar la imagen del personaje que se seleccione
-    //aqui vamos a modificar el tamaño del mapa
+    
     mapa.width = 600
     mapa.height = 300
 
-    //Aqui haremos que aparezca la imagen que el jugador selecciono no que solo aparezca capipepo
+    
     mascotaJugadorObjeto = obtenerObjetoJugador(mascotaJugador)
 
     intervalo = setInterval(pintarPersonaje, 50) 
     
-    //Escuchar lo eventos dentro de nuestro juego
-    window.addEventListener('keydown', sePresionoUnaTecla) //Este evento se ejecuta cuando se preciona un tecla y llamar a 
-    // una funcion que indique que se preciono un tecla  
     
-    window.addEventListener('keyup', deternerMovimiento) //otra lector de eventos para detener el movimiento cuando se deje de 
-    //presionar la tecla
+    window.addEventListener('keydown', sePresionoUnaTecla) 
+    
+    window.addEventListener('keyup', deternerMovimiento) 
+
 }
 
 function obtenerObjetoJugador(){
-    //aqui se recorre el arreglo del objeto de personajes
-    // e imprimos el personaje seleccionado
+    
     for (let i = 0; i < mokepones.length; i++) {
         if (mascotaJugador === mokepones[i].nombre) {
-            return mokepones[i] // Retornar el personaje seleccionado
+            return mokepones[i] 
         }
         
     }
