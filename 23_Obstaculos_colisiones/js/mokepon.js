@@ -1,3 +1,7 @@
+/* 
+como generar un colision de personajes 
+*/
+
 const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
 const sectionReiniciar = document.getElementById('reiniciar')
 const botonMascotaJugador = document.getElementById('boton-mascota')
@@ -339,8 +343,9 @@ function pintarCanvas() {
     hipodogeEnemigo.pintarMokepon()
     capipepoEnemigo.pintarMokepon()
     ratigueyaEnemigo.pintarMokepon()
-    if (mascotaJugadorObjeto.velocidadX !== 0 || mascotaJugadorObjeto.velocidadY !== 0) {
-        revisarColision(hipodogeEnemigo)
+    if (mascotaJugadorObjeto.velocidadX !== 0 || mascotaJugadorObjeto.velocidadY !== 0) { //si el jugador se esta moviendo entonces puede existir una
+        //colision
+        revisarColision(hipodogeEnemigo) //los enemigos estan en coordenadas constantes
         revisarColision(capipepoEnemigo)
         revisarColision(ratigueyaEnemigo)
     }
@@ -407,12 +412,17 @@ function obtenerObjetoMascota() {
     }
 }
 
+//funcion para saber si existe un colision, ver si hay un superposicion de coordenadas
+//entonces existe una colision de los objetos esto se hace comparando las coordenadas
 function revisarColision(enemigo) {
+    // Coordenadas del enemigo, ya que el enemigo esta quieto
     const arribaEnemigo = enemigo.y
     const abajoEnemigo = enemigo.y + enemigo.alto
     const derechaEnemigo = enemigo.x + enemigo.ancho
     const izquierdaEnemigo = enemigo.x
 
+    //Coordenadas de la mascota del jugador, ya que este se esta moviendo 
+    //se tiene en cuenta la velocidad
     const arribaMascota = 
         mascotaJugadorObjeto.y
     const abajoMascota = 
@@ -422,15 +432,37 @@ function revisarColision(enemigo) {
     const izquierdaMascota = 
         mascotaJugadorObjeto.x
 
+    // Verificar colisión basada en las coordenadas
+    //condiciones en las cuales no existe colision
     if(
+        /*
+        abajoMascota < arribaEnemigo: Esta condición verifica si la parte inferior de la mascota del jugador está 
+        por encima del límite superior del enemigo. Si esto ocurre, significa que la mascota del jugador está por encima del enemigo y 
+        no hay colisión en la parte superior.
+
+        arribaMascota > abajoEnemigo: Aquí se verifica si la parte superior de la mascota del jugador está por debajo del límite inferior del enemigo. 
+        Si esto ocurre, significa que la mascota del jugador está por debajo del enemigo y no hay colisión en la parte inferior.
+
+        derechaMascota < izquierdaEnemigo: Esta condición verifica si el lado derecho de la mascota del jugador está a 
+        la izquierda del límite izquierdo del enemigo. Si esto ocurre, significa que la mascota del jugador está a la izquierda del 
+        enemigo y no hay colisión en el lado derecho.
+
+        izquierdaMascota > derechaEnemigo: Aquí se verifica si el lado izquierdo de la mascota del jugador está a 
+        la derecha del límite derecho del enemigo. Si esto ocurre, significa que la mascota del jugador está a 
+        la derecha del enemigo y no hay colisión en el lado izquierdo.
+
+
+        */
         abajoMascota < arribaEnemigo ||
         arribaMascota > abajoEnemigo ||
         derechaMascota < izquierdaEnemigo ||
         izquierdaMascota > derechaEnemigo
     ) {
+        // Si no hay colisión, se devuelve undefined y se sale de la función
         return
     }
 
+    // Si hay colisión, se detiene el movimiento de la mascota y se muestra una alerta
     detenerMovimiento()
     alert("Hay colision" + enemigo.nombre)
 }
