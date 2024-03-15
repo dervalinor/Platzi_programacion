@@ -1,6 +1,9 @@
 /* 
 Descubri que el diseño responsivo no funciona la ejecutar el HTML en el navegador BRAVE pero si en otro
 como Firefox
+
+Para hacer esto debemos calcular el tamaño del sitio web y segun esto definir en funcion de esto 
+el tamaño de 
 */
 
 const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
@@ -52,14 +55,28 @@ let intervalo
 let mapaBackground = new Image()
 mapaBackground.src = './assets/mokemap.png'
 let alturaQueBuscamos
-let anchoDelMapa = window.innerWidth - 20
-const anchoMaximoDelMapa = 350
 
+//Aqui definimos el ancho del mapa en funcion del tamaño del ventana
+//del navegador
+let anchoDelMapa = window.innerWidth - 20 //window.innerWidth nos da el tamaño de la ventana del navegador
+//generamos un espacio de -20px entre el navegador y el mapa
+
+const anchoMaximoDelMapa = 350 //limite al ancho del mapa y se limita para que no sea demasiado grande y evitar
+//problemas de redimiento
+
+//En el caso que exceda el ancho maximo entonces restar su tamaño
 if (anchoDelMapa > anchoMaximoDelMapa) {
     anchoDelMapa = anchoMaximoDelMapa - 20
 }
 
-alturaQueBuscamos = anchoDelMapa * 600 / 800
+//altura del mapa en funcion del ancho del mapa en forma de fraccion de este
+alturaQueBuscamos = anchoDelMapa * 600 / 800 
+/* 
+ Esto representa una relación de aspecto predefinida para el mapa. En este caso, se asume que el mapa tendrá una 
+ relación de aspecto de 600 píxeles de altura por cada 800 píxeles de ancho.
+
+
+*/
 
 mapa.width = anchoDelMapa
 mapa.height = alturaQueBuscamos
