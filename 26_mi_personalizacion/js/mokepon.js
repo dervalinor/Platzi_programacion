@@ -1,11 +1,3 @@
-/* 
-Descubri que el diseño responsivo no funciona la ejecutar el HTML en el navegador BRAVE pero si en otro
-como Firefox
-
-Para hacer esto debemos calcular el tamaño del sitio web y segun esto definir en funcion de esto 
-el tamaño de 
-*/
-
 const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
 const sectionReiniciar = document.getElementById('reiniciar')
 const botonMascotaJugador = document.getElementById('boton-mascota')
@@ -55,26 +47,14 @@ let intervalo
 let mapaBackground = new Image()
 mapaBackground.src = './assets/mokemap.png'
 let alturaQueBuscamos
+let anchoDelMapa = window.innerWidth - 20
+const anchoMaximoDelMapa = 350
 
-//Aqui definimos el ancho del mapa en funcion del tamaño del ventana
-//del navegador
-let anchoDelMapa = window.innerWidth - 20 //window.innerWidth nos da el tamaño de la ventana del navegador
-//generamos un espacio de -20px entre el navegador y el mapa
-
-const anchoMaximoDelMapa = 350 //limite al ancho del mapa y se limita para que no sea demasiado grande y evitar
-//problemas de redimiento
-
-//En el caso que exceda el ancho maximo entonces restar su tamaño
 if (anchoDelMapa > anchoMaximoDelMapa) {
     anchoDelMapa = anchoMaximoDelMapa - 20
 }
 
-//altura del mapa en funcion del ancho del mapa en forma de fraccion de este
-alturaQueBuscamos = anchoDelMapa * 600 / 800 
-/* 
- Esto representa una relación de aspecto predefinida para el mapa. En este caso, se asume que el mapa tendrá una 
- relación de aspecto de 600 píxeles de altura por cada 800 píxeles de ancho.
-*/
+alturaQueBuscamos = anchoDelMapa * 600 / 800
 
 mapa.width = anchoDelMapa
 mapa.height = alturaQueBuscamos
@@ -106,17 +86,18 @@ class Mokepon {
     }
 }
 
-let hipodoge = new Mokepon('Hipodoge', './assets/mokepons_mokepon_hipodoge_attack.png', 5, './assets/hipodoge.png')
+//añadir imagenes de los personajes con creadas por AI
+let hipodoge = new Mokepon('Hipodoge', 'https://i.imgur.com/R5gQw7i.png', 5, 'https://i.imgur.com/cGJS3pY.png')
 
-let capipepo = new Mokepon('Capipepo', './assets/mokepons_mokepon_capipepo_attack.png', 5, './assets/capipepo.png')
+let capipepo = new Mokepon('Capipepo', 'https://i.imgur.com/3xoE0J7.png', 5, 'https://i.imgur.com/eWjnrR2.png')
 
-let ratigueya = new Mokepon('Ratigueya', './assets/mokepons_mokepon_ratigueya_attack.png', 5, './assets/ratigueya.png')
+let ratigueya = new Mokepon('Ratigueya', 'https://i.imgur.com/jrwnh1j.png', 5, 'https://i.imgur.com/XNLIOUU.png')
 
-let hipodogeEnemigo = new Mokepon('Hipodoge', './assets/mokepons_mokepon_hipodoge_attack.png', 5, './assets/hipodoge.png')
+let hipodogeEnemigo = new Mokepon('Hipodoge', 'https://i.imgur.com/R5gQw7i.png', 5, 'https://i.imgur.com/cGJS3pY.png')
 
-let capipepoEnemigo = new Mokepon('Capipepo', './assets/mokepons_mokepon_capipepo_attack.png', 5, './assets/capipepo.png')
+let capipepoEnemigo = new Mokepon('Capipepo', 'https://i.imgur.com/3xoE0J7.png', 5, 'https://i.imgur.com/eWjnrR2.png')
 
-let ratigueyaEnemigo = new Mokepon('Ratigueya', './assets/mokepons_mokepon_ratigueya_attack.png', 5, './assets/ratigueya.png')
+let ratigueyaEnemigo = new Mokepon('Ratigueya', 'https://i.imgur.com/jrwnh1j.png', 5, 'https://i.imgur.com/XNLIOUU.png')
 
 hipodoge.ataques.push(
     { nombre: '💧', id: 'boton-agua' },
@@ -176,11 +157,20 @@ function iniciarJuego() {
     sectionVerMapa.style.display = 'none'
 
     mokepones.forEach((mokepon) => {
+        //hacer que el nombre aparezca arriba de la imagen
+        //seria bueno hacer que div ocupe todo el espacio disponible
         opcionDeMokepones = `
         <input type="radio" name="mascota" id=${mokepon.nombre} />
         <label class="tarjeta-de-mokepon" for=${mokepon.nombre}>
-            <p>${mokepon.nombre}</p>
-            <img src=${mokepon.foto} alt=${mokepon.nombre}>
+            <div> 
+                <p>${mokepon.nombre}</p>
+            </div>
+
+            
+            <div>
+                <img src=${mokepon.foto} alt=${mokepon.nombre}>
+            </div>
+            
         </label>
         `
     contenedorTarjetas.innerHTML += opcionDeMokepones
