@@ -162,16 +162,13 @@ function iniciarJuego() {
         opcionDeMokepones = `
         <input type="radio" name="mascota" id=${mokepon.nombre} />
         <label class="tarjeta-de-mokepon" for=${mokepon.nombre}>
-            <div> 
-                <p>${mokepon.nombre}</p>
-            </div>
 
-            
-            <div>
-                <img src=${mokepon.foto} alt=${mokepon.nombre}>
-            </div>
-            
-        </label>
+          <div class="personaje-container">
+              <p class="titulo-personaje">${mokepon.nombre}</p>
+              <!--Agregar imagenes de los personajes -->
+              <img src=${mokepon.foto} alt=${mokepon.nombre}>
+          </div>  
+
         `
     contenedorTarjetas.innerHTML += opcionDeMokepones
 
