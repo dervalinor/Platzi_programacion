@@ -1,3 +1,4 @@
+
 const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
 const sectionReiniciar = document.getElementById('reiniciar')
 const botonMascotaJugador = document.getElementById('boton-mascota')
@@ -21,6 +22,9 @@ const contenedorAtaques = document.getElementById('contenedorAtaques')
 const sectionVerMapa = document.getElementById('ver-mapa')
 const mapa = document.getElementById('mapa')
 
+
+//crear la variable de id del jugador
+let playerId = null;
 let jugadorId = null
 let mokepones = []
 let ataqueJugador =[]
@@ -186,7 +190,7 @@ function unirseAlJuego() {
                 res.text()
                     .then(function (respuesta) {
                         console.log(respuesta)
-                        jugadorId = respuesta
+                        jugadorId = respuesta //este es el valor del id del jugador
                     })
             }
         })
@@ -207,8 +211,9 @@ function seleccionarMascotaJugador() {
         mascotaJugador = inputRatigueya.id
     } else {
         alert('Selecciona una mascota')
-    }
+    } 
 
+    //llamar un funcion que envie la mascota selecionada al jugador
     seleccionarMokepon(mascotaJugador)
     
     extraerAtaques(mascotaJugador)
@@ -216,14 +221,14 @@ function seleccionarMascotaJugador() {
     iniciarMapa()
 }
 
-function seleccionarMokepon(mascotaJugador) {
-    fetch(`http://localhost:8080/mokepon/${jugadorId}`, {
-        method: "post",
-        headers: {
-            "Content-Type": "application/json"
+function seleccionarMokepon(mascotaJugador) { //enviar datos del personaje seleccionado del jugador al Backend
+    fetch(`http://localhost:8080/mokepon/${jugadorId}`, { //indica la direccion en que lleva el dato en la variable ${jugadorId} al Backend
+        method: "post", //enviar como un peticion tipo post
+        headers: { //este es un objeto JSON
+            "Content-Type": "application/json" //indicar que es un JSON
         },
-        body: JSON.stringify({
-            mokepon: mascotaJugador
+        body: JSON.stringify({ //datos que se envian al Backend
+            mokepon: mascotaJugador //este dato se envia al servidor que es la mascota selecionada
         })
     })
 }

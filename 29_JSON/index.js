@@ -55,6 +55,8 @@ app.get("/unirse", (req, res) => {
 // el id del jugador, seguido de la funcion "(req, res)" que procesa la solicitud
 app.post("/mokepon/:jugadorId", (req, res) => {
   const jugadorId = req.params.jugadorId || "" // Obtiene el ID del jugador desde los parámetros de la URL
+  // o algun valor por defecto indica "".
+  
   const nombre = req.body.mokepon || "" // Obtiene el nombre del Mokepon desde el cuerpo de la solicitud
   const mokepon = new Mokepon(nombre) // Crea un nuevo Mokepon con el nombre proporcionado
   
