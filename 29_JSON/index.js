@@ -24,7 +24,8 @@ class Jugador {
   constructor(id) {
     this.id = id
   }
-
+  //como el jugador elige un personaje esto lo podemos asignar desde
+  //el Backend
   asignarMokepon(mokepon) {
     this.mokepon = mokepon
   }
@@ -57,18 +58,25 @@ app.post("/mokepon/:jugadorId", (req, res) => {
   const jugadorId = req.params.jugadorId || "" // Obtiene el ID del jugador desde los parámetros de la URL
   // o algun valor por defecto indica "".
   
+
+  //apartir de la informacion que el usuario a enviado
   const nombre = req.body.mokepon || "" // Obtiene el nombre del Mokepon desde el cuerpo de la solicitud
   const mokepon = new Mokepon(nombre) // Crea un nuevo Mokepon con el nombre proporcionado
+  //asi ser podido utilizado por el backend como un objeto con sus propiedades y metodos
   
   // Busca el índice del jugador en la lista de jugadores
+  //buscar que el jugador exista o no exista 
   const jugadorIndex = jugadores.findIndex((jugador) => jugadorId === jugador.id)
 
   // Si se encuentra el jugador
+  //si el elemento existe entonces no devuelve su indice en caso contrario no devuelve -1
   if (jugadorIndex >= 0) {
     // Asigna el Mokepon al jugador correspondiente
     jugadores[jugadorIndex].asignarMokepon(mokepon)
   }
-  
+ 
+  //con lo anterior al Backend se obtiene el id del jugador y su personaje seleccionado 
+  //con sus propiedades y metodos
   console.log(jugadores) // Imprime la lista de jugadores en la consola
   console.log(jugadorId) // Imprime el ID del jugador en la consola
   res.end() // Finaliza la respuesta
