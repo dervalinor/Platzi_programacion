@@ -398,7 +398,8 @@ function pintarCanvas() {
         mapa.height
     )
     mascotaJugadorObjeto.pintarMokepon()
-
+    
+    //enviar los datos de posicion de jugador al servidor
     enviarPosicion(mascotaJugadorObjeto.x, mascotaJugadorObjeto.y)
     
     hipodogeEnemigo.pintarMokepon()
@@ -412,11 +413,13 @@ function pintarCanvas() {
 }
 
 function enviarPosicion(x, y) {
+    //enviar coordenadas al servidor por medio de un formato JSON
     fetch(`http://localhost:8080/mokepon/${jugadorId}/posicion`, {
         method: "post",
         headers: {
             "Content-Type": "application/json"
         },
+        //envio de datos como cadena de texto en JSON
         body: JSON.stringify({
             x,
             y
