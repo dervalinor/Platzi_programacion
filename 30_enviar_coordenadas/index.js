@@ -1,3 +1,8 @@
+/* 
+Transmitir nuestras coordenadas de los jugadores en 
+cuando se conectan al servidor
+*/
+
 const express = require("express")
 const cors = require("cors")
 
@@ -8,15 +13,16 @@ app.use(express.json())
 
 const jugadores = []
 
-class Jugador {
-  constructor(id) {
-    this.id = id
+class Jugador {                                                                                         
+  constructor(id) {                                                                                     
+    this.id = id                                                                                        
+  }                                                                                                     
+                                                                                                        
+  asignarMokepon(mokepon) {                                                                             
+    this.mokepon = mokepon                                                                              
   }
 
-  asignarMokepon(mokepon) {
-    this.mokepon = mokepon
-  }
-
+  //Este metodo permite actualizar la posicion de nuestros jugador
   actualizarPosicion(x, y) {
     this.x = x
     this.y = y
@@ -57,17 +63,20 @@ app.post("/mokepon/:jugadorId", (req, res) => {
   res.end()
 })
 
-app.post("/mokepon/:jugadorId/posicion", (req, res) => {
-  const jugadorId = req.params.jugadorId || ""
-  const x = req.body.x || 0
-  const y = req.body.y || 0
+    
+app.post("/mokepon/:jugadorId/posicion", (req, res) => { //segun el id del jugador obtener su posicion, esta direcciones las podemos inventar
+  const jugadorId = req.params.jugadorId || "" //
+  const x = req.body.x || 0 //obtener la posicion en "x" o en caso que no exista un valor entonces 0
+  const y = req.body.y || 0 //obtener la posicion en "y" o por defecto 0
 
+  //buscar y actualizar las coordenadas del jugador en el mapa
+  //recordar tener en la clase de mokepon el metodo actualizarPosicion
   const jugadorIndex = jugadores.findIndex((jugador) => jugadorId === jugador.id)
 
   if (jugadorIndex >= 0) {
     jugadores[jugadorIndex].actualizarPosicion(x, y)
   }
-
+  //respuesta despues de hacer llenado los datos
   res.end()
 })
 
