@@ -12,13 +12,20 @@ const cors = require("cors")
 const app = express()
 
 /* 
-middleware: Recepcion de solucitudes de cliente y servidor, envio de respuestas desde el servidor
-es un intermediario de cliente-servidor permitiendo que permite la correcta transmision de 
-solucitudes entre los dos.
+middleware: Recepcion de solucitudes de cliente y servidor, envio de respuestas desde el servidor                                  
+es un intermediario de cliente-servidor permitiendo que permite la correcta transmision de                                         
+solucitudes entre los dos.                                                                                                         
 
-req - solucitud
-*/
+Aceso a estos objetos: 
 
+req - solucitud del cliente al Servidor
+res - respuesta del servido al cliente
+next() - funcion para pasar al siguiente middleware en la cadena 
+de procesos
+
+
+*/                                                                                                                                 
+                                                                                                                                   
 
 //aplicar el middleware CORS 
 app.use(cors())
@@ -48,6 +55,9 @@ class Mokepon {
   }
 }
 
+//solucitudes GET: Solicitar datos del servidor, sin modificar 
+//datos de este como por ejemplo cuando accedes a una URL
+//este tipo de solucitudes se guardan en el historial de navegacion
 app.get("/unirse", (req, res) => {
   const id = `${Math.random()}`
 
@@ -76,6 +86,9 @@ app.post("/mokepon/:jugadorId", (req, res) => {
   res.end()
 })
 
+//solucitudes post: enviar datos al servidor para ser procesados como por
+//ejemplo cuando envias credenciales para iniciar session, estas solucitudes no se
+//guardan en el servidor
 app.post("/mokepon/:jugadorId/posicion", (req, res) => {
   const jugadorId = req.params.jugadorId || ""
   const x = req.body.x || 0
