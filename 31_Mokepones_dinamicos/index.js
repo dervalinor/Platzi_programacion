@@ -73,7 +73,7 @@ app.get("/unirse", (req, res) => { //especifica un endpoint (URL especifica de s
   res.setHeader("Access-Control-Allow-Origin", "*") //Este permite que cualquier solicitud se realize desde cualquier lugar aunque 
   //esto no es recomendable
   
-  res.send(id) //Este envia al cliente su id de su jugador
+  res.send(id) //Este envia al cliente su id de su jugador, esto es le da al usuario como informacion
 })
 
 
