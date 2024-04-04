@@ -55,8 +55,10 @@ class Mokepon {
   }
 }
 
-//solucitudes GET: Solicitar datos del servidor, sin modificar 
-//datos de este como por ejemplo cuando accedes a una URL
+//solucitudes GET: Solicitar datos del servidor o cualquier otro contenido, entonces el servidor buscara
+//el recurso requerido y envia la repuesta al cliente, aqui estan los codigo de estado como 200 para indicar "OK, encontrado" y 404 para 
+//"No encontrado"
+//como por ejemplo cuando accedes a una URL
 //este tipo de solucitudes se guardan en el historial de navegacion
 app.get("/unirse", (req, res) => {
   const id = `${Math.random()}`
