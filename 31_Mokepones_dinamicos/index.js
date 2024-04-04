@@ -60,14 +60,17 @@ class Mokepon {
 //"No encontrado"
 //como por ejemplo cuando accedes a una URL
 //este tipo de solucitudes se guardan en el historial de navegacion
-app.get("/unirse", (req, res) => {
-  const id = `${Math.random()}`
+app.get("/unirse", (req, res) => { //especifica un endpoint (URL especifica de servidor para acceder a informacion o otras cosas mas)
+    //donde se puede acceder para un solicitud GET
+    //luego sigue un callback que es una funcion que se pasa como argumento de otra funcion, tiene como argumento req (la solucitud del cliente) y
+    //res (respuesta del servidor)
+  const id = `${Math.random()}`//crear un identificador unico del jugador cuando accede a unirse al juego
 
-  const jugador = new Jugador(id)
+  const jugador = new Jugador(id) //crear un objeto con id para el jugador
 
-  jugadores.push(jugador)
+  jugadores.push(jugador) //agregar esto a lista de jugador
 
-  res.setHeader("Access-Control-Allow-Origin", "*")
+  res.setHeader("Access-Control-Allow-Origin", "*") //
   
   res.send(id)
 })
