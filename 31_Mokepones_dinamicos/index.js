@@ -57,7 +57,7 @@ class Mokepon {
 
 //solucitudes GET: Solicitar datos del servidor o cualquier otro contenido, entonces el servidor buscara
 //el recurso requerido y envia la repuesta al cliente, aqui estan los codigo de estado como 200 para indicar "OK, encontrado" y 404 para 
-//"No encontrado"
+//"No encontrado", el usuario con un solicitud GET no puede modificar el servidor.
 //como por ejemplo cuando accedes a una URL
 //este tipo de solucitudes se guardan en el historial de navegacion
 app.get("/unirse", (req, res) => { //especifica un endpoint (URL especifica de servidor para acceder a informacion o otras cosas mas)
@@ -70,15 +70,24 @@ app.get("/unirse", (req, res) => { //especifica un endpoint (URL especifica de s
 
   jugadores.push(jugador) //agregar esto a lista de jugador
 
-  res.setHeader("Access-Control-Allow-Origin", "*") //
+  res.setHeader("Access-Control-Allow-Origin", "*") //Este permite que cualquier solicitud se realize desde cualquier lugar aunque 
+  //esto no es recomendable
   
-  res.send(id)
+  res.send(id) //Este envia al cliente su id de su jugador
 })
 
+
+//solucitudes post: enviar datos al servidor para ser procesados como por
+//ejemplo cuando envias credenciales para iniciar session
+//Con las solicitudes POST pueden enviar y modificar el servidor
+
+//Entonce con un solicitud GET solo podemos obtener recursos del servidor 
+//sin modificarlo mientras  que en un solucitud Post se envia y modifican datos del servidor
 app.post("/mokepon/:jugadorId", (req, res) => {
-  const jugadorId = req.params.jugadorId || ""
-  const nombre = req.body.mokepon || ""
-  const mokepon = new Mokepon(nombre)
+  const jugadorId = req.params.jugadorId || "" //Extraer el id de jugador desde la URL en caso contrario solo se coloca 
+  //una cadena vacia
+  const nombre = req.body.mokepon || "" //extraer nombre del servidor o en caso contrario se asigna una cadena vacia
+  const mokepon = new Mokepon(nombre) //
   
   const jugadorIndex = jugadores.findIndex((jugador) => jugadorId === jugador.id)
 
@@ -91,9 +100,6 @@ app.post("/mokepon/:jugadorId", (req, res) => {
   res.end()
 })
 
-//solucitudes post: enviar datos al servidor para ser procesados como por
-//ejemplo cuando envias credenciales para iniciar session, estas solucitudes no se
-//guardan en el servidor
 app.post("/mokepon/:jugadorId/posicion", (req, res) => {
   const jugadorId = req.params.jugadorId || ""
   const x = req.body.x || 0
