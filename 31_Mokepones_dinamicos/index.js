@@ -83,24 +83,24 @@ app.get("/unirse", (req, res) => { //especifica un endpoint (URL especifica de s
 
 //Entonce con un solicitud GET solo podemos obtener recursos del servidor 
 //sin modificarlo mientras  que en un solucitud Post se envia y modifican datos del servidor
-app.post("/mokepon/:jugadorId", (req, res) => {
+app.post("/mokepon/:jugadorId", (req, res) => { //enviar datos al servidor de id del jugador
   const jugadorId = req.params.jugadorId || "" //Extraer el id de jugador desde la URL en caso contrario solo se coloca 
   //una cadena vacia
   const nombre = req.body.mokepon || "" //extraer nombre del servidor o en caso contrario se asigna una cadena vacia
-  const mokepon = new Mokepon(nombre) //
+  const mokepon = new Mokepon(nombre) //crear un objeto con el nombre del personaje
   
-  const jugadorIndex = jugadores.findIndex((jugador) => jugadorId === jugador.id)
+  const jugadorIndex = jugadores.findIndex((jugador) => jugadorId === jugador.id) //buscar el id que coincida en la lista de jugadores
 
-  if (jugadorIndex >= 0) {
-    jugadores[jugadorIndex].asignarMokepon(mokepon)
+  if (jugadorIndex >= 0) {//verificar si se encontro el indice del jugador en la lista
+    jugadores[jugadorIndex].asignarMokepon(mokepon) //asigna el personaje creado a la lista de jugadores
   }
   
   console.log(jugadores)
   console.log(jugadorId)
-  res.end()
+  res.end() //indicar al cliente el fin de la solucitud POST
 })
 
-app.post("/mokepon/:jugadorId/posicion", (req, res) => {
+app.post("/mokepon/:jugadorId/posicion", (req, res) => { //enviar datos al servidor de la posicion del jugador
   const jugadorId = req.params.jugadorId || ""
   const x = req.body.x || 0
   const y = req.body.y || 0
@@ -118,6 +118,6 @@ app.post("/mokepon/:jugadorId/posicion", (req, res) => {
   })
 })
 
-app.listen(8080, () => {
-  console.log("Servidor funcionando")
+app.listen(8080, () => {//escuchar el puerto 8080 el cual puede enviar o recibir
+  console.log("Servidor funcionando") //mostrar que el Servidor esta funcionando
 })
