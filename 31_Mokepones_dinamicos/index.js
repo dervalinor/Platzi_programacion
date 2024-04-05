@@ -101,7 +101,12 @@ app.post("/mokepon/:jugadorId", (req, res) => { //enviar datos al servidor de id
 })
 
 app.post("/mokepon/:jugadorId/posicion", (req, res) => { //enviar datos al servidor de la posicion del jugador
-  const jugadorId = req.params.jugadorId || ""
+    //Esto se hace por medio de la ruta "/mokepon/:jugadorId/posicion" para la solicitud POST
+  const jugadorId = req.params.jugadorId || "" //extraer el parametro jugadorId de la URL de la solucitud HTTP (Protocolo de Transferencia de Hipertexto)
+    //req es la solucitud HTTP del cliente al Servidor y params contiene los parametros de la ruta extraido de URL
+    //HTTP es permite que exista solicitudes y respuestas del Servidor al cliente
+    //URL (Uniform Resource Locator) es una cadena de caracteres que identifica a recursos especificos en un sitio web
+    //g- y g+ avanzar y retroceder cambios en vim
   const x = req.body.x || 0
   const y = req.body.y || 0
 
