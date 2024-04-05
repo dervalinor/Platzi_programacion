@@ -23,7 +23,6 @@ res - respuesta del servido al cliente
 next() - funcion para pasar al siguiente middleware en la cadena 
 de procesos
 
-
 */                                                                                                                                 
                                                                                                                                    
 
@@ -107,22 +106,25 @@ app.post("/mokepon/:jugadorId/posicion", (req, res) => { //enviar datos al servi
     //HTTP es permite que exista solicitudes y respuestas del Servidor al cliente
     //URL (Uniform Resource Locator) es una cadena de caracteres que identifica a recursos especificos en un sitio web
     //g- y g+ avanzar y retroceder cambios en vim
-  const x = req.body.x || 0
+
+  //apartir de la url extraer la posicion del personaje 
+  const x = req.body.x || 0 
   const y = req.body.y || 0
 
-  const jugadorIndex = jugadores.findIndex((jugador) => jugadorId === jugador.id)
+  const jugadorIndex = jugadores.findIndex((jugador) => jugadorId === jugador.id) //buscar el jugador en la lista de jugadores
 
   if (jugadorIndex >= 0) {
-    jugadores[jugadorIndex].actualizarPosicion(x, y)
+    jugadores[jugadorIndex].actualizarPosicion(x, y) //actualizar posicion del jugador si es encontrado en la lista
   }
 
-  const enemigos = jugadores.filter((jugador) => jugadorId !== jugador.id)
+  const enemigos = jugadores.filter((jugador) => jugadorId !== jugador.id) //esto permite ver a los enemigos
+  //por su id y se excluye al que realizo la solucitud es decir el jugador para evitar se contado el como enemigo
 
   res.send({
-    enemigos
+    enemigos //enviar al ciente la lista de enemigos del jugador
   })
 })
 
-app.listen(8080, () => {//escuchar el puerto 8080 el cual puede enviar o recibir
+app.listen(8080, () => {//escuchar el puerto 8080 el cual puede enviar o recibir datos
   console.log("Servidor funcionando") //mostrar que el Servidor esta funcionando
 })
