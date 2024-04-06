@@ -73,13 +73,13 @@ class Mokepon {
         this.y = aleatorio(0, mapa.height - this.alto)
         this.mapaFoto = new Image()
         this.mapaFoto.src = fotoMapa
-        this.velocidadX = 0
-        this.velocidadY = 0
-    }
-
-    pintarMokepon() {
-        lienzo.drawImage(
-            this.mapaFoto,
+        this.velocidadX = 0                                                                             
+        this.velocidadY = 0                                                                             
+    }                                                                                                   
+                                                                                                        
+    pintarMokepon() {                                                                                   
+        lienzo.drawImage(                                                                               
+            this.mapaFoto,                                                                              
             this.x,
             this.y,
             this.ancho,
@@ -154,21 +154,27 @@ function iniciarJuego() {
     unirseAlJuego()
 }
 
-function unirseAlJuego() {
-    fetch("http://localhost:8080/unirse")
-        .then(function (res) {
-            if (res.ok) {
-                res.text()
+//El usuario hace un solicitud GET al servidor este procesa su solicitud y le 
+//devuelve como respuesta el id del jugador y este id se guarda en la variable 
+//jugadorId en el cliente, mientras tanto el servidor lo agrega a a lista de jugadores
+function unirseAlJuego() { //funcion para realizar un solicitud get al servidor para 
+    //unirse al juego por medio de un funcion fetch
+    fetch("http://localhost:8080/unirse") //esta funcion hace una solicitud GET a la url que se muestra
+    //y la promesa de un respuesta del servidor
+        .then(function (res) {//la respuesta en tratada por la funcion then donde la toma como argumento
+            //en esta caso la respueata es id del jugador al entrar al servidor
+            if (res.ok) { //verificar si la respuesta del servidor es valida
+                res.text() //obtener la respuesta como texto
                     .then(function (respuesta) {
                         console.log(respuesta)
-                        jugadorId = respuesta
+                        jugadorId = respuesta //la respuesta del servidor es el id del jugador
                     })
-            }
-        })
-}
-
-function seleccionarMascotaJugador() {
-    
+            }                                      
+        })                                         
+}                                                  
+                                                   
+function seleccionarMascotaJugador() {             
+                                                   
     sectionSeleccionarMascota.style.display = 'none'
     
     if (inputHipodoge.checked) {
