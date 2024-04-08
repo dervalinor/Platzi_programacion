@@ -199,11 +199,18 @@ function seleccionarMascotaJugador() {
 
 function seleccionarMokepon(mascotaJugador) {
     fetch(`http://localhost:8080/mokepon/${jugadorId}`, {
-        method: "post",
+        //la funcion fetch es un funcion una funcion para enviar solucitudes al
+        //servidor, esta las procesas y devuelve una respuesta para este caso
+        //se va a seleccionar una mascota y se envia esta informacion al servidor
+        //el cual la va procesar y enviara un respuesta despues de ello
+        method: "post", //Es un metodo donde se envia datos al servidor donde se 
+        //modifique informacion de sus base de datos y se envia luego una respuesta
+        //al cliente
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json" //formato en que se envia la solucitud
         },
-        body: JSON.stringify({
+        body: JSON.stringify({ //se convierte la solucitud en formato texto para ser leida por
+            //el servidor
             mokepon: mascotaJugador
         })
     })
