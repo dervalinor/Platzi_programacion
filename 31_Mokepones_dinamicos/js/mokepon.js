@@ -211,7 +211,7 @@ function seleccionarMokepon(mascotaJugador) {
         },
         body: JSON.stringify({ //se convierte la solucitud en formato texto para ser leida por
             //el servidor
-            mokepon: mascotaJugador
+            mokepon: mascotaJugador //enviar la mascota seleccionada
         })
     })
 }
