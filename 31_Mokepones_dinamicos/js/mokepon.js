@@ -400,6 +400,9 @@ function pintarCanvas() {
 }
 
 function enviarPosicion(x, y) {
+    //esta funcion consiste en enviar la posicion del jugador en un formato JSON por medio 
+    //de la URL por medio del metodo POST e incluir el metodo then para procesar la respuesta
+    //del servidor
     fetch(`http://localhost:8080/mokepon/${jugadorId}/posicion`, {
         method: "post",
         headers: {
