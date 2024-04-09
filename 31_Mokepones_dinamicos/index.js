@@ -42,7 +42,9 @@ class Jugador {
     this.mokepon = mokepon
   }
 
-  actualizarPosicion(x, y) {
+  actualizarPosicion(x, y) { //recordar que cada objeto que se envia del servidor al
+      //cliente tiene un posicion x y x por lo cual se puede extraer de respuesta que 
+      //envia el servidor al jugador accediendo al parametro x y y de este objeto.
     this.x = x
     this.y = y
   }

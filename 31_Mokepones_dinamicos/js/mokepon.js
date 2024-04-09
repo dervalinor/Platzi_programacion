@@ -413,12 +413,18 @@ function enviarPosicion(x, y) {
             y
         })
     })
-    .then(function (res) {
-        if (res.ok) {
-            res.json()
+    .then(function (res) { //despues de enviada las coordenadas el servidor da un respuesta esta respuesta debe
+        //ser verificada si es correcta esto se hace en el siguiente condicional: 
+        if (res.ok) { 
+            res.json() //dentro de la respuesta de la respuesta del servidor esta la informacion
+            //sobre los enemigos es decir para que el jugador tenga informacion sobre
+            //los enemigos y su posicion para luego ser pintado localmente en el canvas
+            //del usuario
                 .then(function ({ enemigos }) {
                     console.log(enemigos)
                     enemigos.forEach(function (enemigo) {
+                        //buscar a que tipo de enemigo pertenece y crear ese objetos
+                        //localmente para que los vea el usuario
                         let mokeponEnemigo = null
                         const mokeponNombre = enemigo.mokepon.nombre || ""
                         if (mokeponNombre === "Hipodoge") {
@@ -428,10 +434,13 @@ function enviarPosicion(x, y) {
                         } else if (mokeponNombre === "Ratigueya") {
                             mokeponEnemigo = new Mokepon('Ratigueya', './assets/mokepons_mokepon_ratigueya_attack.png', 5, './assets/ratigueya.png')
                         }
-
+                        
+                        //Posicion del enemigo en el mapa 
                         mokeponEnemigo.x = enemigo.x
                         mokeponEnemigo.y = enemigo.y
 
+                        //Ahora pintamos el enemigo con todas sus caracteristicas y
+                        //posicion en el mapa
                         mokeponEnemigo.pintarMokepon()
                     })
                 })
