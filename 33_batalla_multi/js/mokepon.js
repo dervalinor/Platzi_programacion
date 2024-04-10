@@ -258,13 +258,22 @@ function secuenciaAtaque() {
 
 }
 
+//enviar ataques al servidor por medio de una solicitud post
+//en formato de un objeto JSON y un URL el servidor extrae 
+//de la URL la id del jugador y de objeto JSON el ataque del 
+//Jugador
 function enviarAtaques() {
     fetch(`http://localhost:8080/mokepon/${jugadorId}/ataques`, {
-        method: "post",
-        headers: {
-            "Content-Type": "application/json"
+        //se usa la funcion fetch para hacer un solicitud POST por
+        //medio de un  URL para indicar que se envia ataques y el id 
+        //del jugador
+        method: "post", //indicar el metodo que se esta utilizando
+        //en esta caso es una solicitud POST
+        headers: { //indicar el formato en que se envia la informacion
+            "Content-Type": "application/json" //indicar que es un
+            //objeto JSON
         },
-        body: JSON.stringify({
+        body: JSON.stringify({//convertir un objeto en un formato JSON
             ataques: ataqueJugador
         })
     })

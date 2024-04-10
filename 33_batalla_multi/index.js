@@ -79,17 +79,24 @@ app.post("/mokepon/:jugadorId/posicion", (req, res) => {
   })
 })
 
-app.post("/mokepon/:jugadorId/ataques", (req, res) => {
-  const jugadorId = req.params.jugadorId || ""
-  const ataques = req.body.ataques || []
+//El servidor recibe los ataques del jugador en la URL dada 
+//y de esta extrae el Id del jugador y del objeto de JSON extrae el 
+//ataque del jugador
+app.post("/mokepon/:jugadorId/ataques", (req, res) => {//Aqui se da URL donde se recibe los datos de 
+    //ataques del jugador, solicitud del cliente (req) y luego la respuesta del servidor (res)
+  const jugadorId = req.params.jugadorId || "" //extraer de la URL el id del jugador
+  const ataques = req.body.ataques || [] //extraer de objeto JSON los ataques del jugador
   
-  const jugadorIndex = jugadores.findIndex((jugador) => jugadorId === jugador.id)
+  const jugadorIndex = jugadores.findIndex((jugador) => jugadorId === jugador.id) //Buscar al jugador 
+    //en la lista de jugadores donde previamente el jugador se unio a esta.
 
-  if (jugadorIndex >= 0) {
-    jugadores[jugadorIndex].asignarAtaques(ataques)
+  if (jugadorIndex >= 0) { //verifica si el usuario existe en la lista por que cuando 
+      //no existe se devuelve un -1 como respuesta
+    jugadores[jugadorIndex].asignarAtaques(ataques) //asignar los ataques al objeto de jugador 
+      //de la lista.
   }
 
-  res.end()
+  res.end() //no se envia nada mas que decirle al cliente que su solicitud se ha aceptado.
 })
 
 app.listen(8080, () => {
