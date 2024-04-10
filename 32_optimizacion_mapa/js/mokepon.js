@@ -1,3 +1,7 @@
+//solucionar pequeño retraso al actualizar la posicion de los enemigos
+//en el mapa del jugador para esto utilizaremos un variable auxiliar
+
+
 const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
 const sectionReiniciar = document.getElementById('reiniciar')
 const botonMascotaJugador = document.getElementById('boton-mascota')
@@ -23,7 +27,8 @@ const mapa = document.getElementById('mapa')
 
 let jugadorId = null
 let mokepones = []
-let mokeponesEnemigos = []
+let mokeponesEnemigos = [] //variable auxiliar para guardar los personajes enemigos y actualizar 
+//esta variable
 let ataqueJugador =[]
 let ataqueEnemigo = []
 let opcionDeMokepones
@@ -377,8 +382,10 @@ function pintarCanvas() {
 
     enviarPosicion(mascotaJugadorObjeto.x, mascotaJugadorObjeto.y)
     
+
     mokeponesEnemigos.forEach(function (mokepon) {
-        mokepon.pintarMokepon()
+        mokepon.pintarMokepon() //ahora recorremos el array de mokeponesEnemigos para pintalos en 
+        //el mapa
     })
     if (mascotaJugadorObjeto.velocidadX !== 0 || mascotaJugadorObjeto.velocidadY !== 0) {
         revisarColision(hipodogeEnemigo)
@@ -386,6 +393,7 @@ function pintarCanvas() {
         revisarColision(ratigueyaEnemigo)
     }
 }
+
 
 function enviarPosicion(x, y) {
     fetch(`http://localhost:8080/mokepon/${jugadorId}/posicion`, {
@@ -403,7 +411,10 @@ function enviarPosicion(x, y) {
             res.json()
                 .then(function ({ enemigos }) {
                     console.log(enemigos)
-                    mokeponesEnemigos = enemigos.map(function (enemigo) {
+                    mokeponesEnemigos = enemigos.map(function (enemigo) { //almacenar los enemigos en un lista nueva 
+                        //para esto en vez de utilizar forEach usamos la funcion map 
+                        //La funcion map permite iterar un array, modificar cada elemento y luego generar un 
+                        //nuevo array sin modificar el original
                         let mokeponEnemigo = null
                         const mokeponNombre = enemigo.mokepon.nombre || ""
                         if (mokeponNombre === "Hipodoge") {
@@ -417,7 +428,7 @@ function enviarPosicion(x, y) {
                         mokeponEnemigo.x = enemigo.x
                         mokeponEnemigo.y = enemigo.y
 
-                        return mokeponEnemigo
+                        return mokeponEnemigo //devolver un nuevo array
                     })
                 })
         }
