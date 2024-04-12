@@ -101,6 +101,17 @@ app.post("/mokepon/:jugadorId/ataques", (req, res) => {//Aqui se da URL donde se
   res.end() //no se envia nada mas que decirle al cliente que su solicitud se ha aceptado.
 })
 
+//se solicita al servidor los ataques del enemigo para asi saber como se
+//dara la batalla
+
+app.get("/mokepon/:jugadorId/ataques", (req, res) => {
+  const jugadorId = req.params.jugadorId || "" //encontrar el id del jugador
+  const jugador = jugadores.find((jugador) => jugador.id === jugadorId) //buscar jugador en la lista segun su id
+  res.send({
+    ataques: jugador.ataques || [] //enviar como respuesta los ataques del jugador el videojuego
+  })
+})
+
 app.listen(8080, () => {
   console.log("Servidor funcionando")
 })

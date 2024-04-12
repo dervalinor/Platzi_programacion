@@ -1,4 +1,7 @@
 //falta almacenar el id del enemigo con el cual colisiono el jugador 
+//para poder obtener los ataques del enemigo debemos hacer un proceso de escucha constantes
+//
+
 const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
 const sectionReiniciar = document.getElementById('reiniciar')
 const botonMascotaJugador = document.getElementById('boton-mascota')
@@ -282,6 +285,30 @@ function enviarAtaques() {
             //definida
         })
     })
+
+    //Una vez que se enviaron nuestros ataques se crea un funcion que envie al servidor la
+    //solicitud de ataques del jugador enemigo en un determinado tiempo
+    intervalo = setInterval(obtenerAtaques, 50) //se crea un intervalo de tiempo para que se
+    //envien los ataques del enemigo del servidor al usuario con la funcion obtenerAtaques
+}
+
+//Funcion que se ejecuta en un determinado tiempo para ver si el enemigo tiene
+//la secuencias de ataques completa
+function obtenerAtaques() {
+    fetch(`http://localhost:8080/mokepon/${enemigoId}/ataques`) //hacer solicitud de GET al servidor
+    //y esperar de respuesta los ataques del enemigo, usamos el enemigo id para obtener los ataques solo
+    //del enemigo y no los nuestros, wow simple y brillante
+        .then(function (res) { 
+            if (res.ok) { //verificar si la respuesta en valida
+                res.json()
+                    .then(function ({ ataques }) {
+                        if (ataques.length === 5) { //ver si la secuencias de ataques esta completa
+                            ataqueEnemigo = ataques //agregar la lista los ataques del enemigo
+                            combate() //entonces ejecutar la funcion de combate entre jugadores
+                        }
+                    })
+            }
+        })
 }
 
 function seleccionarMascotaEnemigo(enemigo) {
@@ -318,6 +345,9 @@ function indexAmbosOponente(jugador, enemigo) {
 }
 
 function combate() {
+
+    clearInterval(intervalo) //detener la funcion de verificar constantemente los 
+    //ataques del enemigo ya que se esta en combate y no se debe seguir veficando 
     
     for (let index = 0; index < ataqueJugador.length; index++) {
         if(ataqueJugador[index] === ataqueEnemigo[index]) {
