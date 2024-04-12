@@ -408,7 +408,7 @@ function pintarCanvas() {
     
     mokeponesEnemigos.forEach(function (mokepon) {
         mokepon.pintarMokepon()
-        revisarColision(mokepon)
+        revisarColision(mokepon) //revisar colision con el enemigo
     })
 }
 
