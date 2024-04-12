@@ -1,3 +1,4 @@
+//falta almacenar el id del enemigo con el cual colisiono el jugador 
 const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
 const sectionReiniciar = document.getElementById('reiniciar')
 const botonMascotaJugador = document.getElementById('boton-mascota')
@@ -22,7 +23,7 @@ const sectionVerMapa = document.getElementById('ver-mapa')
 const mapa = document.getElementById('mapa')
 
 let jugadorId = null
-let enemigoId = null
+let enemigoId = null //almacenar id del enemigo
 let mokepones = []
 let mokeponesEnemigos = []
 let ataqueJugador =[]
@@ -249,8 +250,11 @@ function secuenciaAtaque() {
                 boton.style.background = '#112f58'
                 boton.disabled = true  
             }
-            if (ataqueJugador.length === 5) {
-                enviarAtaques()
+            if (ataqueJugador.length === 5) { //solo enviar cuando se tenga los 
+                //5 ataques selecionados
+                enviarAtaques() //como ahora el enemigo selecciona sus ataques
+                //quitamos la funcion de ataques aleatorio y la remplazamos por esta 
+                //funcion que envia los ataque del jugador al servidor
             }
         })
     })
@@ -274,7 +278,8 @@ function enviarAtaques() {
             //objeto JSON
         },
         body: JSON.stringify({//convertir un objeto en un formato JSON
-            ataques: ataqueJugador
+            ataques: ataqueJugador //enviar la lista de ataques ya previamente 
+            //definida
         })
     })
 }
@@ -425,6 +430,8 @@ function enviarPosicion(x, y) {
                     console.log(enemigos)
                     mokeponesEnemigos = enemigos.map(function (enemigo) {
                         let mokeponEnemigo = null
+                        //donde se genera los mokepones de forma dinamica añadimos el id
+                        //del enemigo para poder identificarlo
                         const mokeponNombre = enemigo.mokepon.nombre || ""
                         if (mokeponNombre === "Hipodoge") {
                             mokeponEnemigo = new Mokepon('Hipodoge', './assets/mokepons_mokepon_hipodoge_attack.png', 5, './assets/hipodoge.png', enemigo.id)
@@ -532,7 +539,9 @@ function revisarColision(enemigo) {
     clearInterval(intervalo)
     console.log('Se detecto una colision');
 
-    enemigoId = enemigo.id
+    enemigoId = enemigo.id //almacenar le id del enemigo para conocer
+    //su ataques depues de que ocurrio la colision, este 
+    //id viene como respuesta del Backend
     sectionSeleccionarAtaque.style.display = 'flex'
     sectionVerMapa.style.display = 'none'
     seleccionarMascotaEnemigo(enemigo)

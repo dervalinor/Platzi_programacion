@@ -22,7 +22,9 @@ class Jugador {
     this.y = y
   }
 
-  asignarAtaques(ataques) {
+  asignarAtaques(ataques) { //Este metodo lo usamos 
+      //para guardar los ataques que no envia el jugador al 
+      //servidor
     this.ataques = ataques
   }
 }
