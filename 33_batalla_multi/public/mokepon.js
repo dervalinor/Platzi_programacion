@@ -1,6 +1,7 @@
 //falta almacenar el id del enemigo con el cual colisiono el jugador 
 //para poder obtener los ataques del enemigo debemos hacer un proceso de escucha constantes
-//
+//Cambiar localhost por la ip de nuestro servidor para que otros dispositivos se conecten !!!!!!!! 
+//http://numero_ip:8080/
 
 const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
 const sectionReiniciar = document.getElementById('reiniciar')
@@ -174,8 +175,8 @@ function unirseAlJuego() {
 }
 
 function seleccionarMascotaJugador() {
-    
-    sectionSeleccionarMascota.style.display = 'none'
+    //solucionar problema que cuando no selecciona mascota se queda una
+    //pantalla vacia 
     
     if (inputHipodoge.checked) {
         spanMascotaJugador.innerHTML = inputHipodoge.id
@@ -187,8 +188,16 @@ function seleccionarMascotaJugador() {
         spanMascotaJugador.innerHTML = inputRatigueya.id
         mascotaJugador = inputRatigueya.id
     } else {
+       //debemos interrumpir el flujo del codigo cuando el usuario 
+       //no selecciono una mascota, esto lo hacemos haciendo un 
+       //return
+
         alert('Selecciona una mascota')
+        return //frenar la ejecucion de nuestro codigo
     }
+
+
+    sectionSeleccionarMascota.style.display = 'none'
 
     seleccionarMokepon(mascotaJugador)
     

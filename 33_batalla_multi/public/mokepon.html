@@ -22,11 +22,17 @@
         <section id="ver-mapa">
             <h2 class="subtitulo">Recorre el mapa con tu mokepon</h2> 
             <canvas id="mapa"></canvas>
-            <button onmouseup="detenerMovimiento()" onmousedown="moverArriba()">Arriba</button>
+            <!--Al entrar desde el celular debemos remplazar el onmouse ya que en un celular se 
+            hace click en la pantalla entonce usamos el evento ontouchstart  similar al ontouchstart y ontouchend 
+            similar al ontouchend
+
+            Comando en vim para remplazar palabras: :%s/palabranueva/palabravieja/g remplaza todo a la vez
+             :%s/palabranueva/palabravieja/gci preguntar por cual remplazar -->
+            <button ontouchstart="detenerMovimiento()" ontouchend="moverArriba()">Arriba</button>
             <div>
-                <button onmouseup="detenerMovimiento()" onmousedown="moverIzquierda()">Izquierda</button>
-                <button onmouseup="detenerMovimiento()" onmousedown="moverAbajo()">Abajo</button>
-                <button onmouseup="detenerMovimiento()" onmousedown="moverDerecha()">Derecha</button>
+                <button ontouchstart="detenerMovimiento()" ontouchend="moverIzquierda()">Izquierda</button>
+                <button ontouchstart="detenerMovimiento()" ontouchend="moverAbajo()">Abajo</button>
+                <button ontouchstart="detenerMovimiento()" ontouchend="moverDerecha()">Derecha</button>
             </div>
         </section>
 

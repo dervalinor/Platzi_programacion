@@ -1,7 +1,24 @@
+//vamos hacer que cualquier celular se pueda conectar a nuestro juego !!!
+//mientras esten en la mismo red wifi
+//INTENTAR ROMPER EL CODIGO PARA HACKEARLO !!!!!!!  
+
 const express = require("express")
 const cors = require("cors")
 
 const app = express()
+
+//para esto llamamos a una funcion de nodejs de express llamada static
+//Aqui estamos corriendo nuestro frontend desde el backend
+app.use(express.static('public')) //crear carpeta donde se guardan los 
+//archivos de nuestro juego es decir el estilos css, html, frontend js e
+//imagenes de nuestros personajes
+//Ahora debemos hacer nuestro localhost:8080 hacerlo publico para poder
+//acceder desde nuestro servidor
+//Para windows ejecutar el comando ipconfig, encontrar Address IPv4 (Importante debe ser de las red inhalambrica) y copiar esta ip y ahora entrar desde el celular
+//a la direccion numberIPv4:8080
+//Para linux ejecutar comando hostname y copiar nombre del computador y http://name_computer.local:8080 
+//Para el caso de codespace github es codespaces-51e6f3
+//Importante tener el servidor encendido
 
 app.use(cors())
 app.use(express.json())
